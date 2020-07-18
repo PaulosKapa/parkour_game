@@ -1,6 +1,6 @@
 extends KinematicBody
 
-var speed = 8
+var speed = 50
 var velocity = Vector3()
 
 func _ready():

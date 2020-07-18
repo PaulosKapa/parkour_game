@@ -188,4 +188,4 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, -0.76
 script = ExtResource( 2 )
 
 [node name="Spatial2" parent="KinematicBody/Spatial3" instance=ExtResource( 3 )]
-transform = Transform( 0.584946, 0, 0, 0, 1, 0, 0, 0, 1, -1.95531, 0, 0 )
+transform = Transform( 0.584946, 0, 0, 0, 1, 0, 0, 0, 1, -1.95531, -2.84217e-014, -9.53674e-007 )
