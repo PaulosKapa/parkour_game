@@ -21,11 +21,11 @@ func _physics_process(delta):
 				if(g == "enemy"):
 					# col.collider.apply_central_impulse(-col.normal*3)
 					print("Tried to hurt someone")
-					col.collider.hurt()
+		
 					
 				elif (g == "Player"):
 					print("Player was hurt!")
-					col.collider.hurt()
+					
 				if(g == "case"):
 					queue_free = false
 		
