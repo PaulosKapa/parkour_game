@@ -24,13 +24,12 @@ func _physics_process(delta):
 	elif Input.is_action_just_released("transport"):
 		$AnimationPlayer.play("New Anim (2)")
 		$Particles.set_emitting(false)
-		print( sp)
+		
 	if Input.is_action_pressed("ui_right"):
 		vel.x=lerp(10,sp,0.125)
 	elif Input.is_action_pressed("ui_left"):
 		vel.x=lerp(-10,-sp,0.125)
-		print (sp)
-	
+		
 	elif Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_left"):
 		vel.y=0
 	else: vel.x=0

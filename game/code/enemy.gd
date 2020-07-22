@@ -21,19 +21,17 @@ func _ready():
 			if result.collider.is_in_group("Player"):
 					var bullet = Bullet.instance()
 					Parent.add_child(bullet)
-					var opos = Camera.unproject_position(global_transform.origin)
+					var pos = Camera.unproject_position(global_transform.origin)
 					var bullet_translation_vector = Vector3(global_transform.origin.x +0.2,global_transform.origin.y, global_transform.origin.z)
-					
-					var bs_vc = mouse_position - opos
+	
+					var bs_vc = mouse_position - pos
 					var bullet_speed_vector = Vector3(bs_vc.x, bs_vc.y, 0)
 					bullet_speed_vector.y *= -1
-					
+	
 					bullet.global_rotate(Vector3(1, 0, 0), 300)
 					bullet.set_speed(bullet_speed_vector.normalized())
 					bullet.global_transform.origin = bullet_translation_vector
-		
-		else:
-			pass
+
 func _on_Area_body_entered(body):
 	if body.is_in_group("Player"):
 		target= body
