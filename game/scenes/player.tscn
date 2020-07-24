@@ -106,7 +106,7 @@ script = ExtResource( 2 )
 [node name="Spatial2" parent="Spatial3" groups=[
 "Player",
 ] instance=ExtResource( 3 )]
-transform = Transform( 0.584946, 0, 0, 0, 1, 0, 0, 0, 1, -1.95531, -2.84217e-014, -9.53674e-007 )
+transform = Transform( -0.584946, 0, 8.74228e-008, 0, 1, 0, -5.11376e-008, 0, -1, -1.9553, -2.84217e-014, -9.53674e-007 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/New Anim" = SubResource( 3 )
