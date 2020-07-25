@@ -36,6 +36,7 @@ material = SubResource( 5 )
 
 [sub_resource type="CubeMesh" id=11]
 
+<<<<<<< HEAD
 [sub_resource type="CubeMesh" id=12]
 
 [sub_resource type="SpatialMaterial" id=13]
@@ -53,6 +54,10 @@ albedo_color = Color( 0.121569, 0.0470588, 1, 1 )
 [sub_resource type="CubeMesh" id=18]
 
 [sub_resource type="Animation" id=19]
+=======
+[sub_resource type="Animation" id=12]
+resource_name = "door"
+>>>>>>> a510d58897383c395f972c3431bfc8cb987ce9f3
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("StaticBody:translation")
@@ -67,11 +72,19 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 2.18777, 0 ), Vector3( 0, 0, 0 ) ]
 }
 
+<<<<<<< HEAD
 [sub_resource type="BoxShape" id=20]
 
 [sub_resource type="CubeMesh" id=21]
 
 [sub_resource type="BoxShape" id=22]
+=======
+[sub_resource type="BoxShape" id=13]
+
+[sub_resource type="CubeMesh" id=14]
+
+[sub_resource type="BoxShape" id=15]
+>>>>>>> a510d58897383c395f972c3431bfc8cb987ce9f3
 
 [node name="level" type="Spatial"]
 
@@ -233,7 +246,7 @@ mesh = SubResource( 9 )
 material/0 = null
 
 [node name="StaticBody7" type="StaticBody" parent="."]
-transform = Transform( 1.25223e-007, 1, 0, 2.86477, -4.37114e-008, -2.29939e-007, 2.50446e-007, -3.82137e-015, 2.6302, -15.0341, -7.84739, 0 )
+transform = Transform( 1.25223e-07, 1, 0, 2.86477, -4.37114e-08, -2.29939e-07, 2.50446e-07, -3.82137e-15, 2.6302, -15.0341, -7.84739, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody7"]
 shape = SubResource( 8 )
@@ -243,7 +256,7 @@ mesh = SubResource( 9 )
 material/0 = null
 
 [node name="StaticBody8" type="StaticBody" parent="StaticBody7"]
-transform = Transform( 1, -1.16615e-022, 0, -1.42109e-014, 1, 8.47033e-022, 7.10543e-015, -1.05879e-022, 1, 0.619821, -1.94003, -5.90192e-008 )
+transform = Transform( 1, -1.16615e-22, 0, -1.42109e-14, 1, 8.47033e-22, 7.10543e-15, -1.05879e-22, 1, 0.619821, -1.94003, -5.90192e-08 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody7/StaticBody8"]
 shape = SubResource( 8 )
@@ -253,7 +266,7 @@ mesh = SubResource( 9 )
 material/0 = null
 
 [node name="StaticBody9" type="StaticBody" parent="StaticBody7/StaticBody8"]
-transform = Transform( 1, -1.16615e-022, 0, -1.42109e-014, 1, 8.47033e-022, 7.10543e-015, -1.05879e-022, 1, 0.398767, -1.98126, -3.79704e-008 )
+transform = Transform( 1, -1.16615e-22, 0, -1.42109e-14, 1, 8.47033e-22, 7.10543e-15, -1.05879e-22, 1, 0.398767, -1.98126, -3.79704e-08 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody7/StaticBody8/StaticBody9"]
 shape = SubResource( 8 )
@@ -271,7 +284,7 @@ enabled = true
 [node name="KinematicBody" parent="." instance=ExtResource( 2 )]
 
 [node name="Spatial" type="Spatial" parent="KinematicBody"]
-transform = Transform( 1, 0, 0, 0, 1.19249e-008, 1, 0, -1, 1.19249e-008, -0.00122833, 8.08527, -1.32651 )
+transform = Transform( 1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -0.00122833, 8.08527, -1.32651 )
 
 [node name="Spatial" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 64.7911, 10.0666, 0 )
@@ -396,6 +409,7 @@ transform = Transform( 0.32045, 0, 0, 0, 3.31947, 0, 0, 0, 2.67737, -95.552, -5.
 script = ExtResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Area5"]
+<<<<<<< HEAD
 anims/door = SubResource( 19 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area5"]
@@ -405,17 +419,36 @@ shape = SubResource( 20 )
 [node name="CollisionShape2" type="CollisionShape" parent="Area5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.19849, 0.720448, -0.00543666 )
 shape = SubResource( 20 )
+=======
+anims/door = SubResource( 12 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.58444, 0.712297, 0 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Area5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.19849, 0.720448, -0.00543666 )
+shape = SubResource( 13 )
+>>>>>>> a510d58897383c395f972c3431bfc8cb987ce9f3
 
 [node name="StaticBody" type="StaticBody" parent="Area5"]
 
 [node name="MeshInstance" type="MeshInstance" parent="Area5/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.683517, 0 )
+<<<<<<< HEAD
 mesh = SubResource( 21 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Area5/StaticBody"]
 shape = SubResource( 22 )
 [connection signal="body_entered" from="RigidBody/Area6" to="RigidBody/Area6" method="_on_Area6_body_entered"]
+=======
+mesh = SubResource( 14 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Area5/StaticBody"]
+shape = SubResource( 15 )
+>>>>>>> a510d58897383c395f972c3431bfc8cb987ce9f3
 [connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area2" to="Area2" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area3" to="Area3" method="_on_Area_body_entered"]

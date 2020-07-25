@@ -16,8 +16,7 @@ func shoot():
 	var pos = Camera.unproject_position(global_transform.origin)
 	var bullet_translation_vector = Vector3(global_transform.origin.x +2,global_transform.origin.y, global_transform.origin.z)
 	
-	var bullet_speed_vector = mouse_position - bullet_spawn_location
-	bullet_speed_vector.y *= -1
+	var bullet_speed_vector = Vector3(1, 0, 0);
 	
 	bullet.global_rotate(Vector3(1, 0, 0), 300)
 	bullet.set_speed(bullet_speed_vector.normalized())

@@ -33,7 +33,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Transform( 0.199459, 0, 2.21142e-017, 0, 0.199459, 0, 2.21142e-017, 0, 0.199459, 0.402515, 0, 1.39339 ), Transform( 0.199459, 0, 2.21142e-017, 0, 0.199459, 0, 2.21142e-017, 0, 0.199459, 0.402515, 0, 1.39339 ) ]
+"values": [ Transform( 0.199459, 0, 2.21142e-17, 0, 0.199459, 0, 2.21142e-17, 0, 0.199459, 0.402515, 0, 1.39339 ), Transform( 0.199459, 0, 2.21142e-17, 0, 0.199459, 0, 2.21142e-17, 0, 0.199459, 0.402515, 0, 1.39339 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -77,7 +77,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Transform( -0.169651, 2.30343e-010, 0.104893, -4.1501e-009, 0.199459, -7.15028e-009, -0.104893, -8.26418e-009, -0.169651, -0.00165558, 1.606e-009, 1.57309 ), Transform( -0.169651, 2.30343e-010, 0.104893, -4.1501e-009, 0.199459, -7.15028e-009, -0.104893, -8.26418e-009, -0.169651, -0.00165558, 1.606e-009, 1.57309 ) ]
+"values": [ Transform( -0.169651, 2.30343e-10, 0.104893, -4.1501e-09, 0.199459, -7.15028e-09, -0.104893, -8.26418e-09, -0.169651, -0.00165558, 1.606e-09, 1.57309 ), Transform( -0.169651, 2.30343e-10, 0.104893, -4.1501e-09, 0.199459, -7.15028e-09, -0.104893, -8.26418e-09, -0.169651, -0.00165558, 1.606e-09, 1.57309 ) ]
 }
 
 [sub_resource type="ParticlesMaterial" id=6]
@@ -87,7 +87,7 @@ angular_velocity = -1.51263e-023
 [sub_resource type="PlaneMesh" id=7]
 
 [node name="KinematicBody" type="KinematicBody"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 76.5918, 10.5936, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 76.5918, 10.5936, 0 )
 script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
@@ -103,7 +103,7 @@ script = ExtResource( 2 )
 [node name="Spatial2" parent="Spatial3" groups=[
 "Player",
 ] instance=ExtResource( 3 )]
-transform = Transform( -0.584946, 0, 8.74228e-008, 0, 1, 0, -5.11376e-008, 0, -1, -1.9553, -2.84217e-014, -9.53674e-007 )
+transform = Transform( -0.584946, 0, 8.74228e-08, 0, 1, 0, -5.11376e-08, 0, -1, -1.9553, -2.84217e-14, -9.53674e-07 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/New Anim" = SubResource( 3 )
@@ -111,7 +111,7 @@ transform = Transform( -0.584946, 0, 8.74228e-008, 0, 1, 0, -5.11376e-008, 0, -1
 "anims/New Anim (3)" = SubResource( 5 )
 
 [node name="Particles" type="Particles" parent="."]
-transform = Transform( -0.169651, 2.30343e-010, 0.104893, -4.1501e-009, 0.199459, -7.15027e-009, -0.104893, -8.26418e-009, -0.169651, -0.00165558, 1.606e-009, 1.57309 )
+transform = Transform( -0.169651, 2.30343e-10, 0.104893, -4.1501e-09, 0.199459, -7.15027e-09, -0.104893, -8.26418e-09, -0.169651, -0.00165558, 1.606e-09, 1.57309 )
 emitting = false
 amount = 24
 process_material = SubResource( 6 )
