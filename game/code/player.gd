@@ -41,6 +41,9 @@ func _physics_process(delta):
 		accel = -leg_force
 	else:
 		vel.y = lerp(vel.z,0,0.1)
+	if Input.is_action_just_pressed("ctrl"):
+		Engine.time_scale = 0.5
+		$Timer.start()
 	
 	if get_translation_delta().y == 0:
 		accel = 0
@@ -48,3 +51,8 @@ func _physics_process(delta):
 	vel.y += accel
 	physics_delta = delta
 	move_and_slide(vel*physics_delta, Vector3(0, 1, 0), false, 4, 0.785398, true)
+	
+
+func _on_Timer_timeout():
+	Engine.time_scale = 1
+	$Timer.stop()

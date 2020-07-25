@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://code/exit.gd" type="Script" id=3]
 [ext_resource path="res://code/water.gd" type="Script" id=4]
+[ext_resource path="res://code/door.gd" type="Script" id=5]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -24,6 +25,32 @@ albedo_color = Color( 1, 0, 0, 1 )
 
 [sub_resource type="SpatialMaterial" id=9]
 albedo_color = Color( 0.121569, 0.0470588, 1, 1 )
+
+[sub_resource type="BoxShape" id=10]
+
+[sub_resource type="CubeMesh" id=11]
+
+[sub_resource type="Animation" id=15]
+resource_name = "door"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("StaticBody:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 2.18777, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="BoxShape" id=12]
+
+[sub_resource type="CubeMesh" id=16]
+
+[sub_resource type="BoxShape" id=17]
 
 [node name="level" type="Spatial"]
 
@@ -241,11 +268,109 @@ transform = Transform( 0.854812, 0, 0, 0, 1.73349, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Area4"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 mesh = SubResource( 8 )
 material/0 = SubResource( 9 )
+
+[node name="RigidBody" type="RigidBody" parent="Area4"]
+transform = Transform( 0.149903, 0, 0, 0, 0.909736, 0, 0, 0, 0.382409, -4.37784, -1.12287, -0.447737 )
+mass = 38.7531
+
+[node name="CollisionShape" type="CollisionShape" parent="Area4/RigidBody"]
+transform = Transform( 0.438809, 0, 0, 0, 0.438809, 0, 0, 0, 0.438809, 0, 0, 0 )
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Area4/RigidBody/CollisionShape"]
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="RigidBody2" type="RigidBody" parent="Area4"]
+transform = Transform( 0.149903, 0, 0, 0, 0.909736, 0, 0, 0, 0.382409, -4.37784, -1.12287, -0.118557 )
+mass = 38.7531
+
+[node name="CollisionShape" type="CollisionShape" parent="Area4/RigidBody2"]
+transform = Transform( 0.438809, 0, 0, 0, 0.438809, 0, 0, 0, 0.438809, 0, 0, 0 )
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Area4/RigidBody2/CollisionShape"]
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="RigidBody3" type="RigidBody" parent="Area4"]
+transform = Transform( 0.149903, 0, 0, 0, 0.909736, 0, 0, 0, 0.382409, -4.37784, -1.12287, 0.211128 )
+mass = 38.7531
+
+[node name="CollisionShape" type="CollisionShape" parent="Area4/RigidBody3"]
+transform = Transform( 0.438809, 0, 0, 0, 0.438809, 0, 0, 0, 0.438809, 0, 0, 0 )
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Area4/RigidBody3/CollisionShape"]
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="RigidBody4" type="RigidBody" parent="Area4"]
+transform = Transform( 0.149903, 0, 0, 0, 0.909736, 0, 0, 0, 0.382409, -4.37784, -0.339613, 0.211128 )
+mass = 38.7531
+
+[node name="CollisionShape" type="CollisionShape" parent="Area4/RigidBody4"]
+transform = Transform( 0.438809, 0, 0, 0, 0.438809, 0, 0, 0, 0.438809, 0, 0, 0 )
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Area4/RigidBody4/CollisionShape"]
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="RigidBody5" type="RigidBody" parent="Area4"]
+transform = Transform( 0.149903, 0, 0, 0, 0.909736, 0, 0, 0, 0.382409, -4.37784, -0.339615, -0.124795 )
+mass = 38.7531
+
+[node name="CollisionShape" type="CollisionShape" parent="Area4/RigidBody5"]
+transform = Transform( 0.438809, 0, 0, 0, 0.438809, 0, 0, 0, 0.438809, 0, 0, 0 )
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Area4/RigidBody5/CollisionShape"]
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="RigidBody6" type="RigidBody" parent="Area4"]
+transform = Transform( 0.149903, 0, 0, 0, 0.909736, 0, 0, 0, 0.382409, -4.37784, -0.339616, -0.44631 )
+mass = 38.7531
+
+[node name="CollisionShape" type="CollisionShape" parent="Area4/RigidBody6"]
+transform = Transform( 0.438809, 0, 0, 0, 0.438809, 0, 0, 0, 0.438809, 0, 0, 0 )
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Area4/RigidBody6/CollisionShape"]
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="Area5" type="Area" parent="."]
+transform = Transform( 0.32045, 0, 0, 0, 3.31947, 0, 0, 0, 2.67737, -95.552, -5.95367, 0 )
+script = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area5"]
+anims/door = SubResource( 15 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.58444, 0.712297, 0 )
+shape = SubResource( 12 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Area5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.19849, 0.720448, -0.00543666 )
+shape = SubResource( 12 )
+
+[node name="StaticBody" type="StaticBody" parent="Area5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Area5/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.683517, 0 )
+mesh = SubResource( 16 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Area5/StaticBody"]
+shape = SubResource( 17 )
 [connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area2" to="Area2" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area3" to="Area3" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area4" to="Area4" method="_on_Area4_body_entered"]
 [connection signal="body_exited" from="Area4" to="Area4" method="_on_Area4_body_exited"]
+[connection signal="body_entered" from="Area5" to="Area5" method="_on_Area5_body_entered"]
