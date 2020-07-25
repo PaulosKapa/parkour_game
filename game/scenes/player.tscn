@@ -82,6 +82,7 @@ tracks/1/keys = {
 
 [sub_resource type="ParticlesMaterial" id=6]
 gravity = Vector3( 90, 5.28, -55.75 )
+angular_velocity = -1.51263e-023
 
 [sub_resource type="PlaneMesh" id=7]
 
