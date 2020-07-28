@@ -5,6 +5,7 @@ var velocity = Vector3()
 
 func _ready():
 	velocity = Vector3(speed, 0, 0)
+	add_to_group("bullet")
 
 func set_speed(blyat):
 	velocity = blyat.normalized()*speed

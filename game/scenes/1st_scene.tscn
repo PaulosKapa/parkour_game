@@ -270,6 +270,7 @@ speed = 30.0
 enabled = true
 
 [node name="KinematicBody" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 76.1365, 12.4619, 0 )
 
 [node name="Spatial" type="Spatial" parent="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1.19249e-008, 1, 0, -1, 1.19249e-008, -0.00122833, 8.08527, -1.32651 )

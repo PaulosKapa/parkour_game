@@ -17,4 +17,4 @@ func _physics_process(delta):
 		var object_position = global_transform.origin
 		ray_collision_point = ray_collision_point - object_position
 		var angle = -Vector2(ray_collision_point.x, ray_collision_point.y).angle_to(Vector2(-1, 0))
-		self.set_rotation(Vector3(angle,angle,0))
+		self.set_rotation(Vector3(0, 0, angle))
