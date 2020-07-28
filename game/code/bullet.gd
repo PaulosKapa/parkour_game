@@ -19,6 +19,9 @@ func _physics_process(delta):
 			print(col.collider.name)
 			var groups = col.collider.get_groups()
 			for g in groups:
+				if(g == "explosive"):
+					col.collider.explode()
+					
 				if(g == "enemy"):
 					# col.collider.apply_central_impulse(-col.normal*3)
 					print("Tried to hurt someone")
