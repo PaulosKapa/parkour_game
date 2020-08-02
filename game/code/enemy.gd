@@ -3,7 +3,7 @@ onready var sho = get_node("/root/level/Spatial/StaticBody/Spatial")
 var space_state
 var target
 
-func _die():
+func die():
 	queue_free()
 
 func _ready():
