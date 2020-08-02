@@ -9,7 +9,7 @@ func shoot():
 	var bullet = Bullet.instance()
 	Parent.add_child(bullet)
 	
-	var spat = get_node("/root/level/Spatial/Spatial")
+	var spat = get_node("/root/level/Spatial/StaticBody/Spatial")
 	var spatial_pos=spat.global_transform.origin
 	bullet_spawn_location = Vector3(spatial_pos.x,spatial_pos.y, 0)
 	
