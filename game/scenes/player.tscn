@@ -5,14 +5,13 @@
 [ext_resource path="res://scenes/pistol.tscn" type="PackedScene" id=3]
 [ext_resource path="res://code/s.gd" type="Script" id=4]
 
+[sub_resource type="CapsuleShape" id=1]
 
-[sub_resource type="CapsuleShape" id=5]
+[sub_resource type="CapsuleMesh" id=2]
 
-[sub_resource type="CapsuleMesh" id=6]
+[sub_resource type="CubeMesh" id=3]
 
-[sub_resource type="CubeMesh" id=7]
-
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=4]
 resource_name = "rotate_ccw"
 length = 0.5
 tracks/0/type = "value"
@@ -28,7 +27,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 0, 180 ), Vector3( 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=5]
 resource_name = "rotate_cw"
 length = 0.5
 tracks/0/type = "value"
@@ -41,11 +40,11 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 1.06722e-07, 0 ), Vector3( 0, 0, 180 ) ]
+"values": [ Vector3( 0, 1.06722e-007, 0 ), Vector3( 0, 0, 180 ) ]
 }
 
 [node name="KinematicBody" type="KinematicBody"]
-transform = Transform( 0.999673, 5.84192e-09, 0.0255698, 0.0255698, -2.0738e-08, -0.999673, -5.30975e-09, 1, -2.08806e-08, 76.5918, 10.5936, 0 )
+transform = Transform( 0.999673, 5.84192e-009, 0.0255698, 0.0255698, -2.0738e-008, -0.999673, -5.30975e-009, 1, -2.08806e-008, 76.5918, 10.5936, 0 )
 script = ExtResource( 1 )
 
 [node name="Spatial3" type="Spatial" parent="."]
@@ -54,29 +53,27 @@ script = ExtResource( 2 )
 [node name="Spatial2" parent="Spatial3" groups=[
 "Player",
 ] instance=ExtResource( 3 )]
-transform = Transform( -0.584946, 0, 8.74228e-08, 0, 1, 0, -5.11376e-08, 0, -1, -1.9553, -2.84217e-14, -9.53674e-07 )
+transform = Transform( -0.584946, 0, 8.74228e-008, 0, 1, 0, -5.11376e-008, 0, -1, -1.9553, -2.84217e-014, -9.53674e-007 )
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, -2.98023e-08, -4.44089e-16, 1, 0, 2.98023e-08, 1.77636e-15, 1, 0, 0, 0 )
-shape = SubResource( 5 )
+transform = Transform( 1, 0, -2.98023e-008, -4.44089e-016, 1, 0, 2.98023e-008, 1.77636e-015, 1, 0, 0, 0 )
+shape = SubResource( 1 )
 
 [node name="s" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 script = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="s"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 6 )
+mesh = SubResource( 2 )
 material/0 = null
 
 [node name="MeshInstance2" type="MeshInstance" parent="s"]
-transform = Transform( 0.318041, 0, 0, 0, 0.318041, 0, 0, 0, 0.318041, -0.977005, -3.39264e-08, -0.776135 )
-mesh = SubResource( 7 )
+transform = Transform( 0.318041, 0, 0, 0, 0.318041, 0, 0, 0, 0.318041, -0.977005, -3.39264e-008, -0.776135 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="animation" type="AnimationPlayer" parent="s"]
-anims/rotate_ccw = SubResource( 9 )
-anims/rotate_cw = SubResource( 8 )
+anims/rotate_ccw = SubResource( 4 )
+anims/rotate_cw = SubResource( 5 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

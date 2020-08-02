@@ -1,4 +1,4 @@
-extends RigidBody
+extends StaticBody
 
 func explode():
 	print("boom")

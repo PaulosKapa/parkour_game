@@ -8,6 +8,7 @@ func _ready():
 	add_to_group("enemy")
 func _process(delta):
 	if target:
+		look_at(target.global_transform.origin, Vector3.UP)
 		var result = space_state.intersect_ray(global_transform.origin, target.global_transform.origin)
 		if result.collider.is_in_group("Player"):
 			pass
