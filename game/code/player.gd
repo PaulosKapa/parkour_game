@@ -18,11 +18,11 @@ func get_translation_delta():
 
 func _physics_process(delta):
 	if Input.is_action_pressed("ui_left") and Input.is_action_just_pressed("transport") and is_on_floor():
-			$AnimationPlayer.play("New Anim")
+			$s/animation.play("New Anim")
 	elif Input.is_action_pressed("ui_right")and Input.is_action_just_pressed("transport") and is_on_floor():
-			$AnimationPlayer.play("New Anim (3)")
+			$s/animation.play("New Anim (3)")
 	elif Input.is_action_just_released("transport"):
-		$AnimationPlayer.play("New Anim (2)")
+		$s/animation.play("New Anim (2)")
 	if Input.is_action_pressed("ui_right"):
 		vel.x=lerp(10,sp,0.125)
 	elif Input.is_action_pressed("ui_left"):

@@ -1,7 +1,6 @@
 extends StaticBody
 
 func explode():
-	print("boom")
 	$Area6/Particles.set_emitting(true)
 	$StaticBody/CollisionShape.disabled = false
 	$Timer.start()
