@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/exploding.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://code/water.gd" type="Script" id=5]
 [ext_resource path="res://scenes/door.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/jumpad.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/light.tscn" type="PackedScene" id=8]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -340,6 +341,9 @@ material/0 = null
 [node name="Area5" parent="." instance=ExtResource( 6 )]
 
 [node name="Area6" parent="." instance=ExtResource( 7 )]
+
+[node name="StaticBody15" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49515, 0, 0 )
 [connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area2" to="Area2" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area3" to="Area3" method="_on_Area_body_entered"]
