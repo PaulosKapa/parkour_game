@@ -170,7 +170,7 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="StaticBody7" type="StaticBody" parent="."]
-transform = Transform( 1.25223e-007, 1, 0, 2.86477, -4.37114e-008, -2.29939e-007, 2.50446e-007, -3.82137e-015, 2.6302, -15.0341, -7.84739, 0 )
+transform = Transform( 1.25223e-07, 1, 0, 2.86477, -4.37114e-08, -2.29939e-07, 2.50446e-07, -3.82137e-15, 2.6302, -15.0341, -7.84739, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody7"]
 shape = SubResource( 1 )
@@ -180,7 +180,7 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="StaticBody8" type="StaticBody" parent="StaticBody7"]
-transform = Transform( 1, -1.16615e-022, 0, -1.42109e-014, 1, 8.47033e-022, 7.10543e-015, -1.05879e-022, 1, 0.619821, -1.94003, -5.90192e-008 )
+transform = Transform( 1, -1.16615e-22, 0, -1.42109e-14, 1, 8.47033e-22, 7.10543e-15, -1.05879e-22, 1, 0.619821, -1.94003, -5.90192e-08 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody7/StaticBody8"]
 shape = SubResource( 1 )
@@ -190,7 +190,7 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="StaticBody9" type="StaticBody" parent="StaticBody7/StaticBody8"]
-transform = Transform( 1, -1.16615e-022, 0, -1.42109e-014, 1, 8.47033e-022, 7.10543e-015, -1.05879e-022, 1, 0.398767, -1.98126, -3.79704e-008 )
+transform = Transform( 1, -1.16615e-22, 0, -1.42109e-14, 1, 8.47033e-22, 7.10543e-15, -1.05879e-22, 1, 0.398767, -1.98126, -3.79704e-08 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody7/StaticBody8/StaticBody9"]
 shape = SubResource( 1 )
@@ -214,11 +214,11 @@ collision_mask = 2
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 1, 0, 0, -5.5 )
 shape = SubResource( 3 )
 
-[node name="KinematicBody" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 76.1365, 12.4619, 0 )
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 76.1365, 12.4619, 0 )
 
-[node name="Spatial" type="Spatial" parent="KinematicBody"]
-transform = Transform( 1, 0, 0, 0, 1.19249e-008, 1, 0, -1, 1.19249e-008, -0.00122833, 8.08527, -1.32651 )
+[node name="Spatial" type="Spatial" parent="Player"]
+transform = Transform( 1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -0.00122833, 8.08527, -1.32651 )
 
 [node name="Spatial" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 64.7911, 10.0666, 0 )
