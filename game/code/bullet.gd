@@ -12,27 +12,29 @@ func set_speed(blyat):
 
 func _physics_process(delta):
 	move_and_slide(velocity, Vector3(0, 0, 0), false, 3, 0.785398, false)
-	for i in get_slide_count():
+	var queue_free = false
+	var slide_count = get_slide_count()
+	
+	for i in slide_count:
 		var col = get_slide_collision(i)
-		var queue_free = true
 		if(col):
 			print(col.collider.name)
+			queue_free = true
 			var groups = col.collider.get_groups()
-			for g in groups:
-				if(g == "explosive"):
-					col.collider.explode()
-					
-				if(g == "enemy"):
-					get_tree().call_group("enemy", "die")
-					print("Tried to hurt someone")
-		
-					
-				elif (g == "Player"):
+			
+			if(groups.has("explosive")):
+				col.collider.explode()
+				break
+			if(groups.has("enemy")):
+				get_tree().call_group("enemy", "die")
+				break
+			if(groups.has("case")):
+				queue_free = false
+				break
+			if(groups.has("Player")):
+				if(slide_count == 1):
 					get_tree().reload_current_scene()
 					print("Player was hurt!")
-					
-				if(g == "case"):
-					queue_free = false
-		
-		if(queue_free):
+	
+	if(queue_free):
 			queue_free()

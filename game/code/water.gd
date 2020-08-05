@@ -1,5 +1,5 @@
 extends Area
-onready var sp= get_node("/root/level/KinematicBody")
+onready var sp= get_node("/root/level/Player")
 
 func _on_Area4_body_entered(body):
 	if body.is_in_group("Player"):

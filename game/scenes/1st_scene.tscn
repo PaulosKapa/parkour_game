@@ -201,7 +201,7 @@ material/0 = null
 
 [node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 76.5263, 11.9272, 8.32322 )
-target = NodePath("../KinematicBody/Spatial")
+target = NodePath("../Player/Spatial")
 speed = 30.0
 enabled = true
 
