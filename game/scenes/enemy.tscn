@@ -26,6 +26,6 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="Spatial" parent="StaticBody" instance=ExtResource( 2 )]
-transform = Transform( -3.31502e-008, 0, 0.17069, 0, 0.134181, 0, -0.758388, 0, -7.4611e-009, 0.0218948, 0.0624638, -1.77516 )
+transform = Transform( -3.31502e-08, 0, 0.17069, 0, 0.134181, 0, -0.758388, 0, -7.4611e-09, 0.0218948, 0.0624638, -1.77516 )
 [connection signal="body_entered" from="Area" to="StaticBody" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="StaticBody" method="_on_Area_body_exited"]

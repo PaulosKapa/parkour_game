@@ -12,3 +12,11 @@ script = ExtResource( 1 )
 transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = null
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="reload" type="Timer" parent="."]
+wait_time = 2.0
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]
