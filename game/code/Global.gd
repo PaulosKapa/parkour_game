@@ -1,6 +1,8 @@
 extends Node
-
+onready var player = get_tree().get_root().get_node("/root/level/Player")
 var current_scene = null
+
+
 
 func _ready():
 	var root = get_tree().get_root()

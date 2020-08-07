@@ -76,4 +76,8 @@ material/0 = null
 [node name="animation" type="AnimationPlayer" parent="s"]
 anims/rotate_ccw = SubResource( 4 )
 anims/rotate_cw = SubResource( 5 )
+
+[node name="superpower" type="Timer" parent="."]
+wait_time = 2.0
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="superpower" to="." method="_on_superpower_timeout"]

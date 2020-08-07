@@ -1,9 +1,11 @@
 extends StaticBody
 onready var sho = get_node("/root/level/Spatial/StaticBody/Spatial")
+onready var kil = get_node("/root/level/Player")
 var space_state
 var target
 
 func die():
+	kil.kill()
 	queue_free()
 
 func _ready():

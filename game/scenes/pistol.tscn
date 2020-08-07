@@ -14,7 +14,6 @@ mesh = SubResource( 1 )
 material/0 = null
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
 
 [node name="reload" type="Timer" parent="."]
 wait_time = 2.0

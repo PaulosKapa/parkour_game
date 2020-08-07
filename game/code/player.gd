@@ -7,6 +7,21 @@ const leg_force= 500
 var accel = 0
 var last_trans = translation
 var physics_delta = 0;
+var kill=0
+onready var gun_timer = get_node("/root/level/Player/Spatial3/Spatial2/Timer")
+onready var gun = get_node("/root/level/Player/Spatial3/Spatial2")
+
+func kill():
+	kill=kill+1
+	gun.bullets_left=gun.bullets_left+kill*2
+	super_power()
+	return kill
+	
+func super_power():
+	if kill==1:
+		gun_timer.wait_time=0.1
+		$superpower.start()
+		print("right")
 
 func _ready():
 	add_to_group("Player")
@@ -17,6 +32,7 @@ func get_translation_delta():
 
 
 func _physics_process(delta):
+
 	if Input.is_action_pressed("ui_left") and Input.is_action_just_pressed("transport") and is_on_floor():
 			$s/animation.play("New Anim")
 	elif Input.is_action_pressed("ui_right")and Input.is_action_just_pressed("transport") and is_on_floor():
@@ -54,3 +70,9 @@ func _physics_process(delta):
 func _on_Timer_timeout():
 	Engine.time_scale = 1
 	$Timer.stop()
+
+
+func _on_superpower_timeout():
+	print(123)
+	gun_timer.wait_time=1
+	$superpower.stop()
