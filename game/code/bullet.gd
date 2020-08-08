@@ -33,6 +33,7 @@ func _physics_process(delta):
 				break
 			if(groups.has("Player")):
 				if(slide_count == 1):
+					Engine.time_scale = 1
 					get_tree().reload_current_scene()
 					print("Player was hurt!")
 	
