@@ -19,6 +19,10 @@ config/name="parkour"
 run/main_scene="res://code/init.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://code/Global.gd"
+
 [input]
 
 click={

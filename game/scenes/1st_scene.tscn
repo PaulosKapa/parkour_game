@@ -40,7 +40,7 @@ albedo_color = Color( 0.121569, 0.0470588, 1, 1 )
 [node name="level" type="Spatial"]
 
 [node name="Spatial2" parent="." instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 63.7195, 13.8718, 0 )
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 63.7195, 13.8718, 0 )
 
 [node name="RigidBody" parent="." instance=ExtResource( 1 )]
 

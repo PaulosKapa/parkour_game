@@ -26,7 +26,7 @@ func _physics_process(delta):
 				col.collider.explode()
 				break
 			if(groups.has("enemy")):
-				get_tree().call_group("enemy", "die")
+				col.collider.die()
 				break
 			if(groups.has("case")):
 				queue_free = false
