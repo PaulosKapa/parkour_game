@@ -12,7 +12,8 @@
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
 
 [node name="CollisionPollygon" type="CollisionPolygon" parent="Area"]
-polygon = PoolVector2Array( 29.326, 5.813, 29.123, -3.176, 0.141, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8991, -0.759766, 0.0759252 )
+polygon = PoolVector2Array( 30.098, 5.723, 29.123, -3.908, 1.948, 4.402, 0.302, -3.081 )
 
 [node name="KinematicBody" type="KinematicBody" parent="."]
 script = ExtResource( 1 )

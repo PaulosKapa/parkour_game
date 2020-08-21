@@ -5,7 +5,7 @@ var space_state
 var vel = Vector3(0,0,0)
 var target
 var gravity=100
-var dir = 0
+var dir = 1
 var physics_delta = 0;
 var last_trans = translation
 
@@ -33,7 +33,7 @@ func move_to_target(delta):
 	vel.x = dir * speed
 
 	var direction = (target.transform.origin - transform.origin).normalized()
-	vel = move_and_slide(vel, Vector3(0, -1,0))
+	vel = move_and_slide(direction * speed * delta, Vector3.UP)
 
 func _on_Area_body_entered(body):
 		if body.is_in_group("Player"):
