@@ -1,5 +1,5 @@
 extends KinematicBody
-export var speed = 2000
+export var speed = 2
 onready var kil = get_node("/root/level/Player")
 var space_state
 var vel = Vector3(0,0,0)
@@ -30,10 +30,8 @@ func _process(delta):
 			move_to_target(delta)
 
 func move_to_target(delta):
-	vel.x = dir * speed
-
-	var direction = (target.transform.origin - transform.origin).normalized()
-	vel = move_and_slide(direction * speed * delta, Vector3.UP)
+	var direction = (target.global_transform.origin - global_transform.origin).normalized()
+	vel = move_and_slide(direction * speed)
 
 func _on_Area_body_entered(body):
 		if body.is_in_group("Player"):
