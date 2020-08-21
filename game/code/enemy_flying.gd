@@ -1,5 +1,5 @@
 extends KinematicBody
-export var speed = 2
+export var speed = 10
 onready var kil = get_node("/root/level/Player")
 var space_state
 var vel = Vector3(0,0,0)
