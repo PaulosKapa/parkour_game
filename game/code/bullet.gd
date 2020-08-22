@@ -1,5 +1,5 @@
 extends KinematicBody
-
+onready var heal = get_node("/root/level/Player")
 var speed = 50
 var velocity = Vector3()
 
@@ -37,7 +37,7 @@ func _physics_process(delta):
 			if(groups.has("Player")):
 				if(slide_count == 1):
 					Engine.time_scale = 1
-					get_tree().reload_current_scene()
+					heal.health=heal.health-1
 					print("Player was hurt!")
 	
 	if(queue_free):

@@ -9,6 +9,7 @@ var last_trans = translation
 var physics_delta = 0;
 var kill=0
 var dbjump=0
+var health=3
 enum {FACING_LEFT, FACING_RIGHT}
 var facing = FACING_LEFT
 var cant_dash=0
@@ -21,6 +22,7 @@ func kill():
 	return kill
 	
 func _ready():
+	$s/animation.play("ball1")
 	add_to_group("Player")
 	
 func get_translation_delta():
@@ -29,6 +31,11 @@ func get_translation_delta():
 	return delta
 
 func _process(delta):
+	match health:
+			2:$health_rotate/health.hide()
+			1:[$health_rotate/health2.hide(), $health_rotate/health.hide()]
+			#using hide() instead of queue_free(), so they reappear if we add health regen
+			0:get_tree().reload_current_scene()
 	var slide_count = _collisions.size()
 	for i in slide_count:
 		var col = _collisions[i]

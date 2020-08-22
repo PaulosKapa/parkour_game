@@ -1,15 +1,32 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://code/player.gd" type="Script" id=1]
 [ext_resource path="res://code/swerve.gd" type="Script" id=2]
 [ext_resource path="res://scenes/pistol.tscn" type="PackedScene" id=3]
 [ext_resource path="res://code/s.gd" type="Script" id=4]
+[ext_resource path="res://scenes/health_balls.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 
 [sub_resource type="CapsuleMesh" id=2]
 
 [sub_resource type="CubeMesh" id=3]
+
+[sub_resource type="Animation" id=6]
+resource_name = "ball1"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../health_rotate:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -1.23623e-14, -1.93635e-08, 3.5876e-15 ), Vector3( 0, 0, 180 ), Vector3( 0, 0, 360 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 0.5
@@ -59,7 +76,7 @@ transform = Transform( -0.584946, 0, 8.74228e-08, 0, 1, 0, -5.11376e-08, 0, -1, 
 shape = SubResource( 1 )
 
 [node name="s" type="Spatial" parent="."]
-transform = Transform( 1, 0, 1.86265e-09, 0, 1, 0, -1.86265e-09, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.64321e-06, -4.81035e-16, -2.37263e-07 )
 script = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="s"]
@@ -72,10 +89,23 @@ mesh = SubResource( 3 )
 material/0 = null
 
 [node name="animation" type="AnimationPlayer" parent="s"]
+anims/ball1 = SubResource( 6 )
 anims/rotate_ccw = SubResource( 4 )
 anims/rotate_cw = SubResource( 5 )
 
 [node name="doublejump" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="health_rotate" type="Spatial" parent="."]
+transform = Transform( 1, -6.26154e-17, -3.37957e-10, 6.26154e-17, 1, 2.15763e-16, 3.37957e-10, -2.15763e-16, 1, 1.64321e-06, -4.81035e-16, -2.37263e-07 )
+
+[node name="health" parent="health_rotate" instance=ExtResource( 5 )]
+transform = Transform( 0.3, 2.0618e-15, -3.49475e-10, -2.0618e-15, 0.3, -1.24487e-16, 3.49475e-10, 1.24487e-16, 0.3, 1.51465, -1.35298e-08, -1.03311 )
+
+[node name="health2" parent="health_rotate" instance=ExtResource( 5 )]
+transform = Transform( 0.267551, 0.135708, 3.90199e-09, -0.135708, 0.267551, -2.43227e-09, -3.83981e-09, 9.52864e-11, 0.3, 1.447, -1.112, -1.033 )
+
+[node name="health3" parent="health_rotate" instance=ExtResource( 5 )]
+transform = Transform( 0.3, -5.51808e-09, 3.54368e-09, -3.7326e-08, 0.3, -2.85335e-09, -3.14966e-09, 2.10125e-09, 0.3, 1.007, 1.133, -1.033 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="doublejump" to="." method="_on_doublejump_timeout"]
