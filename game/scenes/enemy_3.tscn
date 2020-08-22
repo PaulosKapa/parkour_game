@@ -39,7 +39,9 @@ shape = SubResource( 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Area"]
 anims/enemy = SubResource( 2 )
 
-[node name="StaticBody" type="StaticBody" parent="Area"]
+[node name="StaticBody" type="StaticBody" parent="Area" groups=[
+"enemy",
+]]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.3, 0, 0, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Area/StaticBody"]

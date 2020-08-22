@@ -76,6 +76,16 @@ func _physics_process(delta):
 	physics_delta = delta
 	move_and_slide(vel*physics_delta, Vector3(0, 1, 0), false, 4, 0.785398, true)
 	
+	var slide_count = get_slide_count()
+	
+	for i in slide_count:
+		var col = get_slide_collision(i)
+		if(col):
+			var groups = col.collider.get_groups()
+			if(groups.has("enemy")):
+				get_tree().reload_current_scene()
+				print("Player was hurt by touching an enemy!")
+	
 func _on_Timer_timeout():
 	Engine.time_scale = 1
 	$Timer.stop()

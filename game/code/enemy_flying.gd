@@ -32,6 +32,16 @@ func _process(delta):
 func move_to_target(delta):
 	var direction = (target.global_transform.origin - global_transform.origin).normalized()
 	vel = move_and_slide(direction * speed)
+	
+	var slide_count = get_slide_count()
+	
+	for i in slide_count:
+		var col = get_slide_collision(i)
+		if(col):
+			var groups = col.collider.get_groups()
+			if(groups.has("Player")):
+				get_tree().reload_current_scene()
+				print("Player was hurt by touching an enemy!")
 
 func _on_Area_body_entered(body):
 		if body.is_in_group("Player"):
