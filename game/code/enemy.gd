@@ -10,7 +10,7 @@ func die():
 
 func _ready():
 	space_state = get_world().direct_space_state
-	add_to_group("enemy")
+
 func _process(delta):
 	if target:
 		look_at(target.global_transform.origin, Vector3.UP)

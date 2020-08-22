@@ -87,6 +87,7 @@ func _physics_process(delta):
 		cant_dash=1
 		$doublejump.start()
 	
+<<<<<<< HEAD
 	
 func _process(delta):
 		#As of 21 Aug 2020, nothing causes _thrown to be set to true
@@ -118,6 +119,18 @@ func _process(delta):
 				add_central_force(-jump_accel)
 		command = CMD_NONE
 
+=======
+	var slide_count = get_slide_count()
+	
+	for i in slide_count:
+		var col = get_slide_collision(i)
+		if(col):
+			var groups = col.collider.get_groups()
+			if(groups.has("enemy")):
+				get_tree().reload_current_scene()
+				print("1: Player was hurt by touching an enemy!")
+	
+>>>>>>> fc8505cf580dfa9a0c8a6bfd3e40cb6f5c12501d
 func _on_Timer_timeout():
 	Engine.time_scale = 1
 	$Timer.stop()
