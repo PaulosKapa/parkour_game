@@ -76,10 +76,9 @@ func _physics_process(delta):
 		$Timer.start()
 	
 	if Input.is_action_just_pressed("dash") and cant_dash==0:
-		if facing==FACING_RIGHT:
-			vel.x=sp*2
-		elif facing==FACING_LEFT:
-			vel.x=-sp*2
+		match facing:
+			FACING_RIGHT:vel.x=sp*2
+			FACING_LEFT:vel.x=-sp*2
 		cant_dash=1
 		$doublejump.start()
 	if get_translation_delta().y == 0:
