@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/pistol.tscn" type="PackedScene" id=3]
 [ext_resource path="res://code/s.gd" type="Script" id=4]
 
-[sub_resource type="CapsuleShape" id=6]
+[sub_resource type="CapsuleShape" id=1]
 
 [sub_resource type="CapsuleMesh" id=2]
 
@@ -43,6 +43,9 @@ tracks/0/keys = {
 
 [node name="PlayerBody" type="RigidBody"]
 transform = Transform( 0.999673, 5.84192e-09, 0.0255698, 0.0255698, -2.0738e-08, -0.999673, -5.30975e-09, 1, -2.08806e-08, 76.5918, 10.5936, 0 )
+continuous_cd = true
+contacts_reported = 5
+contact_monitor = true
 axis_lock_linear_z = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
@@ -60,7 +63,7 @@ transform = Transform( -0.584946, 0, 8.74228e-08, 0, 1, 0, -5.11376e-08, 0, -1, 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="s" type="Spatial" parent="."]
 transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0 )
@@ -81,5 +84,7 @@ anims/rotate_cw = SubResource( 5 )
 
 [node name="doublejump" type="Timer" parent="."]
 wait_time = 2.0
+[connection signal="body_entered" from="." to="." method="_on_PlayerBody_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_PlayerBody_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="doublejump" to="." method="_on_doublejump_timeout"]

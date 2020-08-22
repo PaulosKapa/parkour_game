@@ -3,10 +3,10 @@ onready var sp= get_node("/root/level/Player")
 
 func _on_Area4_body_entered(body):
 	if body.is_in_group("Player"):
-		sp.sp=500
-		sp.jum=100
+		sp.speed_factor=0.05
+		sp.jump_factor=0.2
 
 func _on_Area4_body_exited(body):
 	if body.is_in_group("Player"):
-		sp.sp=10000
-		sp.jum=500
+		sp.speed_factor=1.0
+		sp.jump_factor=1.0

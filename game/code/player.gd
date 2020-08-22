@@ -11,16 +11,21 @@ var right_accel=Vector3(7.5*8,0,0)
 export(float) var jump_strength = 5.44*27
 var jump_accel=Vector3(0,jump_strength,0) 
 
+#What we've run into
+var _collisions = []
+var speed_factor=1.0
+var jump_factor=1.0
+
 onready var camera = get_node("/root/level/InterpolatedCamera")
 
-var vel= Vector3(0,0,0)
-var gravity=-900
-var jum= 500
-var sp = 10000
-const leg_force= 500
-var accel = 0
+#var vel= Vector3(0,0,0)
+#var gravity=-900
+#var jum= 500
+#var sp = 10000
+#const leg_force= 500
+#var accel = 0
 var last_trans = translation
-var physics_delta = 0;
+#var physics_delta = 0;
 var kill=0
 var dbjump=0
 enum {FACING_LEFT, FACING_RIGHT}
@@ -87,7 +92,6 @@ func _physics_process(delta):
 		cant_dash=1
 		$doublejump.start()
 	
-<<<<<<< HEAD
 	
 func _process(delta):
 		#As of 21 Aug 2020, nothing causes _thrown to be set to true
@@ -98,9 +102,9 @@ func _process(delta):
 		match command:
 		#we double the accel if cant_dash is 1 , no multiplication if cant_dash is 0
 			CMD_LEFT:
-				add_central_force(-right_accel*(1+cant_dash))
+				add_central_force(-right_accel*(1+cant_dash)*speed_factor)
 			CMD_RIGHT:
-				add_central_force(right_accel*(1+cant_dash))
+				add_central_force(right_accel*(1+cant_dash)*speed_factor)
 			CMD_CANCEL_LEFTRIGHT:
 				#Calculate the force needed for a near-immediate stop
 				#(s2-s1)/t = d
@@ -114,23 +118,25 @@ func _process(delta):
 				var decely = -.5*linear_velocity.x/delta
 				add_central_force(Vector3(0,decely*mass,0))
 			CMD_UP:
-				add_central_force(jump_accel)
+				add_central_force(jump_accel*jump_factor)
 			CMD_DOWN:
-				add_central_force(-jump_accel)
+				add_central_force(-jump_accel*jump_factor)
 		command = CMD_NONE
+		
+		#Deal with what we've run into
+		var slide_count = _collisions.size()
+	
+		for i in slide_count:
+			var col = _collisions[i]
+			if(col):
+				var groups = col.get_groups()
+				if(!groups):
+					continue
+				if(groups.has("enemy")):
+					get_tree().reload_current_scene()
+					print("1: Player was hurt by touching an enemy!")
+			
 
-=======
-	var slide_count = get_slide_count()
-	
-	for i in slide_count:
-		var col = get_slide_collision(i)
-		if(col):
-			var groups = col.collider.get_groups()
-			if(groups.has("enemy")):
-				get_tree().reload_current_scene()
-				print("1: Player was hurt by touching an enemy!")
-	
->>>>>>> fc8505cf580dfa9a0c8a6bfd3e40cb6f5c12501d
 func _on_Timer_timeout():
 	Engine.time_scale = 1
 	$Timer.stop()
@@ -152,3 +158,14 @@ func _on_doublejump_timeout():
 	$doublejump.stop()
 
 		
+
+
+
+func _on_PlayerBody_body_entered(body):
+	_collisions.append(body)
+	
+
+
+
+func _on_PlayerBody_body_exited(body):
+	_collisions.erase(body)
