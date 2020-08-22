@@ -1,20 +1,17 @@
 extends StaticBody
-export(float) var blast_radius = 5.0
-export(float) var blast_power = 50 
+export(float) var blast_radius = 200.0
+export(float) var blast_power = 20
 var _original_scale
 var _current_scale
 signal blasted
 
 var _thrown_objects = []
 func explode():
-	$Area6/Particles.set_emitting(true)
 	throw_objects_in_radius()
-	$StaticBody/CollisionShape.disabled = false
 	$Timer.start()
 	$Timer2.start()
 
 func _on_Timer_timeout():
-	$StaticBody/CollisionShape.disabled = true
 	$MeshInstance2.hide()
 	$CollisionShape.disabled=true
 	$Area.show()
@@ -76,6 +73,3 @@ func throw_one_object(to_throw,blastCenter,applyPoint):
 		#the point argument is local to to_throw 
 		var localApplyPoint = applyPoint-to_throw.global_transform.origin
 		to_throw.apply_impulse(localApplyPoint,overall)
-		
-	
-
