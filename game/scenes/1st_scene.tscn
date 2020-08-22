@@ -227,7 +227,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 76.1365
 transform = Transform( 1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -0.00122833, 8.08527, -1.32651 )
 
 [node name="Spatial" parent="." groups=[
-"enemy",
+"turret",
 ] instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 64.7911, 10.0666, 0 )
 

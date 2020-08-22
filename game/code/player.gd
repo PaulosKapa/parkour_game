@@ -21,6 +21,7 @@ func kill():
 	
 func _ready():
 	add_to_group("Player")
+	
 func get_translation_delta():
 	var delta = last_trans - translation
 	last_trans = translation
@@ -84,7 +85,7 @@ func _physics_process(delta):
 			var groups = col.collider.get_groups()
 			if(groups.has("enemy")):
 				get_tree().reload_current_scene()
-				print("Player was hurt by touching an enemy!")
+				print("1: Player was hurt by touching an enemy!")
 	
 func _on_Timer_timeout():
 	Engine.time_scale = 1

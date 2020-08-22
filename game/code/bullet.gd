@@ -28,6 +28,9 @@ func _physics_process(delta):
 			if(groups.has("enemy")):
 				col.collider.die()
 				break
+			if(groups.has("turret")):
+				col.collider.die()
+				break
 			if(groups.has("case")):
 				queue_free = false
 				break
