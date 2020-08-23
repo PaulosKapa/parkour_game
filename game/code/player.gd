@@ -22,6 +22,9 @@ func kill():
 	return kill
 	
 func _ready():
+	set_axis_lock(PhysicsServer.BODY_AXIS_LINEAR_Z,true)
+	set_axis_lock(PhysicsServer.BODY_AXIS_ANGULAR_X,true)
+	
 	$s/animation.play("ball1")
 	add_to_group("Player")
 	
