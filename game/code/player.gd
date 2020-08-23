@@ -36,13 +36,13 @@ func _process(delta):
 			1:[$health_rotate/health2.hide(), $health_rotate/health.hide()]
 			#using hide() instead of queue_free(), so they reappear if we add health regen
 			0:get_tree().reload_current_scene()
-	var slide_count = _collisions.size()
+	var slide_count = get_slide_count()
 	for i in slide_count:
-		var col = _collisions[i]
+		print("wow")
+		var col = get_slide_collision(i)
 		if(col):
-			var groups = col.get_groups()
-			if(!groups):
-				continue
+			var groups = col.collider.get_groups()
+			
 			if(groups.has("enemy")):
 				get_tree().reload_current_scene()
 				print("1: Player was hurt by touching an enemy!")

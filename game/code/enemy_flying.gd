@@ -43,6 +43,7 @@ func move_to_target(delta):
 				kil.health=kil.health-2
 				print("Player was hurt by touching an enemy!")
 			queue_free()
+			
 func _on_Area_body_entered(body):
 		if body.is_in_group("Player"):
 			target = body
