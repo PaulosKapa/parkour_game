@@ -14,9 +14,8 @@ func _ready():
 func _process(delta):
 	if target:
 		look_at(target.global_transform.origin, Vector3.UP)
-		var result = space_state.intersect_ray(global_transform.origin, target.global_transform.origin)
-		if result.collider.is_in_group("Player"):
-			sho.shoot()
+		sho.shoot()
+					
 func _on_Area_body_entered(body):
 	if body.is_in_group("Player"):
 		target= body
