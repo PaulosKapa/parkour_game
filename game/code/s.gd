@@ -21,13 +21,13 @@ func _physics_process(delta):
 		ray_collision_point = ray_collision_point - object_position
 		var angle = -Vector2(ray_collision_point.x, ray_collision_point.y).angle_to(Vector2(-1, 0))
 		
-		if($animation.is_playing()):
+		if($AnimationPlayer.is_playing()):
 			return
 		
 		if(abs(angle) < 1.5 && facing == FACING_RIGHT):
-			$animation.play("rotate_ccw")
+			$AnimationPlayer.play("rotate_cw")
 			facing = FACING_LEFT
 			
 		elif(abs(angle) > 1.5 && facing == FACING_LEFT):
-			$animation.play("rotate_cw")
+			$AnimationPlayer.play("rotate_ccw")
 			facing = FACING_RIGHT
