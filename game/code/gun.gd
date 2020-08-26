@@ -31,7 +31,7 @@ func shoot():
 	elif cant_shoot==0:
 		print(bullets_left)
 		var bullet = Bullet.instance()
-		Parent.add_child(bullet)
+		add_child_below_node(get_tree().get_root().get_node("/root/"),bullet)
 		var pos = Camera.unproject_position(Parent.global_transform.origin)
 		var bullet_translation_vector = global_transform.origin
 	
