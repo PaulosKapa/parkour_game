@@ -17,3 +17,9 @@ func _deferred_goto_scene(scene):
 	
 	get_tree().get_root().add_child(current_scene)
 	get_tree().set_current_scene(current_scene)
+
+func save_game_info():
+	#This will call the save() method of the singleton that holds game progress
+	print("Called Global.save_game_info()")
+	GameData.save("user://saves")
+	pass
