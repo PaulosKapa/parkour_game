@@ -13,7 +13,7 @@ var health=3
 enum {FACING_LEFT, FACING_RIGHT}
 var facing = FACING_LEFT
 var cant_dash=0
-onready var gun = get_node("/root/level/Player/Spatial3/Spatial2")
+onready var gun = get_node("/root/level/Player/playernop/swerve/w")
 var _collisions = []
 
 func kill():

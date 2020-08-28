@@ -11,4 +11,4 @@ func _physics_process(delta):
 	var rotation_vector = mouse_position - pos
 	
 	var angle = rotation_vector.angle_to(Vector2(-1, 0))
-	self.set_rotation(Vector3(0, angle, 0))
+	self.set_rotation(Vector3(0,0, angle))
