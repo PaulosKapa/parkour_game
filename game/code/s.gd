@@ -1,6 +1,6 @@
 extends Spatial
-enum {FACING_LEFT, FACING_RIGHT}
 
+enum {FACING_LEFT, FACING_RIGHT}
 var facing = FACING_LEFT
 
 var ray_origin = Vector3()
@@ -20,10 +20,10 @@ func _physics_process(delta):
 		var object_position = global_transform.origin
 		ray_collision_point = ray_collision_point - object_position
 		var angle = -Vector2(ray_collision_point.x, ray_collision_point.y).angle_to(Vector2(-1, 0))
-		
+
 		if($AnimationPlayer.is_playing()):
 			return
-		
+			
 		if(abs(angle) < 1.5 && facing == FACING_RIGHT):
 			$AnimationPlayer.play("rotate_cw")
 			facing = FACING_LEFT

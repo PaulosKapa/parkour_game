@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://code/player.gd" type="Script" id=1]
 [ext_resource path="res://code/swerve.gd" type="Script" id=2]
@@ -11,9 +11,11 @@
 
 [sub_resource type="SphereShape" id=3]
 
-[sub_resource type="CylinderShape" id=4]
+[sub_resource type="BoxShape" id=8]
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="BoxShape" id=9]
+
+[sub_resource type="Animation" id=5]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("health_rotate:rotation_degrees")
@@ -28,10 +30,10 @@ tracks/0/keys = {
 "values": [ Vector3( -1.23623e-14, -1.93635e-08, 3.5876e-15 ), Vector3( 0, 0, 180 ), Vector3( 0, 0, 360 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 0.5
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 length = 0.5
 
 [node name="PlayerBody" type="KinematicBody" groups=[
@@ -53,12 +55,12 @@ transform = Transform( 0.224107, -0.00921501, 1.34846e-09, 1.12079e-12, -1.6106e
 shape = SubResource( 3 )
 
 [node name="lhip" type="CollisionShape" parent="."]
-transform = Transform( 0.123248, -0.0201559, 1.22638e-09, -3.87733e-09, -1.67086e-07, -0.150849, -0.0157077, 0.945646, -2.2643e-08, -0.0261417, -0.31857, 0.823378 )
-shape = SubResource( 4 )
+transform = Transform( 0.122431, -0.29679, 1.71944e-08, 1.86194e-09, -2.64972e-07, -0.150849, 0.0211539, 0.898091, -3.46289e-08, -0.32241, -0.31857, 0.505333 )
+shape = SubResource( 8 )
 
 [node name="rhip" type="CollisionShape" parent="."]
-transform = Transform( 0.123248, -0.0201559, 1.22638e-09, -3.87733e-09, -1.67086e-07, -0.150849, -0.0157077, 0.945646, -2.2643e-08, -0.0261417, 0.311095, 0.823378 )
-shape = SubResource( 4 )
+transform = Transform( 0.111738, 0.283559, -1.13653e-08, -1.39197e-08, -7.5176e-08, -0.150849, -0.0543271, 0.902356, -4.82038e-09, 0.255279, 0.311095, 0.519904 )
+shape = SubResource( 9 )
 
 [node name="Spatial3" type="Spatial" parent="."]
 transform = Transform( 1, 2.39129e-28, 9.04469e-21, 9.70035e-28, 1, -1.35001e-14, 1.03883e-20, 4.26326e-14, 1, 1.50106e-06, 2.36368e-07, -1.45082 )
@@ -67,9 +69,9 @@ script = ExtResource( 2 )
 [node name="Timer" type="Timer" parent="."]
 
 [node name="animation" type="AnimationPlayer" parent="."]
-anims/ball1 = SubResource( 6 )
-anims/rotate_ccw = SubResource( 7 )
-anims/rotate_cw = SubResource( 8 )
+anims/ball1 = SubResource( 5 )
+anims/rotate_ccw = SubResource( 6 )
+anims/rotate_cw = SubResource( 7 )
 
 [node name="doublejump" type="Timer" parent="."]
 wait_time = 2.0
@@ -92,7 +94,7 @@ transform = Transform( 1.41633, -2.01108e-09, 1.49823e-16, 3.1218e-17, 1.68896e-
 [node name="torso" parent="playernop" index="0"]
 transform = Transform( 0.585977, -6.25187e-16, -6.03122e-10, 5.69556e-12, 1.18245e-15, -0.470765, 7.98132e-17, 2.08003, 1.91756e-15, 3.55097e-06, 0.925603, -9.83264e-15 )
 
-[node name="head" parent="playernop" index="3"]
+[node name="head" parent="playernop" index="1"]
 transform = Transform( 0.585977, -2.17175e-16, -6.06602e-10, -3.7333e-10, -3.09207e-15, -0.470765, 1.10687e-16, 2.08003, 1.95473e-16, 0.00517265, 1.84646, -5.09634e-15 )
 
 [node name="rarm" parent="playernop/swerve" index="1"]

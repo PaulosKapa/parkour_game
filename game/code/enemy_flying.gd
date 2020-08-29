@@ -44,8 +44,10 @@ func move_to_target(delta):
 			
 func _on_Area_body_entered(body):
 		if body.is_in_group("Player"):
+			print (1)
 			target = body
 
 func _on_Area_body_exited(body):
 		if body.is_in_group("Player"):
+			print(2)
 			target = null

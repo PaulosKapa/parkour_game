@@ -29,7 +29,6 @@ func shoot():
 			$reload.start()
 			cant_shoot()
 	elif cant_shoot==0:
-		print(bullets_left)
 		var bullet = Bullet.instance()
 		get_node("/root/level").add_child(bullet)
 		var pos = Camera.unproject_position(Parent.global_transform.origin)
@@ -60,7 +59,6 @@ func _on_reload_timeout():
 
 
 func _on_superpower_timeout():
-	print(123)
 	kil.kill=0
 	$Timer.wait_time=1
 	$superpower.stop()
