@@ -14,12 +14,17 @@ func goto_scene(scene):
 func _deferred_goto_scene(scene):
 	current_scene.free()
 	current_scene = scene.instance()
+	GameData.restore("user://saves")
 	
 	get_tree().get_root().add_child(current_scene)
 	get_tree().set_current_scene(current_scene)
 
-func save_game_info():
+#for_sure_player passed in because Godot keeps reporting "/root/level/Player" node not found
+#when line 2 of this file executes
+#checkpoint_name: String
+func save_game_info(checkpoint_name,for_sure_player):
 	#This will call the save() method of the singleton that holds game progress
 	print("Called Global.save_game_info()")
+	GameData.set_player_status(checkpoint_name,for_sure_player)
 	GameData.save("user://saves")
 	pass
