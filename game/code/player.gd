@@ -15,6 +15,8 @@ var facing = FACING_LEFT
 var cant_dash=0
 onready var gun = get_node("/root/level/Player/playernop/swerve/w")
 var _collisions = []
+onready var knees = get_node("/root/level/Player/playernop/torso/rhip/rknee")
+onready var lknees = get_node("/root/level/Player/playernop/torso/lhip/lknee")
 
 func kill():
 	kill=kill+1
@@ -100,3 +102,19 @@ func _on_Timer_timeout():
 func _on_doublejump_timeout():
 	cant_dash=0
 	$doublejump.stop()
+
+
+func _on_BULLET_change_colour():
+		knees.get_surface_material(0).set_albedo(Color(1, 0, 0))
+		lknees.get_surface_material(0).set_albedo(Color(1, 0, 0))
+		$colour_change.start()
+
+func _on_KinematicBody_change_colour():
+		lknees.get_surface_material(0).set_albedo(Color(1, 0, 0))
+		knees.get_surface_material(0).set_albedo(Color(1, 0, 0))
+		$colour_change.start()
+
+func _on_colour_change_timeout():
+	lknees.get_surface_material(0).set_albedo(Color(0, 1, 0))
+	knees.get_surface_material(0).set_albedo(Color(0, 1, 0))
+	$colour_change.stop()

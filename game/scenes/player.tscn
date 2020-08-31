@@ -99,7 +99,11 @@ transform = Transform( 0.585977, -2.17175e-16, -6.06602e-10, -3.7333e-10, -3.092
 
 [node name="rarm" parent="playernop/swerve" index="1"]
 transform = Transform( 9.54678e-08, 2.08003, 1.53395e-07, 0.585977, -3.38881e-07, 0, 3.11074e-14, 6.77761e-07, -0.470765, 0.013, 0.048, -0.335 )
+
+[node name="colour_change" type="Timer" parent="."]
+wait_time = 0.5
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="doublejump" to="." method="_on_doublejump_timeout"]
+[connection signal="timeout" from="colour_change" to="." method="_on_colour_change_timeout"]
 
 [editable path="playernop"]
