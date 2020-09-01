@@ -9,15 +9,18 @@ var dir = 1
 var physics_delta = 0;
 var last_trans = translation
 signal change_colour
+var health=2
 
 func get_translation_delta():
 	var delta = last_trans - translation
 	last_trans = translation
 	return delta
 
-func die():
-	kil.kill()
-	queue_free()
+func die(damage):
+	health=health-damage
+	if health==0:
+		kil.kill()
+		queue_free()
 
 func _ready():
 	space_state = get_world().direct_space_state

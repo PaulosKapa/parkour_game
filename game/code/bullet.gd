@@ -3,13 +3,15 @@ onready var heal = get_node("/root/level/Player")
 var speed = 50
 var velocity = Vector3()
 signal change_colour
+var damage
 func _ready():
 	velocity = Vector3(speed, 0, 0)
 	add_to_group("bullet")
 
 func set_speed(blyat):
 	velocity = blyat.normalized()*speed
-
+func set_damage(dam):
+	damage=dam
 func _physics_process(delta):
 	move_and_slide(velocity, Vector3(0, 0, 0), false, 3, 0.785398, false)
 	var queue_free = false
@@ -26,10 +28,10 @@ func _physics_process(delta):
 				col.collider.explode()
 				break
 			if(groups.has("enemy")):
-				col.collider.die()
+				col.collider.die(1)
 				break
 			if(groups.has("turret")):
-				col.collider.die()
+				col.collider.die(1)
 				break
 			if(groups.has("case")):
 				queue_free = false
