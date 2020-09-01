@@ -3,10 +3,12 @@ onready var sho = get_node("/root/level/Spatial/StaticBody/Spatial")
 onready var kil = get_node("/root/level/Player")
 var space_state
 var target
-
-func die():
-	kil.kill()
-	queue_free()
+var health=3
+func die(damage):
+	health=health-damage
+	if health==0:
+		kil.kill()
+		queue_free()
 
 func _ready():
 	space_state = get_world().direct_space_state

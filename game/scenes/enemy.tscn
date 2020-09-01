@@ -13,7 +13,7 @@
 
 [node name="CollisionPolygon" type="CollisionPolygon" parent="Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04422, 0, -0.0570612 )
-polygon = PoolVector2Array( 40.68, 0, 12.52, 5.2, 0.28, 0 )
+polygon = PoolVector2Array( 11.92, -5.08235, 12, 5.2, 0.094, 0 )
 
 [node name="StaticBody" type="StaticBody" parent="." groups=[
 "turret",
