@@ -15,6 +15,8 @@ func _deferred_goto_scene(scene):
 	current_scene.free()
 	current_scene = scene.instance()
 	GameData.restore("user://saves")
+	#var argh = Directory.new().remove("user://saves/progress.save")
+	#argh = Directory.new().remove("user://saves")
 	
 	get_tree().get_root().add_child(current_scene)
 	get_tree().set_current_scene(current_scene)

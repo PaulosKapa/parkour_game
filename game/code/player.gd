@@ -40,7 +40,11 @@ func _process(delta):
 			2:$health_rotate/health.hide()
 			1:[$health_rotate/health2.hide(), $health_rotate/health.hide()]
 			#using hide() instead of queue_free(), so they reappear if we add health regen
-			0:get_tree().reload_current_scene()
+			0:
+				#restore from checkpoint
+				GameData.restore("user://saves")
+				#(FLJ, 9/1/2020)
+				get_tree().reload_current_scene()
 	var slide_count = get_slide_count()
 	for i in slide_count:
 		var col = get_slide_collision(i)
