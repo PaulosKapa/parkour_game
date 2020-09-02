@@ -27,7 +27,7 @@ func _ready():
 	set_axis_lock(PhysicsServer.BODY_AXIS_LINEAR_Z,true)
 	set_axis_lock(PhysicsServer.BODY_AXIS_ANGULAR_X,true)
 	
-	$animation.play("ball1")
+
 	add_to_group("Player")
 	
 func get_translation_delta():
@@ -36,6 +36,7 @@ func get_translation_delta():
 	return delta
 
 func _process(delta):
+	$health_rotate.rotate_z(deg2rad(10))
 	match health:
 			2:$health_rotate/health.hide()
 			1:[$health_rotate/health2.hide(), $health_rotate/health.hide()]
@@ -56,7 +57,9 @@ func _physics_process(delta):
 		vel.x=lerp(10,sp,0.125)
 		facing=FACING_RIGHT
 		$playernop/s1/AnimationPlayer.play("walk")
+		$animation.play("walking_col")
 	elif Input.is_action_pressed("ui_left"):
+		$animation.play("walking_col")
 		$playernop/s1/AnimationPlayer.play("walk")
 		vel.x=lerp(-10,-sp,0.125)
 		facing=FACING_LEFT

@@ -1,5 +1,5 @@
 extends Spatial
-
+onready var animation= get_node("/root/level/Player/animation")
 enum {FACING_LEFT, FACING_RIGHT}
 var facing = FACING_LEFT
 
@@ -26,8 +26,10 @@ func _physics_process(delta):
 			
 		if(abs(angle) < 1.5 && facing == FACING_RIGHT):
 			$AnimationPlayer.play("rotate_cw")
+			animation.play("rotate_cw")
 			facing = FACING_LEFT
 			
 		elif(abs(angle) > 1.5 && facing == FACING_LEFT):
 			$AnimationPlayer.play("rotate_ccw")
+			animation.play("rotate_ccw")
 			facing = FACING_RIGHT

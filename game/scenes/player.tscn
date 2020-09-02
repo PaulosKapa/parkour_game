@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://code/player.gd" type="Script" id=1]
 [ext_resource path="res://code/swerve.gd" type="Script" id=2]
@@ -11,30 +11,168 @@
 
 [sub_resource type="SphereShape" id=3]
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="CylinderShape" id=12]
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="CylinderShape" id=13]
+
+[sub_resource type="SphereShape" id=10]
 
 [sub_resource type="Animation" id=6]
 loop = true
+
+[sub_resource type="Animation" id=7]
+length = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("health_rotate:rotation_degrees")
+tracks/0/path = NodePath("rfoot:transform")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( -1.23623e-14, -1.93635e-08, 3.5876e-15 ), Vector3( 0, 0, 180 ), Vector3( 0, 0, 360 ) ]
+"values": [ Transform( 0.146054, -0.0909109, 2.585e-08, 1.48511e-08, -2.2872e-07, -0.150849, 0.0254388, 0.521955, -6.15625e-08, -0.533974, -0.279268, 1.01729 ), Transform( 0.131499, -0.244659, 5.30209e-08, 1.71177e-08, -2.87292e-07, -0.150849, 0.068461, 0.46994, -6.4575e-08, -0.427544, -0.279268, 1.01729 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("lfoot:transform")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 0.135575, 0.214376, -1.79826e-08, -7.05848e-09, -9.66242e-08, -0.150849, -0.0599871, 0.484505, -2.22522e-08, 0.396156, 0.311095, 1.01729 ), Transform( 0.145721, 0.0974935, -5.44735e-09, 1.57626e-09, -1.28802e-07, -0.150849, -0.0272808, 0.520766, -3.64064e-08, 0.47184, 0.311095, 1.01729 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("rhip:transform")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 0.179491, -0.02867, -1.08835e-08, -1.04209e-08, 8.31248e-10, -0.182594, 0.01256, 0.409712, -3.69552e-10, 0.0671844, 0.273933, 0.037199 ), Transform( 0.166568, 0.155319, -1.69481e-08, -2.77638e-08, 5.59763e-08, -0.182594, -0.0680435, 0.380213, 3.38287e-08, 0.156738, 0.273933, 0.037198 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("lhip:transform")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 0.132641, -0.277516, 2.17669e-08, -9.42644e-09, -1.03072e-07, -0.182594, 0.121577, 0.302772, -4.02442e-08, -0.218033, -0.271167, 0.0371981 ), Transform( 0.176498, -0.0798296, -9.10436e-09, -9.2458e-09, -2.23484e-08, -0.182594, 0.0349725, 0.402881, -1.04561e-08, -0.133819, -0.271167, 0.0371962 ) ]
 }
 
-[sub_resource type="Animation" id=7]
-length = 0.5
-
 [sub_resource type="Animation" id=8]
-length = 0.5
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("lhip:transform")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 0.179116, 0.0390169, -1.77507e-08, -1.68754e-08, 1.73502e-08, -0.182594, -0.0170929, 0.408856, 1.08976e-08, -0.141273, -0.271167, 0.0371972 ), Transform( 0.132641, -0.277516, 2.17669e-08, -9.42644e-09, -1.03072e-07, -0.182594, 0.121577, 0.302772, -4.02442e-08, -0.218033, -0.271167, 0.0371981 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("rhip:transform")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 0.166568, 0.155319, -1.69481e-08, -2.77638e-08, 5.59763e-08, -0.182594, -0.0680435, 0.380213, 3.38287e-08, 0.156738, 0.273933, 0.037198 ), Transform( 0.179491, -0.02867, -1.02032e-08, -1.04209e-08, 8.31247e-10, -0.182594, 0.01256, 0.409712, -3.69554e-10, 0.0671844, 0.273933, 0.037199 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("lfoot:transform")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 0.145721, 0.0974935, -5.44735e-09, 1.57626e-09, -1.28802e-07, -0.150849, -0.0272808, 0.520766, -3.64064e-08, 0.47184, 0.311095, 1.01729 ), Transform( 0.135575, 0.214376, -1.79826e-08, -7.05848e-09, -9.66243e-08, -0.150849, -0.0599871, 0.484505, -2.22522e-08, 0.396156, 0.311095, 1.01729 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("rfoot:transform")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 0.131499, -0.244659, 5.30209e-08, 1.71177e-08, -2.87292e-07, -0.150849, 0.068461, 0.46994, -6.4575e-08, -0.427544, -0.279268, 1.01729 ), Transform( 0.146054, -0.0909108, 2.585e-08, 1.48511e-08, -2.2872e-07, -0.150849, 0.0254388, 0.521955, -6.15625e-08, -0.533974, -0.279268, 1.01729 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "walking_col"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("rfoot:transform")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 0.146054, -0.0909108, 2.69864e-08, 1.58341e-08, -1.8642e-07, -0.150849, 0.0254388, 0.521955, -5.12111e-08, -0.533974, -0.279268, 1.01729 ), Transform( 0.132685, 0.236341, -1.36401e-08, -3.4411e-09, -8.75721e-08, -0.150849, -0.0661333, 0.474178, -2.33001e-08, 0.382698, -0.279268, 1.01729 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("lfoot:transform")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 0.135575, 0.214376, -1.55416e-08, -6.12463e-09, -8.33315e-08, -0.150849, -0.0599871, 0.484505, -1.89993e-08, 0.396156, 0.311095, 1.01729 ), Transform( 0.144994, -0.110474, 2.23031e-08, 1.17542e-08, -1.83697e-07, -0.150849, 0.0309129, 0.518168, -4.86581e-08, -0.552353, 0.311095, 1.01729 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("rhip:transform")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 0.179491, 0.0695152, -8.62104e-09, -9.65844e-09, 1.21152e-08, -0.182594, 0.01256, 0.404788, -1.51573e-08, 0.0671844, 0.273933, 0.037199 ), Transform( 0.136389, -0.186227, 3.1729e-08, -6.62913e-09, -7.75246e-08, -0.182594, 0.117358, 0.366067, -4.69686e-08, -0.223915, 0.273933, 0.037198 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("lhip:transform")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 0.132641, -0.197615, 3.41484e-08, -7.16273e-09, -8.22159e-08, -0.182594, 0.121577, 0.360048, -4.78016e-08, -0.218033, -0.271167, 0.0371981 ), Transform( 0.179688, 0.0768085, -9.4203e-09, -1.01222e-08, 1.42766e-08, -0.182594, 0.00931895, 0.403468, -1.39208e-08, 0.0707398, -0.271167, 0.0372 ) ]
+}
 
 [node name="PlayerBody" type="KinematicBody" groups=[
 "Player",
@@ -54,13 +192,21 @@ shape = SubResource( 2 )
 transform = Transform( 0.224107, -0.00921501, 1.34846e-09, 1.12079e-12, -1.6106e-09, -0.365613, 0.00582099, 0.359417, -5.26225e-08, -0.0816314, -0.013, -0.387797 )
 shape = SubResource( 3 )
 
-[node name="lhip" type="CollisionShape" parent="."]
-transform = Transform( 0.122431, -0.29679, 1.71944e-08, 1.86194e-09, -2.64972e-07, -0.150849, 0.0211539, 0.898091, -3.46289e-08, -0.32241, -0.31857, 0.505333 )
-shape = SubResource( 4 )
+[node name="rfoot" type="CollisionShape" parent="."]
+transform = Transform( 0.146054, -0.0909108, 2.585e-08, 1.48511e-08, -2.2872e-07, -0.150849, 0.0254388, 0.521955, -6.15625e-08, -0.533974, -0.279268, 1.01729 )
+shape = SubResource( 12 )
+
+[node name="lfoot" type="CollisionShape" parent="."]
+transform = Transform( 0.135575, 0.214376, -1.79826e-08, -7.05848e-09, -9.66243e-08, -0.150849, -0.0599871, 0.484505, -2.22522e-08, 0.396156, 0.311095, 1.01729 )
+shape = SubResource( 13 )
 
 [node name="rhip" type="CollisionShape" parent="."]
-transform = Transform( 0.111738, 0.283559, -1.13653e-08, -1.39197e-08, -7.5176e-08, -0.150849, -0.0543271, 0.902356, -4.82038e-09, 0.255279, 0.311095, 0.519904 )
-shape = SubResource( 5 )
+transform = Transform( 0.179491, -0.02867, -1.02032e-08, -1.04209e-08, 8.31247e-10, -0.182594, 0.01256, 0.409712, -3.69554e-10, 0.0671844, 0.273933, 0.037199 )
+shape = SubResource( 10 )
+
+[node name="lhip" type="CollisionShape" parent="."]
+transform = Transform( 0.132641, -0.277516, 2.17669e-08, -9.42644e-09, -1.03072e-07, -0.182594, 0.121577, 0.302772, -4.02442e-08, -0.218033, -0.271167, 0.0371981 )
+shape = SubResource( 10 )
 
 [node name="Spatial3" type="Spatial" parent="."]
 transform = Transform( 1, 2.39129e-28, 9.04469e-21, 9.70035e-28, 1, -1.35001e-14, 1.03883e-20, 4.26326e-14, 1, 1.50106e-06, 2.36368e-07, -1.45082 )
@@ -72,6 +218,7 @@ script = ExtResource( 2 )
 anims/ball1 = SubResource( 6 )
 anims/rotate_ccw = SubResource( 7 )
 anims/rotate_cw = SubResource( 8 )
+anims/walking_col = SubResource( 11 )
 
 [node name="doublejump" type="Timer" parent="."]
 wait_time = 2.0
@@ -92,13 +239,25 @@ transform = Transform( 0.204029, -9.59491e-09, 2.28963e-09, -3.07207e-08, 0.2040
 transform = Transform( 1.41633, -2.01108e-09, 1.49823e-16, 3.1218e-17, 1.68896e-08, 1.41633, -2.01108e-09, -1.41633, 1.68896e-08, -0.0239005, 1.93854e-08, 0.934472 )
 
 [node name="torso" parent="playernop" index="1"]
-transform = Transform( 0.585977, -6.25187e-16, -6.03122e-10, 5.69556e-12, 1.18245e-15, -0.470765, 7.98132e-17, 2.08003, 1.91756e-15, 3.55097e-06, 0.925603, -9.83264e-15 )
+transform = Transform( 0.585977, 0, 0, 0, -9.0921e-08, -0.470765, 0, 2.08003, -2.05778e-08, 3.55097e-06, 0.925603, -9.83264e-15 )
+
+[node name="rhip" parent="playernop/torso" index="1"]
+transform = Transform( 0.977929, 0, -0.331961, 0, 1, 0, 0.354507, 0, 0.915735, 8.23009e-09, -0.092, 8.68439e-09 )
+
+[node name="rfoot" parent="playernop/torso/rhip" index="1"]
+transform = Transform( 1.12752, 0, 0.165912, 0, 1, 0, -0.209971, 0, 0.890929, -1.19998e-07, -3.56278e-08, 1.62591 )
+
+[node name="lhip" parent="playernop/torso" index="2"]
+transform = Transform( 1.02433, 0, 0.168463, 0, 1, 0, -0.179879, 0, 0.959321, -4.47742e-09, 0.092, -2.68524e-08 )
 
 [node name="head" parent="playernop" index="2"]
 transform = Transform( 0.585977, -2.17175e-16, -6.06602e-10, -3.7333e-10, -3.09207e-15, -0.470765, 1.10687e-16, 2.08003, 1.95473e-16, 0.00517265, 1.84646, -5.09634e-15 )
 
 [node name="rarm" parent="playernop/swerve" index="1"]
 transform = Transform( 9.54678e-08, 2.08003, 1.53395e-07, 0.585977, -3.38881e-07, 0, 3.11074e-14, 6.77761e-07, -0.470765, 0.013, 0.048, -0.335 )
+
+[node name="w" parent="playernop/swerve" index="2"]
+transform = Transform( -4.21469e-09, 0, 0.025, 0, 0.025, 0, -0.025, 0, -4.21469e-09, -0.895062, 0.142974, 0.331706 )
 
 [node name="colour_change" type="Timer" parent="."]
 wait_time = 0.5
