@@ -8,6 +8,7 @@ var remaining_enemies = {}
 var _player_location = Vector3(100,100,100) # z == 100 used to detect this being not-yet set
 var _player_node 
 var prop_groups = ["explosive","key","door"]
+var restore_armed = false
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -163,7 +164,9 @@ func restore(directory):
 	#this is from the fact that current_scene.name is "level", not "1st_stage"
 #	if stages[-1] != Global.current_scene.name:
 #		scenetree.change_scene("res://scenes/"+stages[-1])
-	scenetree.connect("node_added",self,"_on_SceneTree_node_added")
+	if(not restore_armed):
+		scenetree.connect("node_added",self,"_on_SceneTree_node_added")
+		restore_armed = true
 	
 
 func _on_SceneTree_node_added(new_node):
@@ -188,11 +191,12 @@ func _on_SceneTree_node_added(new_node):
 	#enemy objects
 	if new_node.is_in_group("enemy") or new_node.is_in_group("turret"):
 		#if the player took it out during the previous run, don't restore it
-		var querie = new_node.name+"_enemy"
+		var querie = new_node.name
+		if new_node.is_in_group("turret"):
+			querie += "_turret"
+		else:
+			querie += "_enemy"
 		var hit = remaining_enemies.has(querie)
-		if not hit:
-			querie = new_node.name+"_turret"
-			hit = remaining_enemies.has(querie)
 			
 		if not hit:
 			new_node.queue_free()
