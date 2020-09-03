@@ -366,7 +366,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.165, -5.88027, 0 )
 
 [node name="BULLET" parent="." instance=ExtResource( 11 )]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 78.1289, 0, 0 )
-[connection signal="change_colour" from="Spatial2/KinematicBody" to="Player" method="_on_KinematicBody_change_colour"]
 [connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area2" to="Area2" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area3" to="Area3" method="_on_Area_body_entered"]

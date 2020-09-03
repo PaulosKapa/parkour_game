@@ -38,7 +38,7 @@ func _physics_process(delta):
 				break
 			if(groups.has("Player")):
 				if(slide_count == 1):
-					emit_signal("change_colour")
+					col.collider.hurt()
 					Engine.time_scale = 1
 					heal.health=heal.health-1
 					print("Player was hurt!")
