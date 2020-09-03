@@ -11,16 +11,16 @@
 
 [sub_resource type="SphereShape" id=3]
 
-[sub_resource type="CylinderShape" id=12]
+[sub_resource type="CylinderShape" id=4]
 
-[sub_resource type="CylinderShape" id=13]
+[sub_resource type="CylinderShape" id=5]
 
-[sub_resource type="SphereShape" id=10]
+[sub_resource type="SphereShape" id=11]
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=12]
 loop = true
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=13]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("rfoot:transform")
@@ -71,7 +71,7 @@ tracks/3/keys = {
 "values": [ Transform( 0.132641, -0.277516, 2.17669e-08, -9.42644e-09, -1.03072e-07, -0.182594, 0.121577, 0.302772, -4.02442e-08, -0.218033, -0.271167, 0.0371981 ), Transform( 0.176498, -0.0798296, -9.10436e-09, -9.2458e-09, -2.23484e-08, -0.182594, 0.0349725, 0.402881, -1.04561e-08, -0.133819, -0.271167, 0.0371962 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("lhip:transform")
@@ -122,7 +122,7 @@ tracks/3/keys = {
 "values": [ Transform( 0.131499, -0.244659, 5.30209e-08, 1.71177e-08, -2.87292e-07, -0.150849, 0.068461, 0.46994, -6.4575e-08, -0.427544, -0.279268, 1.01729 ), Transform( 0.146054, -0.0909108, 2.585e-08, 1.48511e-08, -2.2872e-07, -0.150849, 0.0254388, 0.521955, -6.15625e-08, -0.533974, -0.279268, 1.01729 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 resource_name = "walking_col"
 length = 0.3
 tracks/0/type = "value"
@@ -194,19 +194,19 @@ shape = SubResource( 3 )
 
 [node name="rfoot" type="CollisionShape" parent="."]
 transform = Transform( 0.146054, -0.0909108, 2.585e-08, 1.48511e-08, -2.2872e-07, -0.150849, 0.0254388, 0.521955, -6.15625e-08, -0.533974, -0.279268, 1.01729 )
-shape = SubResource( 12 )
+shape = SubResource( 4 )
 
 [node name="lfoot" type="CollisionShape" parent="."]
 transform = Transform( 0.135575, 0.214376, -1.79826e-08, -7.05848e-09, -9.66243e-08, -0.150849, -0.0599871, 0.484505, -2.22522e-08, 0.396156, 0.311095, 1.01729 )
-shape = SubResource( 13 )
+shape = SubResource( 5 )
 
 [node name="rhip" type="CollisionShape" parent="."]
 transform = Transform( 0.179491, -0.02867, -1.02032e-08, -1.04209e-08, 8.31247e-10, -0.182594, 0.01256, 0.409712, -3.69554e-10, 0.0671844, 0.273933, 0.037199 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="lhip" type="CollisionShape" parent="."]
 transform = Transform( 0.132641, -0.277516, 2.17669e-08, -9.42644e-09, -1.03072e-07, -0.182594, 0.121577, 0.302772, -4.02442e-08, -0.218033, -0.271167, 0.0371981 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="Spatial3" type="Spatial" parent="."]
 transform = Transform( 1, 2.39129e-28, 9.04469e-21, 9.70035e-28, 1, -1.35001e-14, 1.03883e-20, 4.26326e-14, 1, 1.50106e-06, 2.36368e-07, -1.45082 )
@@ -215,10 +215,10 @@ script = ExtResource( 2 )
 [node name="Timer" type="Timer" parent="."]
 
 [node name="animation" type="AnimationPlayer" parent="."]
-anims/ball1 = SubResource( 6 )
-anims/rotate_ccw = SubResource( 7 )
-anims/rotate_cw = SubResource( 8 )
-anims/walking_col = SubResource( 11 )
+anims/ball1 = SubResource( 12 )
+anims/rotate_ccw = SubResource( 13 )
+anims/rotate_cw = SubResource( 9 )
+anims/walking_col = SubResource( 10 )
 
 [node name="doublejump" type="Timer" parent="."]
 wait_time = 2.0
@@ -255,9 +255,6 @@ transform = Transform( 0.585977, -2.17175e-16, -6.06602e-10, -3.7333e-10, -3.092
 
 [node name="rarm" parent="playernop/swerve" index="1"]
 transform = Transform( 9.54678e-08, 2.08003, 1.53395e-07, 0.585977, -3.38881e-07, 0, 3.11074e-14, 6.77761e-07, -0.470765, 0.013, 0.048, -0.335 )
-
-[node name="w" parent="playernop/swerve" index="2"]
-transform = Transform( -4.21469e-09, 0, 0.025, 0, 0.025, 0, -0.025, 0, -4.21469e-09, -0.895062, 0.142974, 0.331706 )
 
 [node name="colour_change" type="Timer" parent="."]
 wait_time = 0.5

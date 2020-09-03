@@ -8,7 +8,6 @@ var gravity=100
 var dir = 1
 var physics_delta = 0;
 var last_trans = translation
-signal change_colour
 var health=2
 
 func get_translation_delta():
@@ -42,17 +41,15 @@ func move_to_target(delta):
 		if(col):
 			var groups = col.collider.get_groups()
 			if(groups.has("Player")):
+				col.collider.hurt()
 				kil.health=kil.health-2
-				emit_signal("change_colour")
 				print("Player was hurt by touching an enemy!")
 			queue_free()
 			
 func _on_Area_body_entered(body):
 		if body.is_in_group("Player"):
-			print (1)
 			target = body
 
 func _on_Area_body_exited(body):
 		if body.is_in_group("Player"):
-			print(2)
 			target = null
