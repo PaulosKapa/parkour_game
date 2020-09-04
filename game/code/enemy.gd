@@ -16,6 +16,8 @@ func _ready():
 func _process(delta):
 	if target:
 		$TURRET/Cylinder.look_at(target.global_transform.origin, Vector3.UP)
+		$TURRET/Cylinder.rotate_object_local(Vector3(0, 1, 0), PI)
+		$TURRET/Cylinder.rotate_object_local(Vector3(0, 0, -1), PI/2)
 		sho.shoot()
 					
 func _on_Area_body_entered(body):
