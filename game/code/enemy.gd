@@ -18,7 +18,7 @@ func _process(delta):
 		$TURRET/Cylinder.look_at(target.global_transform.origin, Vector3.UP)
 		$TURRET/Cylinder.rotate_object_local(Vector3(0, 1, 0), PI)
 		$TURRET/Cylinder.rotate_object_local(Vector3(0, 0, -1), PI/2)
-		sho.shoot()
+		sho.shoot(target)
 					
 func _on_Area_body_entered(body):
 	if body.is_in_group("Player"):

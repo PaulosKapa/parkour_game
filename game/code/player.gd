@@ -51,7 +51,7 @@ func _process(delta):
 	var slide_count = get_slide_count()
 	for i in slide_count:
 		var col = get_slide_collision(i)
-		if(col):
+		if(col.collider):
 			var groups = col.collider.get_groups()
 			
 			if(groups.has("enemy")):
