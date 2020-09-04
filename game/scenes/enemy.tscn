@@ -1,11 +1,23 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://code/enemy.gd" type="Script" id=1]
 [ext_resource path="res://scenes/enemy_gun.tscn" type="PackedScene" id=2]
+[ext_resource path="res://models/TURRET.gltf" type="PackedScene" id=3]
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.352941, 0.321569, 0.321569, 1 )
+metallic = 0.48
 
-[sub_resource type="CubeMesh" id=2]
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.25098, 0.188235, 0.188235, 1 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.258824, 0.239216, 0.337255, 1 )
+
+[sub_resource type="CylinderShape" id=1]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1, 1.06278, 1 )
 
 [node name="Spatial" type="Spatial"]
 
@@ -20,14 +32,42 @@ polygon = PoolVector2Array( 11.92, -5.08235, 12, 5.2, 0.094, 0 )
 ]]
 script = ExtResource( 1 )
 
+[node name="Spatial" parent="StaticBody" instance=ExtResource( 2 )]
+transform = Transform( -3.31502e-08, 0, 0.17069, 0, 0.134181, 0, -0.758388, 0, -7.4611e-09, 0.0218948, 0.0624638, -0.856918 )
+
+[node name="TURRET" parent="StaticBody" instance=ExtResource( 3 )]
+transform = Transform( -7.94208e-08, 0, 0.487481, 0, 0.487481, 0, -0.487481, 0, -7.94208e-08, -0.536, 0.1, 1.731 )
+
+[node name="Cube001" parent="StaticBody/TURRET" index="0"]
+transform = Transform( 0.731009, 0, -1.09045e-14, 0, 1, 0, 3.54095e-15, 0, 1, 1.00403, 6.037e-09, 3.81238e-08 )
+material/0 = SubResource( 3 )
+
+[node name="Cylinder" parent="StaticBody/TURRET" index="1"]
+transform = Transform( 0, 2.22237, -1.09045e-14, -1, 0, 0, 0, 4.19168e-14, 1, 3.736, 6.037e-09, -5.86371e-09 )
+material/0 = SubResource( 4 )
+
+[node name="Torus001" parent="StaticBody/TURRET" index="2"]
+transform = Transform( 0.738917, -1.43761e-14, 0, 0, 0, -0.738917, 1.43833e-15, 1.49486, 0, 3.80607, -0.083306, 1.51971 )
+material/0 = SubResource( 5 )
+
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( -6.54941e-08, -0.539, 0, 0.402, -8.78143e-08, 0, 0, 0, 0.399, 0.631, 0.064, -0.128 )
 shape = SubResource( 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
-mesh = SubResource( 2 )
-material/0 = null
+[node name="CollisionShape2" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 0.646, 0, 0, 0, -2.38679e-07, -0.63, 0, 1.465, -1.0264e-07, -0.556247, 0.064, -0.128 )
+shape = SubResource( 1 )
 
-[node name="Spatial" parent="StaticBody" instance=ExtResource( 2 )]
-transform = Transform( -3.31502e-08, 0, 0.17069, 0, 0.134181, 0, -0.758388, 0, -7.4611e-09, 0.0218948, 0.0624638, -1.77516 )
+[node name="CollisionShape3" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 0.372, 0, 0, 0, 1.465, 0, 0, 0, 0.208, -0.538, 1.54, -1.805 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 0.372, 0, 0, 0, 1.465, 0, 0, 0, 0.208, -0.538, 1.54, 1.62554 )
+shape = SubResource( 2 )
 [connection signal="body_entered" from="Area" to="StaticBody" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="StaticBody" method="_on_Area_body_exited"]
+
+[editable path="StaticBody/Spatial"]
+
+[editable path="StaticBody/TURRET"]

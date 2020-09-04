@@ -1,5 +1,5 @@
 extends StaticBody
-onready var sho = get_node("/root/level/Spatial/StaticBody/Spatial")
+onready var sho = get_node("/root/level/Spatial4/StaticBody/Spatial")
 onready var kil = get_node("/root/level/Player")
 var space_state
 var target
@@ -15,7 +15,7 @@ func _ready():
 
 func _process(delta):
 	if target:
-		look_at(target.global_transform.origin, Vector3.UP)
+		$TURRET/Torus001.look_at(target.global_transform.origin, Vector3.UP)
 		sho.shoot()
 					
 func _on_Area_body_entered(body):
