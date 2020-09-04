@@ -1,8 +1,64 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://code/enemy.gd" type="Script" id=1]
 [ext_resource path="res://scenes/enemy_gun.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/TURRET.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=4]
+resource_name = "LASER_CL"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("TURRET/Cylinder/laser:transform")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 0.552865, -5.96755e-16, -5.42014e-16, -9.08027e-16, -3.07641e-08, -0.405729, -2.75192e-15, 0.188829, -6.61017e-08, 1.311, -0.222, 0.024 ), Transform( 0.552865, -5.96755e-16, -5.42014e-16, -9.08027e-16, -3.07641e-08, -0.405729, -2.75192e-15, 0.188829, -6.61017e-08, 0.425431, -0.221789, 0.0238602 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TURRET/Cylinder/laser/MeshInstance2:transform")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 0.400157, -3.06459e-15, 7.98177e-14, 4.83659e-15, 0.704197, 2.57543e-13, 5.76724e-15, 1.34737e-14, 0.511, 0.335, 1.60329, -4.58077e-07 ), Transform( -1.90667e-07, 0.240547, 4.0848e-14, -1.17031, -3.919e-08, 8.02729e-15, 6.21236e-15, -6.70538e-16, 0.511, 0.334704, 0.181536, -8.46239e-08 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "laser"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("TURRET/Cylinder/laser:transform")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 0.552865, -5.96755e-16, -5.42014e-16, -9.08027e-16, -3.07641e-08, -0.405729, -2.75192e-15, 0.188829, -6.61017e-08, 0.425431, -0.221789, 0.0238602 ), Transform( 0.552865, -2.27371e-16, 2.77949e-15, 2.04757e-15, -3.07641e-08, -0.405729, 1.30941e-15, 0.188829, -6.61017e-08, 1.31095, -0.221789, 0.0238603 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TURRET/Cylinder/laser/MeshInstance2:transform")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( -1.90667e-07, 0.240547, 2.79959e-14, -1.17031, -3.919e-08, 8.02728e-15, 6.21237e-15, -6.70538e-16, 0.511, 0.334704, 0.181536, 6.22835e-08 ), Transform( 0.4, 2.13774e-07, -4.4673e-08, -1.22156e-07, 0.7, 5.88963e-07, 3.49693e-08, -8.06798e-07, 0.511, 0.335, 1.603, 0 ) ]
+}
 
 [sub_resource type="CylinderShape" id=1]
 
@@ -23,26 +79,36 @@ polygon = PoolVector2Array( 11.92, -5.08235, 12, 5.2, 0.094, 0 )
 transform = Transform( -1, 2.98023e-08, -8.74228e-08, 2.98023e-08, 1, -2.98023e-08, 8.74228e-08, -2.98023e-08, -1, 0, 0, 0 )
 script = ExtResource( 1 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody"]
+anims/LASER_CL = SubResource( 4 )
+anims/laser = SubResource( 3 )
+
 [node name="Spatial" parent="StaticBody" instance=ExtResource( 2 )]
-transform = Transform( -3.31502e-08, 0, 0.17069, 0, 0.134181, 0, -0.758388, 0, -7.4611e-09, 0.0218948, 0.0624638, -0.856918 )
+transform = Transform( -3.31502e-08, -1.01211e-16, 0.17069, 1.3663e-15, 0.134181, 2.51015e-17, -0.758388, -1.21273e-16, -7.4611e-09, 0.0218948, 1.03261, -0.856918 )
 
 [node name="Timer" parent="StaticBody/Spatial" index="0"]
 wait_time = 0.1
 
 [node name="CollisionShape2" type="CollisionShape" parent="StaticBody"]
-transform = Transform( -0.646, 1.28074e-07, -1.3788e-14, 0, 3.66753e-07, 0.63, 5.64751e-08, 1.465, -1.57716e-07, -0.538, 1.476, -0.128 )
+transform = Transform( -0.646, 1.28074e-07, -1.37172e-14, -2.64697e-16, 3.66753e-07, 0.63, 5.64751e-08, 1.465, -1.57716e-07, -0.538, 0.751976, -0.128 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape3" type="CollisionShape" parent="StaticBody"]
-transform = Transform( -0.372, 1.11966e-14, 1.81839e-08, 0, -1.465, 1.81839e-08, 3.25213e-08, 1.28074e-07, 0.208, -0.556247, -1.19209e-07, -1.805 )
+transform = Transform( -0.372, 1.31905e-14, 1.81839e-08, 6.80758e-16, -1.465, 1.81839e-08, 3.25213e-08, 1.28074e-07, 0.208, -0.556247, -0.290977, -1.95785 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape4" type="CollisionShape" parent="StaticBody"]
-transform = Transform( -0.372, 1.11966e-14, 1.81839e-08, 0, -1.465, 1.81839e-08, 3.25213e-08, 1.28074e-07, 0.208, -0.556247, 1.19209e-07, 1.62554 )
+transform = Transform( -0.372, 1.31905e-14, 1.81839e-08, 6.80758e-16, -1.465, 1.81839e-08, 3.25213e-08, 1.28074e-07, 0.208, -0.556247, -0.530288, 1.62554 )
 shape = SubResource( 2 )
 
 [node name="TURRET" parent="StaticBody" instance=ExtResource( 3 )]
 transform = Transform( 6.95453e-09, -2.18557e-08, -0.5, -0.5, -2.18557e-08, -6.95453e-09, -2.18557e-08, 0.5, -2.18557e-08, -0.409539, 1.00896, -0.332263 )
+
+[node name="laser" parent="StaticBody/TURRET/Cylinder" index="1"]
+transform = Transform( 0.552865, -2.27371e-16, 2.77949e-15, 2.04757e-15, -3.07641e-08, -0.405729, 1.30941e-15, 0.188829, -6.61017e-08, 1.31095, -0.221789, 0.0238603 )
+
+[node name="MeshInstance2" parent="StaticBody/TURRET/Cylinder/laser" index="0"]
+transform = Transform( 0.4, 2.13774e-07, -4.4673e-08, -1.22156e-07, 0.7, 5.88963e-07, 3.49693e-08, -8.06798e-07, 0.511, 0.335, 1.603, 0 )
 [connection signal="body_entered" from="Area" to="StaticBody" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="StaticBody" method="_on_Area_body_exited"]
 

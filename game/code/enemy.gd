@@ -13,16 +13,21 @@ func die(damage):
 func _ready():
 	space_state = get_world().direct_space_state
 
+		
 func _process(delta):
 	if target:
 		$TURRET/Cylinder.look_at(target.global_transform.origin, Vector3.UP)
 		$TURRET/Cylinder.rotate_object_local(Vector3(0, 1, 0), PI)
 		$TURRET/Cylinder.rotate_object_local(Vector3(0, 0, -1), PI/2)
+		$TURRET/Cylinder/Torus001.rotate_z(deg2rad(15))
 		sho.shoot(target)
 					
 func _on_Area_body_entered(body):
 	if body.is_in_group("Player"):
 		target= body
+		$AnimationPlayer.play("laser")
 func _on_Area_body_exited(body):
 	if body.is_in_group("Player"):
 		target= null
+		$AnimationPlayer.play("LASER_CL")
+		
