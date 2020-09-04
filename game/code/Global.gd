@@ -14,6 +14,7 @@ func goto_scene(scene):
 func _deferred_goto_scene(scene):
 	current_scene.free()
 	current_scene = scene.instance()
+	print("USER dir:",OS.get_user_data_dir())
 	var error_status = Directory.new().remove("user://saves/progress.save")
 	error_status = Directory.new().remove("user://saves")
 	
