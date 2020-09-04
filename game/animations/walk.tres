@@ -1,0 +1,52 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("../torso/rhip:transform")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 0.977929, 0, -0.331961, 0, 1, 0, 0.354507, 0, 0.915735, 8.23009e-09, -0.092, 8.68439e-09 ), Transform( 1.02453, 0, 0.168472, 0, 1, 0, -0.179914, 0, 0.959367, 8.23009e-09, -0.092, 8.68439e-09 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../torso/lhip:transform")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 1.02433, 0, 0.168464, 0, 1, 0, -0.179879, 0, 0.959321, -4.47742e-09, 0.092, -2.68524e-08 ), Transform( 0.977739, 0, -0.331945, 0, 1, 0, 0.354438, 0, 0.91569, -4.47742e-09, 0.092, -2.68524e-08 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../torso/rhip/rfoot:transform")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Transform( 1.12752, 0, 0.165912, 0, 1, 0, -0.209971, 0, 0.890929, -1.19998e-07, -3.56278e-08, 1.62591 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../torso/lhip/lfoot:transform")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Transform( 1.12761, 2.12615e-09, 0.165867, -2.05135e-09, 1, -1.82077e-09, -0.209988, 1.64829e-09, 0.890688, 1.59798e-07, -3.32222e-08, 1.62591 ) ]
+}

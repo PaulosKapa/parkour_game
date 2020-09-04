@@ -7,6 +7,7 @@ signal blasted
 
 var _thrown_objects = []
 func explode():
+	$CollisionShape.disabled=false
 	$Area2/CollisionShape.disabled=false
 	$Area6/Particles.set_emitting(true)
 	throw_objects_in_radius()
@@ -15,7 +16,7 @@ func explode():
 
 func _on_Timer_timeout():
 	$MeshInstance2.hide()
-	$CollisionShape.disabled=true
+
 	$Area.show()
 	$Area/CollisionShape.disabled=true
 	$Area2/CollisionShape.disabled=false

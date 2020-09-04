@@ -62,11 +62,11 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
 		vel.x=lerp(10,sp,0.125)
 		facing=FACING_RIGHT
-		$playernop/s1/AnimationPlayer.play("walk")
+		$playernop/s1/walk.play("walk")
 		$animation.play("walking_col")
 	elif Input.is_action_pressed("ui_left"):
 		$animation.play("walking_col")
-		$playernop/s1/AnimationPlayer.play("walk")
+		$playernop/s1/walk.play("walk")
 		vel.x=lerp(-10,-sp,0.125)
 		facing=FACING_LEFT
 		
