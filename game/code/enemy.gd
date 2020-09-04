@@ -15,7 +15,7 @@ func _ready():
 
 func _process(delta):
 	if target:
-		$TURRET/Torus001.look_at(target.global_transform.origin, Vector3.UP)
+		$TURRET/Cylinder.look_at(target.global_transform.origin, Vector3.UP)
 		sho.shoot()
 					
 func _on_Area_body_entered(body):
