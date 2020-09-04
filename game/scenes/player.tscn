@@ -15,12 +15,12 @@
 
 [sub_resource type="CylinderShape" id=5]
 
-[sub_resource type="SphereShape" id=11]
+[sub_resource type="SphereShape" id=6]
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=7]
 loop = true
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=8]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("rfoot:transform")
@@ -177,7 +177,7 @@ tracks/3/keys = {
 [node name="PlayerBody" type="KinematicBody" groups=[
 "Player",
 ]]
-transform = Transform( -1, -3.25841e-07, 5.30863e-14, 0, -1.62921e-07, -1, 3.25841e-07, -1, 1.62921e-07, 76.5918, 10.5936, -1.67788e-07 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
 script = ExtResource( 1 )
 
 [node name="head" type="CollisionShape" parent="."]
@@ -202,11 +202,11 @@ shape = SubResource( 5 )
 
 [node name="rhip" type="CollisionShape" parent="."]
 transform = Transform( 0.179491, -0.02867, -1.02032e-08, -1.04209e-08, 8.31247e-10, -0.182594, 0.01256, 0.409712, -3.69554e-10, 0.0671844, 0.273933, 0.037199 )
-shape = SubResource( 11 )
+shape = SubResource( 6 )
 
 [node name="lhip" type="CollisionShape" parent="."]
 transform = Transform( 0.132641, -0.277516, 2.17669e-08, -9.42644e-09, -1.03072e-07, -0.182594, 0.121577, 0.302772, -4.02442e-08, -0.218033, -0.271167, 0.0371981 )
-shape = SubResource( 11 )
+shape = SubResource( 6 )
 
 [node name="Spatial3" type="Spatial" parent="."]
 transform = Transform( 1, 2.39129e-28, 9.04469e-21, 9.70035e-28, 1, -1.35001e-14, 1.03883e-20, 4.26326e-14, 1, 1.50106e-06, 2.36368e-07, -1.45082 )
@@ -215,8 +215,8 @@ script = ExtResource( 2 )
 [node name="Timer" type="Timer" parent="."]
 
 [node name="animation" type="AnimationPlayer" parent="."]
-anims/ball1 = SubResource( 12 )
-anims/rotate_ccw = SubResource( 13 )
+anims/ball1 = SubResource( 7 )
+anims/rotate_ccw = SubResource( 8 )
 anims/rotate_cw = SubResource( 9 )
 anims/walking_col = SubResource( 10 )
 
@@ -238,19 +238,10 @@ transform = Transform( 0.204029, -9.59491e-09, 2.28963e-09, -3.07207e-08, 0.2040
 [node name="playernop" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1.41633, -2.01108e-09, 1.49823e-16, 3.1218e-17, 1.68896e-08, 1.41633, -2.01108e-09, -1.41633, 1.68896e-08, -0.0239005, 1.93854e-08, 0.934472 )
 
-[node name="torso" parent="playernop" index="1"]
+[node name="torso" parent="playernop" index="0"]
 transform = Transform( 0.585977, 0, 0, 0, -9.0921e-08, -0.470765, 0, 2.08003, -2.05778e-08, 3.55097e-06, 0.925603, -9.83264e-15 )
 
-[node name="rhip" parent="playernop/torso" index="1"]
-transform = Transform( 0.977929, 0, -0.331961, 0, 1, 0, 0.354507, 0, 0.915735, 8.23009e-09, -0.092, 8.68439e-09 )
-
-[node name="rfoot" parent="playernop/torso/rhip" index="1"]
-transform = Transform( 1.12752, 0, 0.165912, 0, 1, 0, -0.209971, 0, 0.890929, -1.19998e-07, -3.56278e-08, 1.62591 )
-
-[node name="lhip" parent="playernop/torso" index="2"]
-transform = Transform( 1.02433, 0, 0.168463, 0, 1, 0, -0.179879, 0, 0.959321, -4.47742e-09, 0.092, -2.68524e-08 )
-
-[node name="head" parent="playernop" index="2"]
+[node name="head" parent="playernop" index="1"]
 transform = Transform( 0.585977, -2.17175e-16, -6.06602e-10, -3.7333e-10, -3.09207e-15, -0.470765, 1.10687e-16, 2.08003, 1.95473e-16, 0.00517265, 1.84646, -5.09634e-15 )
 
 [node name="rarm" parent="playernop/swerve" index="1"]
