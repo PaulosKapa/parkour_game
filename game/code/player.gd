@@ -44,7 +44,7 @@ func get_translation_delta():
 func _process(delta):
 	$health_rotate.rotate_z(deg2rad(10))
 	match health:
-			2:$health_rotate/health.hide()
+			2:$health_rotate/health2.hide()
 			1:[$health_rotate/health2.hide(), $health_rotate/health.hide()]
 			#using hide() instead of queue_free(), so they reappear if we add health regen
 			0:[GameData.restore("user://saves"),get_tree().reload_current_scene(), knees.get_surface_material(0).set_albedo(Color(0, 1, 0)), 	lknees.get_surface_material(0).set_albedo(Color(0, 1, 0))]
@@ -116,3 +116,8 @@ func _on_colour_change_timeout():
 	lknees.get_surface_material(0).set_albedo(Color(0, 1, 0))
 	knees.get_surface_material(0).set_albedo(Color(0, 1, 0))
 	$colour_change.stop()
+
+func _on_Area_health_regen():
+	match health:
+		2:$health_rotate/health.show()
+		3:$health_rotate/health2.show()
