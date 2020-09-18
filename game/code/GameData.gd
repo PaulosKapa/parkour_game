@@ -58,7 +58,7 @@ func run_alert(errno, intended_path):
 		ERR_FILE_BAD_PATH:
 			message="Directory path not available"
 		_:
-			message="General file I/O error "+errno.to_string()+" with "+intended_path
+			message="General file I/O error "+str(errno)+" with "+intended_path
 	print("ERROR:"+message)
 
 #path:String
