@@ -7,7 +7,7 @@ signal blasted
 
 var _thrown_objects = []
 func explode():
-	$CollisionShape.disabled=false
+	$CollisionShape.disabled=true
 	$Area2/CollisionShape.disabled=false
 	$Area6/Particles.set_emitting(true)
 	throw_objects_in_radius()
@@ -19,7 +19,7 @@ func _on_Timer_timeout():
 
 	$Area.show()
 	$Area/CollisionShape.disabled=true
-	$Area2/CollisionShape.disabled=false
+	$Area2/CollisionShape.disabled=true
 	#_settle_thrown_objects()
 
 

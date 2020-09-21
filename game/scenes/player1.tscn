@@ -27,10 +27,11 @@ surfaces/0 = {
 albedo_texture = ExtResource( 4 )
 metallic_specular = 0.0
 emission_enabled = true
-emission = Color( 0.627451, 0.345098, 0, 1 )
+emission = Color( 0, 0, 0, 1 )
 emission_energy = 0.5
 emission_operator = 0
 emission_on_uv2 = false
+emission_texture = ExtResource( 4 )
 
 [sub_resource type="SphereMesh" id=3]
 
@@ -43,6 +44,7 @@ emission = Color( 0.00392157, 0.0117647, 0, 1 )
 emission_energy = 2.5
 emission_operator = 0
 emission_on_uv2 = false
+emission_texture = ExtResource( 5 )
 uv1_scale = Vector3( 1, 0.767, 1 )
 uv1_offset = Vector3( -0.021, 0.059, 0 )
 
@@ -62,10 +64,11 @@ surfaces/0 = {
 [sub_resource type="SpatialMaterial" id=6]
 albedo_texture = ExtResource( 6 )
 emission_enabled = true
-emission = Color( 0.556863, 0.247059, 0, 1 )
-emission_energy = 0.78
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 0.5
 emission_operator = 0
 emission_on_uv2 = false
+emission_texture = ExtResource( 6 )
 
 [sub_resource type="ArrayMesh" id=7]
 surfaces/0 = {
@@ -104,10 +107,11 @@ albedo_texture = ExtResource( 6 )
 metallic_specular = 1.0
 roughness = 0.2
 emission_enabled = true
-emission = Color( 0.556863, 0.247059, 0, 1 )
-emission_energy = 0.78
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 0.5
 emission_operator = 0
 emission_on_uv2 = false
+emission_texture = ExtResource( 6 )
 
 [sub_resource type="ArrayMesh" id=11]
 surfaces/0 = {
@@ -125,10 +129,11 @@ surfaces/0 = {
 [sub_resource type="SpatialMaterial" id=12]
 albedo_texture = ExtResource( 6 )
 emission_enabled = true
-emission = Color( 0.556863, 0.247059, 0, 1 )
-emission_energy = 0.78
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 0.5
 emission_operator = 0
 emission_on_uv2 = false
+emission_texture = ExtResource( 6 )
 uv1_offset = Vector3( 0.356, 1.079, 4.171 )
 
 [sub_resource type="ArrayMesh" id=13]
@@ -168,10 +173,11 @@ albedo_texture = ExtResource( 6 )
 metallic_specular = 1.0
 roughness = 0.2
 emission_enabled = true
-emission = Color( 0.556863, 0.247059, 0, 1 )
-emission_energy = 0.78
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 0.5
 emission_operator = 0
 emission_on_uv2 = false
+emission_texture = ExtResource( 6 )
 
 [sub_resource type="ArrayMesh" id=17]
 surfaces/0 = {
@@ -187,7 +193,7 @@ surfaces/0 = {
 }
 
 [sub_resource type="SpatialMaterial" id=18]
-albedo_color = Color( 0, 0, 0, 1 )
+albedo_color = Color( 0.611765, 0.576471, 0.576471, 1 )
 metallic_specular = 0.0
 roughness = 0.36
 
@@ -264,6 +270,12 @@ surfaces/0 = {
 
 [sub_resource type="SpatialMaterial" id=24]
 albedo_texture = ExtResource( 7 )
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 0.5
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = ExtResource( 7 )
 uv1_offset = Vector3( 0.197, 0.574, 0.178 )
 
 [sub_resource type="ArrayMesh" id=25]
@@ -281,6 +293,12 @@ surfaces/0 = {
 
 [sub_resource type="SpatialMaterial" id=26]
 albedo_texture = ExtResource( 7 )
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 0.5
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = ExtResource( 7 )
 uv1_offset = Vector3( 0, 0.574, 0 )
 
 [node name="playernop" type="Spatial"]
@@ -306,7 +324,7 @@ mesh = SubResource( 7 )
 material/0 = SubResource( 8 )
 
 [node name="rfoot" type="MeshInstance" parent="torso/rhip"]
-transform = Transform( 1.12752, 0, 0.165912, 0, 1, 0, -0.209971, 0, 0.890929, -1.19998e-07, -3.56278e-08, 1.62591 )
+transform = Transform( 1.12752, -7.10543e-15, 0.165912, -2.22045e-16, 1, -8.88178e-16, -0.209971, -4.26326e-14, 0.890929, -5.96046e-08, -2.23517e-08, 1.62591 )
 mesh = SubResource( 9 )
 material/0 = SubResource( 10 )
 
@@ -324,7 +342,7 @@ mesh = SubResource( 13 )
 material/0 = SubResource( 14 )
 
 [node name="lfoot" type="MeshInstance" parent="torso/lhip"]
-transform = Transform( 1.12761, 2.12615e-09, 0.165867, -2.05135e-09, 1, -1.82077e-09, -0.209988, 1.64829e-09, 0.890688, 1.59798e-07, -3.32222e-08, 1.62591 )
+transform = Transform( 1.12761, 2.12615e-09, 0.165867, -2.05135e-09, 1, -1.82077e-09, -0.209988, 1.64829e-09, 0.890688, 0.00463709, 0.00270141, 1.62678 )
 mesh = SubResource( 15 )
 material/0 = SubResource( 16 )
 
@@ -356,7 +374,7 @@ mesh = SubResource( 23 )
 material/0 = SubResource( 24 )
 
 [node name="rarm" type="MeshInstance" parent="swerve"]
-transform = Transform( -0.0592698, 2.34405, -0.294776, 0.582995, 0.238306, -0.0299682, -6.00589e-08, -1.90673, -0.366129, 0.00423609, 0.0394609, -0.33363 )
+transform = Transform( -0.0592698, 2.34405, -0.294776, 0.559298, -0.309474, -0.132074, -0.164526, -1.89648, -0.34279, 0.00423609, 0.0394609, -0.33363 )
 mesh = SubResource( 25 )
 material/0 = SubResource( 26 )
 
