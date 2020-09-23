@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/TURRET.gltf-ec48682b6952a632f0956025dfcddec6.scn"
+path="res://.import/enemy_fly.glb-e3eb9a79021c1ba9af0423a9dc1c4d16.scn"
 
 [deps]
 
-source_file="res://models/TURRET.gltf"
-dest_files=[ "res://.import/TURRET.gltf-ec48682b6952a632f0956025dfcddec6.scn" ]
+source_file="res://models/enemy_fly.glb"
+dest_files=[ "res://.import/enemy_fly.glb-e3eb9a79021c1ba9af0423a9dc1c4d16.scn" ]
 
 [params]
 
