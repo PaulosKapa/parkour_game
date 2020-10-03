@@ -1,5 +1,5 @@
 extends Node
-onready var player = get_tree().get_root().get_node("/root/level/Player")
+#onready var player = get_tree().get_root().get_node("/root/level/Player")
 var current_scene = null
 
 
@@ -15,8 +15,8 @@ func _deferred_goto_scene(scene):
 	current_scene.free()
 	current_scene = scene.instance()
 	print("USER dir:",OS.get_user_data_dir())
-	var error_status = Directory.new().remove("user://saves/progress.save")
-	error_status = Directory.new().remove("user://saves")
+	var _error_status = Directory.new().remove("user://saves/progress.save")
+	_error_status = Directory.new().remove("user://saves")
 	
 	get_tree().get_root().add_child(current_scene)
 	get_tree().set_current_scene(current_scene)

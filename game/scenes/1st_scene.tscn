@@ -19,8 +19,6 @@
 
 [sub_resource type="CubeMesh" id=2]
 
-[sub_resource type="BoxShape" id=3]
-
 [sub_resource type="BoxShape" id=4]
 
 [sub_resource type="CubeMesh" id=5]
@@ -40,6 +38,8 @@ albedo_color = Color( 0.121569, 0.0470588, 1, 1 )
 [sub_resource type="BoxShape" id=11]
 
 [sub_resource type="CubeMesh" id=12]
+
+[sub_resource type="BoxShape" id=3]
 
 [node name="level" type="Spatial"]
 
@@ -208,21 +208,6 @@ shape = SubResource( 1 )
 mesh = SubResource( 2 )
 material/0 = null
 
-[node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 76.5263, 11.9272, 8.32322 )
-target = NodePath("../Player/Spatial")
-speed = 30.0
-enabled = true
-
-[node name="StaticBody" type="StaticBody" parent="InterpolatedCamera"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.84884 )
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape" type="CollisionShape" parent="InterpolatedCamera/StaticBody"]
-transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 1, 0, 0, -5.5 )
-shape = SubResource( 3 )
-
 [node name="Area" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -124.397, -6.00145, 0 )
 script = ExtResource( 3 )
@@ -370,6 +355,18 @@ transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 77.4838
 
 [node name="Spatial" type="Spatial" parent="Player"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0.173752, 8.08527, -1.71285 )
+
+[node name="InterpolatedCamera" type="Camera" parent="Player"]
+transform = Transform( 1, 6.42119e-17, 0, 1.04615e-23, -1.62921e-07, 1, 6.42119e-17, -1, -1.62921e-07, -0.957504, 8.32322, -1.2906 )
+
+[node name="StaticBody" type="StaticBody" parent="Player/InterpolatedCamera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.84884 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Player/InterpolatedCamera/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 1, 0, 0, -5.5 )
+shape = SubResource( 3 )
 
 [node name="Spatial" parent="." instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6173, -5.66218, 0 )

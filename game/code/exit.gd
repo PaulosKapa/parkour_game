@@ -7,5 +7,5 @@ func _on_Area_body_entered(body):
 		#Both calls probably should be replaced by a single "body.health = 0"
 		#(FLJ, 9/1/2020)
 		GameData.restore("user://saves")
-		get_tree().reload_current_scene()
+		var _ret = get_tree().reload_current_scene()
 

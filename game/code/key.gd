@@ -2,7 +2,7 @@ extends Area
 var door = 0
 signal unlock
 
-func _process(delta):
+func _process(_delta):
 	rotate_y(rad2deg(0.001))
 
 func _on_Spatial_body_entered(body):

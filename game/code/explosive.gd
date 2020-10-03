@@ -3,7 +3,7 @@ export(float) var blast_radius = 200.0
 export(float) var blast_power = 20
 var _original_scale
 var _current_scale
-signal blasted
+#signal blasted
 
 var _thrown_objects = []
 func explode():

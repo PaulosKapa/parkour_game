@@ -1,11 +1,11 @@
 extends Spatial
 onready var Parent = get_parent()
-onready var Camera = get_node("/root/level/InterpolatedCamera")
+onready var Camera = get_node("/root/level/Player/InterpolatedCamera")
 onready var Bullet= preload("res://scenes/bullet.tscn")
 onready var mouse_position = Vector3(0,0,0)
 onready var kil = get_node("/root/level/Player")
 var bullet_spawn_location = Vector3(0,0,0)
-var cant_shoot = 0
+var cant_shoot_var = 0
 var bullets_left=9
 
 func super_power():
@@ -16,10 +16,10 @@ func super_power():
 
 
 func cant_shoot():
-	cant_shoot=1
-	return cant_shoot
+	cant_shoot_var=1
+	return cant_shoot_var
 	
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("click"):
 		mouse_position = get_tree().root.get_mouse_position()
 		shoot()
@@ -28,7 +28,7 @@ func shoot():
 	if bullets_left<=0:
 			$reload.start()
 			cant_shoot()
-	elif cant_shoot==0:
+	elif cant_shoot_var==0:
 		var bullet = Bullet.instance()
 		get_node("/root/level").add_child(bullet)
 		var pos = Camera.unproject_position(Parent.global_transform.origin)
@@ -46,14 +46,14 @@ func shoot():
 		cant_shoot()
 
 func _on_Timer_timeout():
-	cant_shoot=0
+	cant_shoot_var=0
 	$Timer.stop()
 
 
 func _on_reload_timeout():
 	
 	bullets_left=9
-	cant_shoot=0
+	cant_shoot_var=0
 	print(bullets_left)
 	$reload.stop()
 

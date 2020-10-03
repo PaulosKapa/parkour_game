@@ -140,7 +140,7 @@ func _prop_data(prop):
 			}
 	
 #stage_name:String	
-func completed_stage(stage_name):
+func completed_stage(_stage_name):
 	pass
 
 func restore(directory):

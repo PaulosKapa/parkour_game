@@ -14,7 +14,7 @@ func _ready():
 	space_state = get_world().direct_space_state
 
 		
-func _process(delta):
+func _process(_delta):
 	if target:
 		$TURRET/Cylinder.look_at(target.global_transform.origin, Vector3.UP)
 		$TURRET/Cylinder.rotate_object_local(Vector3(0, 1, 0), PI)
