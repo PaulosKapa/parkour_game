@@ -24,7 +24,7 @@ func _ready():
 func set_player_status(checkpoint_name, player_node):
 	player_status = {
 		"health":player_node.health,
-		"kills":player_node.kill,
+		"kills":player_node.kill_var,
 		"last_checkpoint":checkpoint_name
 	}
 
@@ -36,7 +36,7 @@ func restore_player_status():
 	if _player_location.z == 100:
 		return
 	_player_node.health = int(player_status["health"])
-	_player_node.kill = int(player_status["kills"])
+	_player_node.kill_var = int(player_status["kills"])
 	_position_player()
 	
 func _position_player():

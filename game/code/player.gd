@@ -52,7 +52,7 @@ func _process(_delta):
 			#using hide() instead of queue_free(), so they reappear if we add health regen
 			0:
 				GameData.restore("user://saves")
-				var _ret = get_tree().reload_current_scene()
+				#var _ret = get_tree().reload_current_scene()
 				knees.get_surface_material(0).set_albedo(Color(0, 1, 0))
 				lknees.get_surface_material(0).set_albedo(Color(0, 1, 0))
 	var slide_count = get_slide_count()
@@ -62,7 +62,7 @@ func _process(_delta):
 			var groups = col.collider.get_groups()
 			
 			if(groups.has("enemy")):
-				var _ret = get_tree().reload_current_scene()
+				#var _ret = get_tree().reload_current_scene()
 				print("1: Player was hurt by touching an enemy!")
 
 func _physics_process(delta):

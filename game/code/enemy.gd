@@ -1,6 +1,7 @@
 extends StaticBody
 onready var sho = get_node("/root/level/Spatial4/StaticBody/Spatial")
 onready var kil = get_node("/root/level/Player")
+onready var laser = get_node("./TURRET/Cylinder/laser/rotation_point")
 var space_state
 var target
 var health=3
@@ -23,11 +24,14 @@ func _process(_delta):
 		sho.shoot(target)
 					
 func _on_Area_body_entered(body):
+	# start laser show
 	if body.is_in_group("Player"):
 		target= body
 		$AnimationPlayer.play("laser")
+		laser.scale_object_local(Vector3(1, 500, 1))
+
 func _on_Area_body_exited(body):
 	if body.is_in_group("Player"):
 		target= null
 		$AnimationPlayer.play("LASER_CL")
-		
+		laser.orthonormalize()

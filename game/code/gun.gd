@@ -9,9 +9,9 @@ var cant_shoot_var = 0
 var bullets_left=9
 
 func super_power():
-	if kil.kill==1:
+	if kil.kill_var==1:
 		$superpower.start()
-		bullets_left=bullets_left+kil.kill*2
+		bullets_left=bullets_left+kil.kill_var*2
 		$Timer.wait_time=0.1
 
 
@@ -59,6 +59,6 @@ func _on_reload_timeout():
 
 
 func _on_superpower_timeout():
-	kil.kill=0
+	kil.kill_var=0
 	$Timer.wait_time=1
 	$superpower.stop()
