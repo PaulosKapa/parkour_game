@@ -7,7 +7,7 @@ const leg_force= 500
 var accel = 0
 var last_trans = translation
 var physics_delta = 0;
-var kill=0
+var kill_var=0
 var dbjump=0
 var health=3
 enum {FACING_LEFT, FACING_RIGHT}
@@ -25,9 +25,9 @@ func hurt():
 
 
 func kill():
-	kill=kill+1
+	kill_var=kill_var+1
 	gun.super_power()
-	return kill
+	return kill_var
 	
 func _ready():
 	set_axis_lock(PhysicsServer.BODY_AXIS_LINEAR_Z,true)
@@ -41,13 +41,20 @@ func get_translation_delta():
 	last_trans = translation
 	return delta
 
-func _process(delta):
+func _process(_delta):
 	$health_rotate.rotate_z(deg2rad(10))
 	match health:
-			2:$health_rotate/health2.hide()
-			1:[$health_rotate/health2.hide(), $health_rotate/health.hide()]
+			2:
+				$health_rotate/health2.hide()
+			1:
+				$health_rotate/health2.hide()
+				$health_rotate/health.hide()
 			#using hide() instead of queue_free(), so they reappear if we add health regen
-			0:[GameData.restore("user://saves"),get_tree().reload_current_scene(), knees.get_surface_material(0).set_albedo(Color(0, 1, 0)), 	lknees.get_surface_material(0).set_albedo(Color(0, 1, 0))]
+			0:
+				GameData.restore("user://saves")
+				#var _ret = get_tree().reload_current_scene()
+				knees.get_surface_material(0).set_albedo(Color(0, 1, 0))
+				lknees.get_surface_material(0).set_albedo(Color(0, 1, 0))
 	var slide_count = get_slide_count()
 	for i in slide_count:
 		var col = get_slide_collision(i)
@@ -55,7 +62,7 @@ func _process(delta):
 			var groups = col.collider.get_groups()
 			
 			if(groups.has("enemy")):
-				get_tree().reload_current_scene()
+				#var _ret = get_tree().reload_current_scene()
 				print("1: Player was hurt by touching an enemy!")
 
 func _physics_process(delta):
@@ -101,7 +108,7 @@ func _physics_process(delta):
 	accel += gravity*delta
 	vel.y += accel
 	physics_delta = delta
-	move_and_slide(vel*physics_delta, Vector3(0, 1, 0), false, 4, 0.785398, true)
+	var _ret = move_and_slide(vel*physics_delta, Vector3(0, 1, 0), false, 4, 0.785398, true)
 
 func _on_Timer_timeout():
 	Engine.time_scale = 1

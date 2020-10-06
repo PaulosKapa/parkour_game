@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [sub_resource type="ArrayMesh" id=1]
 surfaces/0 = {
@@ -32,6 +32,16 @@ surfaces/0 = {
 
 [sub_resource type="CylinderMesh" id=5]
 
+[sub_resource type="SpatialMaterial" id=6]
+flags_unshaded = true
+albedo_color = Color( 0.196078, 0.988235, 0.00392157, 1 )
+
+[sub_resource type="CylinderMesh" id=7]
+material = SubResource( 6 )
+top_radius = 0.1
+bottom_radius = 0.1
+radial_segments = 4
+
 [node name="TURRET" type="Spatial"]
 transform = Transform( 4.37114e-08, 1, -8.74228e-08, -1, 4.37114e-08, 4.40536e-13, 4.40536e-13, 8.74228e-08, 1, 0, 0, 0 )
 
@@ -58,4 +68,12 @@ material/0 = null
 [node name="MeshInstance2" type="MeshInstance" parent="Cylinder/laser"]
 transform = Transform( 0.4, 2.13773e-07, -4.4673e-08, -1.22156e-07, 0.7, 5.88963e-07, 3.49693e-08, -8.06798e-07, 0.511, 0.334704, -1.40177, 9.29032e-07 )
 mesh = SubResource( 5 )
+material/0 = null
+
+[node name="rotation_point" type="Spatial" parent="Cylinder/laser"]
+transform = Transform( 1, -8.52651e-14, -1.16109e-13, 8.52651e-14, 1, 0, 1.16109e-13, -9.90005e-27, 1, 0.4054, -1.88739, -2.98023e-07 )
+
+[node name="green" type="MeshInstance" parent="Cylinder/laser/rotation_point"]
+transform = Transform( -1, -2.33649e-06, 4.00137e-07, 3.89414e-07, -6, -4.94241e-08, 4.00137e-07, -2.96545e-07, 1, 0, -6, 0 )
+mesh = SubResource( 7 )
 material/0 = null

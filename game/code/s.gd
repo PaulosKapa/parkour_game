@@ -6,9 +6,9 @@ var facing = FACING_LEFT
 var ray_origin = Vector3()
 var ray_target=Vector3()
 
-onready var cam = get_node("/root/level/InterpolatedCamera")
+onready var cam = get_node("/root/level/Player/InterpolatedCamera")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	ray_origin = cam.project_ray_origin(get_viewport().get_mouse_position())
 	ray_target = cam.project_ray_normal(get_viewport().get_mouse_position())*100000
 	

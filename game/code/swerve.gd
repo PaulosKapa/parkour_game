@@ -3,9 +3,9 @@ extends Spatial
 var ray_origin = Vector3()
 var ray_target=Vector3()
 
-onready var Camera = get_node("/root/level/InterpolatedCamera")
+onready var Camera = get_node("/root/level/Player/InterpolatedCamera")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var mouse_position = get_tree().root.get_mouse_position()
 	var pos = Camera.unproject_position(global_transform.origin)
 	var rotation_vector = mouse_position - pos

@@ -2,7 +2,7 @@ extends KinematicBody
 onready var heal = get_node("/root/level/Player")
 var speed = 50
 var velocity = Vector3()
-signal change_colour
+#signal change_colour
 var damage
 func _ready():
 	velocity = Vector3(speed, 0, 0)
@@ -12,8 +12,8 @@ func set_speed(blyat):
 	velocity = blyat.normalized()*speed
 func set_damage(dam):
 	damage=dam
-func _physics_process(delta):
-	move_and_slide(velocity, Vector3(0, 0, 0), false, 3, 0.785398, false)
+func _physics_process(_delta):
+	var _ret = move_and_slide(velocity, Vector3(0, 0, 0), false, 3, 0.785398, false)
 	var queue_free = false
 	var slide_count = get_slide_count()
 	

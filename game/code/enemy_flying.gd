@@ -30,7 +30,7 @@ func _process(delta):
 		$"..".look_at(target.global_transform.origin, Vector3.UP)
 		move_to_target(delta)
 
-func move_to_target(delta):
+func move_to_target(_delta):
 	var direction = (target.global_transform.origin - global_transform.origin).normalized()
 	vel = move_and_slide(direction * speed)
 	
