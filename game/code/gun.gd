@@ -39,6 +39,11 @@ func shoot():
 		bullet_speed_vector.y *= -1
 	
 		bullet.global_rotate(Vector3(1, 0, 0), 300)
+		#work out bullet's flight vector based on the gun's local oriantation
+		var gun_angle=(rotation)
+		bullet_speed_vector=Vector3(1,tan(gun_angle.x),0) 
+		if(gun_angle.y <PI): #if we're facing left, x is negative
+			bullet_speed_vector.x = -1
 		bullet.set_speed(bullet_speed_vector.normalized())
 		bullet.global_transform.origin = bullet_translation_vector
 		bullets_left=bullets_left-1
