@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://code/rigged_gun.gd" type="Script" id=1]
+[ext_resource path="res://models/pistol.glb" type="PackedScene" id=2]
+
+[node name="w" type="Spatial"]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="reload" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="superpower" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="pistol" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.496793, -2.31075, 1.04479 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]
+[connection signal="timeout" from="superpower" to="." method="_on_superpower_timeout"]
