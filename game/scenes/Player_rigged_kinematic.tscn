@@ -13,7 +13,11 @@ radius = 0.25
 [sub_resource type="SphereShape" id=3]
 radius = 0.4
 
-[node name="PlayerBody" type="KinematicBody"]
+[node name="PlayerBody" type="KinematicBody" groups=[
+"Player",
+]]
+collision_layer = 4
+collision_mask = 4
 
 [node name="fire_pose_playerrig" parent="." instance=ExtResource( 1 )]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, -0.5, 0 )
@@ -34,6 +38,11 @@ shape = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72, 0 )
 shape = SubResource( 3 )
 
+[node name="Timer" type="Timer" parent="."]
+
+[node name="doublejump" type="Timer" parent="."]
+wait_time = 2.0
+
 [node name="health_rotate" type="Spatial" parent="."]
 
 [node name="health" parent="health_rotate" instance=ExtResource( 3 )]
@@ -44,3 +53,9 @@ transform = Transform( 0.181935, 0, 0.0922808, 0, 0.204, 0, -0.0922808, 0, 0.181
 
 [node name="health3" parent="health_rotate" instance=ExtResource( 3 )]
 transform = Transform( 0.204, 0, 0, 0, 0.204, 0, 0, 0, 0.204, 0.684, 1.7, 0.771 )
+
+[node name="colour_change" type="Timer" parent="."]
+wait_time = 0.5
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="doublejump" to="." method="_on_doublejump_timeout"]
+[connection signal="timeout" from="colour_change" to="." method="_on_colour_change_timeout"]
