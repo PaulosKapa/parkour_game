@@ -13,7 +13,7 @@ var health=3
 enum {FACING_LEFT, FACING_RIGHT}
 var facing = FACING_LEFT
 var cant_dash=0
-onready var gun = get_node("/root/level/Player/fire_pose_playerrig/w")
+onready var gun = get_node("/root/level/Player/fire_pose_playerrig/lhand/w")
 onready var anim_player = get_node("/root/level/Player/fire_pose_playerrig/AnimationPlayer")
 var _collisions = []
 onready var knees = get_node("/root/level/Player/playernop/torso/rhip/rknee")
@@ -44,6 +44,9 @@ func get_translation_delta():
 
 func _process(_delta):
 	$health_rotate.rotate_y(deg2rad(10))
+	#IMHO, Player.hurt() should take a "damage" argument, and do the subtraction there, rather than anything calling Player.hurt()
+	#for the moment, this will prevent health going below zero and failing to trip the "restart" and "health_regen" code
+	health = max(0,health)
 	match health:
 			2:
 				$health_rotate/health2.hide()
@@ -53,9 +56,9 @@ func _process(_delta):
 			#using hide() instead of queue_free(), so they reappear if we add health regen
 			0:
 				GameData.restore("user://saves")
-				#var _ret = get_tree().reload_current_scene()
-				knees.get_surface_material(0).set_albedo(Color(0, 1, 0))
-				lknees.get_surface_material(0).set_albedo(Color(0, 1, 0))
+				var _ret = get_tree().reload_current_scene()
+	#			knees.get_surface_material(0).set_albedo(Color(0, 1, 0))
+	#			lknees.get_surface_material(0).set_albedo(Color(0, 1, 0))
 	var slide_count = get_slide_count()
 	for i in slide_count:
 		var col = get_slide_collision(i)
@@ -107,10 +110,9 @@ func _physics_process(delta):
 	accel += gravity*delta
 	vel.y += accel
 	physics_delta = delta
-	#var _ret = move_and_collide(vel*0,false)
-	var _ret = move_and_slide(vel*physics_delta, Vector3(0, 1, 0), false, 1, 0.785398, true)
-	print(global_transform.origin)
-
+	
+	var _ret = move_and_slide(vel*physics_delta, Vector3(0, 1, 0), false, 4, 0.785398, true)
+	
 func _on_Timer_timeout():
 	Engine.time_scale = 1
 	$Timer.stop()
