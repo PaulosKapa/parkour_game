@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/fire_pose_playerrig.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/pistol.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/health_balls.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CylinderShape" id=1]
@@ -11,37 +10,40 @@ height = 1.45
 [sub_resource type="SphereShape" id=2]
 radius = 0.25
 
-[sub_resource type="CylinderShape" id=4]
-radius = 0.5
-height = 1.5
-
 [sub_resource type="SphereShape" id=3]
 radius = 0.4
 
-[node name="PlayerBody" type="KinematicBody"]
-collision/safe_margin = 0.1
-
-[node name="w" parent="." instance=ExtResource( 2 )]
-transform = Transform( -4.07302e-09, 0, 0.025, 0, 0.025, 0, -0.025, 0, -4.07302e-09, -1.15987, 1.37201, 0.0565323 )
+[node name="PlayerBody" type="KinematicBody" groups=[
+"Player",
+]]
+collision_layer = 4
+collision_mask = 4
 
 [node name="fire_pose_playerrig" parent="." instance=ExtResource( 1 )]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, -0.5, 0 )
+collision_layer = 4
+collision_mask = 4
 
 [node name="torso" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03, 0 )
+shape = SubResource( 1 )
+
+[node name="legs" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.42, 0 )
 shape = SubResource( 1 )
 
 [node name="pelvis" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43, 0 )
 shape = SubResource( 2 )
 
-[node name="legs" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.35, 0 )
-shape = SubResource( 4 )
-
 [node name="head" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72, 0 )
 shape = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="doublejump" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="health_rotate" type="Spatial" parent="."]
 
@@ -53,11 +55,6 @@ transform = Transform( 0.181935, 0, 0.0922808, 0, 0.204, 0, -0.0922808, 0, 0.181
 
 [node name="health3" parent="health_rotate" instance=ExtResource( 3 )]
 transform = Transform( 0.204, 0, 0, 0, 0.204, 0, 0, 0, 0.204, 0.684, 1.7, 0.771 )
-
-[node name="Timer" type="Timer" parent="."]
-
-[node name="doublejump" type="Timer" parent="."]
-wait_time = 2.0
 
 [node name="colour_change" type="Timer" parent="."]
 wait_time = 0.5

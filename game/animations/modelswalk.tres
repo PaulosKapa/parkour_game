@@ -31,3 +31,51 @@ tracks/3/loop_wrap = true
 tracks/3/imported = true
 tracks/3/enabled = true
 tracks/3/keys = PoolRealArray( 0, 1, -1.49012e-08, 0, 0, -1.49012e-07, 5.47082e-08, -1.82818e-07, 1, 1, 1, 1, 0.0666667, 1, -1.49012e-08, 0, 0, -0.0127616, -1.21078e-09, -1.67427e-07, 0.999919, 1, 1, 1, 0.133333, 1, -1.49012e-08, 0, 0, -0.0909977, 4.94693e-08, 1.64068e-07, 0.995851, 1, 1, 1, 0.2, 1, -1.49012e-08, 0, 0, -0.214814, -2.49042e-08, -5.04895e-07, 0.976655, 1, 1, 1, 0.266667, 1, -1.49012e-08, 0, 0, -0.323845, -1.29116e-08, -2.38069e-07, 0.94611, 1, 1, 1, 0.333333, 1, -1.49012e-08, 0, 0, -0.374606, 5.96046e-08, -2.38419e-07, 0.927184, 1, 1, 1 )
+tracks/4/type = "value"
+tracks/4/path = NodePath("lhip:transform")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 1, 0, 0, 0, 0.927184, -0.374607, 0, 0.374607, 0.927184, 0.22, 0.538555, -0.0915762 ), Transform( 1, 0, 0, 0, 0.927184, 0.374607, 0, -0.374607, 0.927184, 0.22, 0.539, 0.081 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("rhip:transform")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 1, 0, 0, 0, 0.927184, 0.374607, 0, -0.374607, 0.927184, -0.22, 0.538571, 0.101367 ), Transform( 1, 0, 0, 0, 0.927184, -0.374607, 0, 0.374607, 0.927184, -0.22, 0.539, -0.081 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("rfoot:transform")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 1, 0, 0, 0, 0.981627, 0.190809, 0, -0.190809, 0.981627, -0.22, -0.217, 0.327 ), Transform( 1, 0, 0, 0, 0.83867, -0.544639, 0, 0.544639, 0.83867, -0.22, -0.157, -0.4 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("lfoot:transform")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Transform( 1, 0, 0, 0, 0.83867, -0.544639, 0, 0.544639, 0.83867, 0.22, -0.157258, -0.450026 ), Transform( 1, 0, 0, 0, 0.981627, 0.190809, 0, -0.190809, 0.981627, 0.22, -0.217, 0.267 ) ]
+}

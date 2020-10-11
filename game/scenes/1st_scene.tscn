@@ -12,9 +12,9 @@
 [ext_resource path="res://scenes/mouse_hide.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/checkpoint.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=12]
-[ext_resource path="res://code/Player_rigged_kinematic.gd" type="Script" id=13]
+[ext_resource path="res://scenes/Player_rigged_kinematic.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/health_kit.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/Player_rigged_kinematic.tscn" type="PackedScene" id=15]
+[ext_resource path="res://code/playerrig_outer.gd" type="Script" id=15]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -354,17 +354,17 @@ transform = Transform( -3.19533e-08, 1, 6.15288e-15, -0.731009, -4.37114e-08, 1.
 [node name="Cylinder" parent="Spatial4/StaticBody/TURRET" index="1"]
 transform = Transform( -1, 3.37358e-07, -1.50996e-07, 3.37358e-07, 1, -1.00436e-07, 1.50996e-07, -1.00436e-07, -1, -5.45233e-08, 0.417848, 1.1655e-06 )
 
-[node name="Player" parent="." groups=[
-"Player",
-] instance=ExtResource( 15 )]
+[node name="Player" parent="." instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 77.4838, 10.6366, 0 )
-script = ExtResource( 13 )
+collision_layer = 1
+collision_mask = 1
+script = ExtResource( 15 )
 
 [node name="Spatial" type="Spatial" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173752, 8.08527, -1.71285 )
 
 [node name="InterpolatedCamera" type="Camera" parent="Player"]
-transform = Transform( 1, 6.42119e-17, 0, 1.04615e-23, -1.62921e-07, 1, 6.42119e-17, -1, -1.62921e-07, -0.957504, 8.32322, -1.2906 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.958, 1.291, 6.323 )
 
 [node name="StaticBody" type="StaticBody" parent="Player/InterpolatedCamera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.84884 )
@@ -383,6 +383,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6173, -5.66218, 0 )
 [connection signal="body_entered" from="Area4" to="Area4" method="_on_Area4_body_entered"]
 [connection signal="body_exited" from="Area4" to="Area4" method="_on_Area4_body_exited"]
 [connection signal="unlock" from="key" to="Area5" method="_on_key_unlock"]
+[connection signal="health_regen" from="Spatial/Area" to="Player" method="_on_Area_health_regen"]
 
 [editable path="Spatial4"]
 
