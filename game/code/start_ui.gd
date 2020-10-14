@@ -17,3 +17,17 @@ func _on_window_clickable_area_input_event(camera, event, click_position, click_
 		# Call any saves or frees here if needed
 		# I haven't looked at all the code so not sure
 		get_tree().quit()
+
+
+func _on_clickable_area_mouse_entered():
+	$window.get_surface_material(0).set_emission(Color(1,1,1))
+func _on_clickable_area_mouse_exited():
+	$window.get_surface_material(0).set_emission(Color(0.45,0.45,0.45))
+	
+func _on_clickable_area1_mouse_entered():
+	$door_laser.get_surface_material(0).set_albedo(Color(0,1,0))
+	$door_laser.get_surface_material(0).set_emission(Color(0,1,0))
+
+func _on_clickable_area1_mouse_exited():
+	$door_laser.get_surface_material(0).set_albedo(Color(0.78, 0.09, 0.09))
+	$door_laser.get_surface_material(0).set_emission(Color(1,0,0))

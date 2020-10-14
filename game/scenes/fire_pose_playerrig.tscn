@@ -30,11 +30,11 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0
 script = ExtResource( 5 )
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Armature/Skeleton" index="7"]
-transform = Transform( -1, 2.22823e-07, -1.68853e-08, -2.22823e-07, -1, -1.01214e-07, -1.68853e-08, -1.01214e-07, 1, 2.13465e-07, 1.08397, 0.394339 )
+transform = Transform( -1, 1.62226e-07, -3.17865e-08, -1.62226e-07, -1, -4.06173e-08, -3.17865e-08, -4.06173e-08, 1, 1.70847e-07, 1.08397, 0.394339 )
 bone_name = "lower_arm_l"
 
 [node name="w" parent="Armature/Skeleton/BoneAttachment" index="0" instance=ExtResource( 4 )]
-transform = Transform( 4.49515e-09, 0.025, -1.49755e-09, 2.53035e-09, -1.49755e-09, -0.025, -0.025, 4.49515e-09, -2.53035e-09, 0.0919685, 0.669112, 0.0291973 )
+transform = Transform( 4.49515e-09, 0.025, -1.49755e-09, 2.53035e-09, -1.49755e-09, -0.025, -0.025, 4.49515e-09, -2.53035e-09, 0.0642108, 0.569059, 0.0291972 )
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/ccw = ExtResource( 7 )
