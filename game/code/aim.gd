@@ -6,7 +6,7 @@ var facing = FACING_LEFT
 var ray_origin = Vector3()
 var ray_target=Vector3()
 
-onready var armswing_length = $AnimationPlayer.get_animation("modelsaim").length;
+onready var armswing_length = $AnimationPlayer4.get_animation("modelsaim").length;
 
 onready var cam = get_node("/root/level/Player/InterpolatedCamera")
 
@@ -32,7 +32,7 @@ func _physics_process(_delta):
 			pass
 	
 			
-		if($AnimationPlayer.is_playing()):
+		if($AnimationPlayer4.is_playing()):
 			return
 			
 		#for the "aim" animation, -PI/2 is "top" - corresponds to length in secs
@@ -42,16 +42,16 @@ func _physics_process(_delta):
 		frame = min(frame,1.0)*armswing_length
 		
 		#now, seek to that frame of the "aim" animation
-		$AnimationPlayer.current_animation = "modelsaim"
-		$AnimationPlayer.seek(frame,true)
-		$AnimationPlayer.stop()
+		$AnimationPlayer4.current_animation = "modelsaim"
+		$AnimationPlayer4.seek(frame,true)
+		$AnimationPlayer4.stop()
 		
 		if(abs(angle) > PI/2.0 && facing == FACING_RIGHT):
-			$AnimationPlayer.play("cw")
+			$AnimationPlayer3.play("cw")
 #			animation.play("rotate_cw")
 			facing = FACING_LEFT
 			
 		elif(abs(angle) > PI/2.0 && facing == FACING_LEFT):
-			$AnimationPlayer.play("ccw")
+			$AnimationPlayer2.play("ccw")
 #			animation.play("rotate_ccw")
 			facing = FACING_RIGHT

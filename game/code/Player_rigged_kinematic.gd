@@ -80,7 +80,7 @@ func get_translation_delta():
 	return delta
 	
 func _physics_process(delta):
-	var anim = $fire_pose_playerrig/AnimationPlayer
+	var anim = $fire_pose_playerrig/AnimationPlayer5
 
 	if Input.is_action_pressed("ui_right"):
 		vel.x=lerp(10,sp,0.125)
