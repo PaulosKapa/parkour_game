@@ -45,8 +45,8 @@ func shoot():
 		#and to convert that to a unit vector for the direction of the shot
 		$AnimationPlayer.play("πιστολ_1_σηοοτ")
 		var gun_global_rotation = global_transform.basis.get_rotation_quat().get_euler()
-		#oddly, gun_global_rotation.x contains the gun's rotation about the z-axis
-		var bullet_translation_vector = Vector3(-cos(gun_global_rotation.x),sin(gun_global_rotation.x),0)
+		#we want the gun's rotation about the z-axis
+		var bullet_translation_vector = Vector3(-cos(gun_global_rotation.z),sin(gun_global_rotation.z),0)
 		#nice for the left, so deal with the right
 		if internal.facing == internal.FACING_RIGHT:
 			bullet_translation_vector.x = -bullet_translation_vector.x

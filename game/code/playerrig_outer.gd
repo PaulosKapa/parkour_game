@@ -13,7 +13,7 @@ var health=3
 enum {FACING_LEFT, FACING_RIGHT}
 var facing = FACING_LEFT
 var cant_dash=0
-onready var gun = get_node("/root/level/Player/fire_pose_playerrig/Armature/Skeletone/BoneAttachment/W")
+onready var gun = get_node("/root/level/Player/fire_pose_playerrig/Armature/Skeleton/BoneAttachment/w")
 onready var anim_player = get_node("/root/level/Player/fire_pose_playerrig/AnimationPlayer")
 var _collisions = []
 onready var knees = get_node("/root/level/Player/playernop/torso/rhip/rknee")
