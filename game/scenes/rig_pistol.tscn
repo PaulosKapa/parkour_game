@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://code/rigged_gun.gd" type="Script" id=1]
 [ext_resource path="res://models/pistol_1.gltf" type="PackedScene" id=2]
+[ext_resource path="res://sound/gun_cant_reload.ogg" type="AudioStream" id=3]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.654902, 0.0392157, 1, 1 )
@@ -101,9 +102,10 @@ albedo_color = Color( 0, 0, 0, 1 )
 [sub_resource type="SpatialMaterial" id=13]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=14]
 resource_name = "pistol_reload"
-length = 2.0
+length = 2.1
+step = 0.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("pistol_1/Sphere007:rotation_degrees")
 tracks/0/interp = 1
@@ -123,7 +125,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1.9, 2 ),
+"times": PoolRealArray( 0, 2.01714, 2.04728 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Transform( 0.0819317, 0, 0, 0, 0.0819317, 0, 0, 0, 0.261434, -1.42833, 0.747987, 0 ), Transform( 0.0617191, -0.0538846, 0, 0.0538846, 0.0617191, 0, 0, 0, 0.261434, -1.42833, 0.747987, 0 ), Transform( 0.0819317, 0, 0, 0, 0.0819317, 0, 0, 0, 0.261434, -1.42833, 0.747987, 0 ) ]
@@ -135,7 +137,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1.9, 2 ),
+"times": PoolRealArray( 0, 2.01633, 2.04588 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Transform( 0.07248, 0, 0, 0, 0.07248, 0, 0, 0, 0.233846, -1.6266, 0.439582, 0 ), Transform( -0.0250972, 0.0679962, 0, -0.0679962, -0.0250972, 0, 0, 0, 0.233846, -1.6266, 0.439582, 0 ), Transform( 0.07248, 0, 0, 0, 0.07248, 0, 0, 0, 0.233846, -1.6266, 0.439582, 0 ) ]
@@ -147,14 +149,13 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1.9, 2 ),
+"times": PoolRealArray( 0, 2.01433, 2.04662 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, -180, 0 ), Vector3( 0, -180, 90 ), Vector3( 0, -180, 0 ) ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "πιστολ_1_σηοοτ"
+[sub_resource type="Animation" id=15]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("pistol_1/Sphere009:transform")
@@ -181,13 +182,13 @@ tracks/1/keys = {
 "values": [ Transform( 0.491659, 0, 0, 0, -0.353399, 0, 0, 0, 0.329625, 0.518137, 0.516953, 0 ), Transform( 0.491659, 0, 0, 0, -0.353399, 0, 0, 0, 0.329625, 0.334502, 0.516953, 0 ), Transform( 0.491659, 0, 0, 0, -0.353399, 0, 0, 0, 0.329625, 0.518137, 0.516953, 0 ) ]
 }
 
-[sub_resource type="ParticlesMaterial" id=15]
+[sub_resource type="ParticlesMaterial" id=16]
 emission_shape = 1
 emission_sphere_radius = 0.3
 gravity = Vector3( 0, -0.612, 0 )
 scale = 0.2
 
-[sub_resource type="SpatialMaterial" id=16]
+[sub_resource type="SpatialMaterial" id=17]
 albedo_color = Color( 0.13, 100, 0, 1 )
 metallic_specular = 0.0
 roughness = 0.0
@@ -200,8 +201,8 @@ detail_enabled = true
 detail_blend_mode = 2
 detail_uv_layer = 0
 
-[sub_resource type="SphereMesh" id=17]
-material = SubResource( 16 )
+[sub_resource type="SphereMesh" id=18]
+material = SubResource( 17 )
 radius = 0.3
 height = 0.6
 
@@ -231,7 +232,7 @@ wait_time = 2.0
 [node name="pistol_1" parent="." instance=ExtResource( 2 )]
 
 [node name="Cube" parent="pistol_1" index="0"]
-transform = Transform( 0.491659, 0, -2.88168e-08, 0, -0.353399, 0, 4.29822e-08, 0, 0.329625, 0.518137, 0.516953, 0 )
+transform = Transform( 0.491659, 0, -2.88167e-08, 0, -0.353399, 0, 4.29822e-08, 0, 0.329625, 0.518137, 0.516953, 0 )
 material/0 = SubResource( 1 )
 
 [node name="Cylinder" parent="pistol_1" index="1"]
@@ -249,9 +250,11 @@ material/0 = SubResource( 4 )
 material/0 = SubResource( 5 )
 
 [node name="Cube004" parent="pistol_1" index="6"]
+transform = Transform( 0.0819317, 0, 0, 0, 0.0819317, 0, 0, 0, 0.261434, -1.42833, 0.747987, 0 )
 material/0 = SubResource( 6 )
 
 [node name="Cube005" parent="pistol_1" index="7"]
+transform = Transform( 0.07248, 0, 0, 0, 0.07248, 0, 0, 0, 0.233846, -1.6266, 0.439582, 0 )
 material/0 = SubResource( 7 )
 
 [node name="Sphere007" parent="pistol_1" index="8"]
@@ -276,8 +279,8 @@ transform = Transform( -0.402016, 1.30993e-07, 0, 2.13415e-14, 6.54967e-08, -0.4
 material/0 = SubResource( 13 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/pistol_reload = SubResource( 18 )
-"anims/πιστολ_1_σηοοτ" = SubResource( 14 )
+anims/pistol_reload = SubResource( 14 )
+"anims/πιστολ_1_σηοοτ" = SubResource( 15 )
 
 [node name="Particles" type="Particles" parent="."]
 transform = Transform( 3.36043e-07, -1, 0.000453785, 0.999999, -1.62921e-07, -0.00109956, 0.00109956, 0.000453785, 0.999999, 1.1154, 0.501231, 0 )
@@ -286,14 +289,18 @@ amount = 45
 lifetime = 0.5
 one_shot = true
 speed_scale = 26.06
-process_material = SubResource( 15 )
-draw_pass_1 = SubResource( 17 )
+process_material = SubResource( 16 )
+draw_pass_1 = SubResource( 18 )
 
 [node name="fire" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 19 )
 
 [node name="reload2" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 20 )
+
+[node name="gun_not_reload" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -32.311
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]
 [connection signal="timeout" from="superpower" to="." method="_on_superpower_timeout"]

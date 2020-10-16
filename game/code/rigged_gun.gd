@@ -18,7 +18,6 @@ func super_power():
 
 func cant_shoot():
 	cant_shoot_var=1
-	
 	return cant_shoot_var
 	
 func _process(_delta):
@@ -31,10 +30,14 @@ func _process(_delta):
 		
 func shoot():
 	if bullets_left<=0:
-			$reload.start()
-			$AnimationPlayer.play("pistol_reload")
-			$reload2.play()
-			cant_shoot()
+		$reload.start()
+		$AnimationPlayer.play("pistol_reload")
+		$reload2.play()
+		if Input.is_action_just_pressed("click"):
+			$gun_not_reload.play(true)
+		if Input.is_action_pressed("click"):
+			$gun_not_reload.play(true)
+		cant_shoot()
 	elif cant_shoot_var==0:
 		$Particles.set_emitting(true)
 		$fire.play(true)
@@ -64,7 +67,6 @@ func _on_Timer_timeout():
 
 
 func _on_reload_timeout():
-
 	bullets_left=9
 	cant_shoot_var=0
 	print(bullets_left)
