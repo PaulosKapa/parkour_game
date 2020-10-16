@@ -34,7 +34,7 @@ transform = Transform( -1, 1.62226e-07, -3.17865e-08, -1.62226e-07, -1, -4.06173
 bone_name = "lower_arm_l"
 
 [node name="w" parent="Armature/Skeleton/BoneAttachment" index="0" instance=ExtResource( 4 )]
-transform = Transform( 4.49515e-09, 0.025, -1.49755e-09, 2.53035e-09, -1.49755e-09, -0.025, -0.025, 4.49515e-09, -2.53035e-09, 0.0642108, 0.569059, 0.0291972 )
+transform = Transform( 6.92664e-08, 0.25, 3.77277e-08, 0.249859, -7.04928e-08, 0.00838477, 0.00838477, 3.53834e-08, -0.249859, 0.0435468, 0.81309, 0.029197 )
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/ccw = ExtResource( 7 )
@@ -43,19 +43,19 @@ anims/modelsaim = ExtResource( 3 )
 anims/modelswalk = ExtResource( 2 )
 
 [node name="lhip" type="CollisionShape" parent="." index="2"]
-transform = Transform( 1, 0, 0, 0, 0.927184, -0.374607, 0, 0.374607, 0.927184, 0.22, 0.538555, -0.0915762 )
+transform = Transform( 1, 0, 0, 0, 0.927184, 0.374607, 0, -0.374607, 0.927184, 0.22, 0.539, 0.081 )
 shape = SubResource( 1 )
 
 [node name="rhip" type="CollisionShape" parent="." index="3"]
-transform = Transform( 1, 0, 0, 0, 0.927184, 0.374607, 0, -0.374607, 0.927184, -0.22, 0.538571, 0.101367 )
+transform = Transform( 1, 0, 0, 0, 0.927184, -0.374607, 0, 0.374607, 0.927184, -0.22, 0.539, -0.081 )
 shape = SubResource( 1 )
 
 [node name="rfoot" type="CollisionShape" parent="." index="4"]
-transform = Transform( 1, 0, 0, 0, 0.981627, 0.190809, 0, -0.190809, 0.981627, -0.22, -0.217, 0.327 )
+transform = Transform( 1, 0, 0, 0, 0.83867, -0.544639, 0, 0.544639, 0.83867, -0.22, -0.157, -0.4 )
 shape = SubResource( 2 )
 
 [node name="lfoot" type="CollisionShape" parent="." index="5"]
-transform = Transform( 1, 0, 0, 0, 0.83867, -0.544639, 0, 0.544639, 0.83867, 0.22, -0.157258, -0.450026 )
+transform = Transform( 1, 0, 0, 0, 0.981627, 0.190809, 0, -0.190809, 0.981627, 0.22, -0.217, 0.267 )
 shape = SubResource( 2 )
 
 [node name="rarm" type="CollisionShape" parent="." index="6"]

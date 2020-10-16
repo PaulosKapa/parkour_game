@@ -18,9 +18,13 @@ func super_power():
 
 func cant_shoot():
 	cant_shoot_var=1
+	
 	return cant_shoot_var
 	
 func _process(_delta):
+	if cant_shoot_var==1:
+		$pistol_1/Sphere009.get_surface_material(0).set_albedo(Color(1,0,0))
+	else: $pistol_1/Sphere009.get_surface_material(0).set_albedo(Color(0,1,0))
 	if Input.is_action_pressed("click"):
 		mouse_position = get_tree().root.get_mouse_position()
 		shoot()
@@ -28,11 +32,15 @@ func _process(_delta):
 func shoot():
 	if bullets_left<=0:
 			$reload.start()
+			$AnimationPlayer.play("pistol_reload")
+			$reload2.play()
 			cant_shoot()
 	elif cant_shoot_var==0:
+		$Particles.set_emitting(true)
+		$fire.play(true)
 		#we need the angle at which the player's pistol is turned, relative to its own (0,0,1)
 		#and to convert that to a unit vector for the direction of the shot
-		
+		$AnimationPlayer.play("πιστολ_1_σηοοτ")
 		var gun_global_rotation = global_transform.basis.get_rotation_quat().get_euler()
 		#oddly, gun_global_rotation.x contains the gun's rotation about the z-axis
 		var bullet_translation_vector = Vector3(-cos(gun_global_rotation.x),sin(gun_global_rotation.x),0)
@@ -50,12 +58,13 @@ func shoot():
 		cant_shoot()
 
 func _on_Timer_timeout():
+	
 	cant_shoot_var=0
 	$Timer.stop()
 
 
 func _on_reload_timeout():
-	
+
 	bullets_left=9
 	cant_shoot_var=0
 	print(bullets_left)
