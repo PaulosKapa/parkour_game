@@ -1,7 +1,7 @@
 extends StaticBody
 onready var sho = get_node("/root/level/Spatial4/StaticBody/Spatial")
 onready var kil = get_node("/root/level/Player")
-onready var laser = get_node("./TURRET/Cylinder/laser/rotation_point")
+onready var laser = get_node("./sentry/Plane001/Cylinder001/rotation_point")
 var space_state
 var target
 var health=3
@@ -17,10 +17,10 @@ func _ready():
 		
 func _process(_delta):
 	if target:
-		$TURRET/Cylinder.look_at(target.global_transform.origin, Vector3.UP)
-		$TURRET/Cylinder.rotate_object_local(Vector3(0, 1, 0), PI)
-		$TURRET/Cylinder.rotate_object_local(Vector3(0, 0, -1), PI/2)
-		$TURRET/Cylinder/Torus001.rotate_z(deg2rad(15))
+		$sentry/Plane001.look_at(target.global_transform.origin, Vector3.UP)
+		$sentry/Plane001.rotate_object_local(Vector3(0, 1, 0), PI)
+		$sentry/Plane001.rotate_object_local(Vector3(0, 0, -1), PI/2)
+		#$TURRET/Cylinder/Torus001.rotate_z(deg2rad(15))
 		sho.shoot(target)
 					
 func _on_Area_body_entered(body):

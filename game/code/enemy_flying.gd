@@ -25,6 +25,7 @@ func _ready():
 	space_state = get_world().direct_space_state
 	add_to_group("enemy")
 func _physics_process(delta):
+	$enemy_flying/Icosphere001.rotate_y(rad2deg(1))
 	$enemy_flying/Torus002.rotate_x(rad2deg(0.001))
 	$enemy_flying/Cube.rotate_x(rad2deg(0.001))
 

@@ -45,13 +45,14 @@ albedo_color = Color( 0.121569, 0.0470588, 1, 1 )
 [node name="level" type="Spatial"]
 
 [node name="Spatial2" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.582265, 0, 0, 0, 1, 0, 0, 0, 1.34466, 63.7195, 13.8718, 0 )
+transform = Transform( -9.4863e-08, 0, 1.34466, 0, 1, 0, -0.582265, 0, -2.19073e-07, 63.7195, 13.8718, 0 )
 
 [node name="Area" parent="Spatial2" index="0"]
 transform = Transform( 1.94707e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.94707e-07, -8.51092e-15, 0, 0, 0 )
 
 [node name="CollisionPolygon" parent="Spatial2/Area" index="0"]
-transform = Transform( -0.0527559, -3.10218e-08, 5.05414e-15, -2.49739e-06, -2.0639, 3.22874e-06, 4.06876e-13, 3.22874e-06, 17.754, 0.11176, 0.027359, 0.00681782 )
+transform = Transform( 1.69887e-08, 7.44469e-07, 39.3077, 0.0527559, -3.36252e-07, 1.23061e-05, 8.59503e-09, 2.0639, -2.89249e-06, 0.111763, 0.027359, 0.00681782 )
+polygon = PoolVector2Array( 10, 10, 10, 10, 10, -10, -10, -10 )
 
 [node name="KinematicBody" parent="Spatial2" index="1"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
