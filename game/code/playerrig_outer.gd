@@ -53,7 +53,6 @@ func _process(_delta):
 			1:
 				$health_rotate/health2.hide()
 				$health_rotate/health.hide()
-			#using hide() instead of queue_free(), so they reappear if we add health regen
 			0:
 				GameData.restore("user://saves")
 				var _ret = get_tree().reload_current_scene()

@@ -45,7 +45,19 @@ albedo_color = Color( 0.121569, 0.0470588, 1, 1 )
 [node name="level" type="Spatial"]
 
 [node name="Spatial2" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 63.7195, 13.8718, 0 )
+transform = Transform( 0.582265, 0, 0, 0, 1, 0, 0, 0, 1.34466, 63.7195, 13.8718, 0 )
+
+[node name="Area" parent="Spatial2" index="0"]
+transform = Transform( 1.94707e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.94707e-07, -8.51092e-15, 0, 0, 0 )
+
+[node name="CollisionPolygon" parent="Spatial2/Area" index="0"]
+transform = Transform( -0.0527559, -3.10218e-08, 5.05414e-15, -2.49739e-06, -2.0639, 3.22874e-06, 4.06876e-13, 3.22874e-06, 17.754, 0.11176, 0.027359, 0.00681782 )
+
+[node name="KinematicBody" parent="Spatial2" index="1"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+
+[node name="enemy_flying" parent="Spatial2/KinematicBody" index="0"]
+transform = Transform( 0.313545, 0, 0, 0, 0.313545, 0, 2.13163e-14, 0, 0.712, 0.0138239, 0, -0.0177841 )
 
 [node name="RigidBody" parent="." instance=ExtResource( 2 )]
 
@@ -383,7 +395,7 @@ transform = Transform( 9.99999, 0.0141372, 0, -0.0141372, 9.99999, 0, 0, 0, 1, 0
 shape = SubResource( 12 )
 
 [node name="Spatial" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6173, -5.66218, 0 )
+transform = Transform( 0.820769, 0.00127268, -0.000336607, -0.00127265, 0.820769, 6.25047e-05, 0.000336704, -6.19829e-05, 0.82077, -12.6173, -5.66218, 0 )
 [connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area2" to="Area2" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area3" to="Area3" method="_on_Area_body_entered"]
@@ -391,6 +403,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6173, -5.66218, 0 )
 [connection signal="body_exited" from="Area4" to="Area4" method="_on_Area4_body_exited"]
 [connection signal="unlock" from="key" to="Area5" method="_on_key_unlock"]
 [connection signal="health_regen" from="Spatial/Area" to="Player" method="_on_Area_health_regen"]
+
+[editable path="Spatial2"]
+
+[editable path="RigidBody"]
 
 [editable path="Spatial4"]
 
