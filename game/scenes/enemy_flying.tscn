@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://code/enemy_flying.gd" type="Script" id=1]
 [ext_resource path="res://models/enemy_flying.gltf" type="PackedScene" id=2]
+[ext_resource path="res://sound/enem_flying.ogg" type="AudioStream" id=3]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0, 0, 0, 1 )
@@ -102,6 +103,11 @@ material/0 = SubResource( 7 )
 [node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 0.161885, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 8 )
+
+[node name="flying_sound" type="AudioStreamPlayer3D" parent="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.38926, 0, 0, 0.0160593 )
+stream = ExtResource( 3 )
+autoplay = true
 [connection signal="body_entered" from="Area" to="KinematicBody" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="KinematicBody" method="_on_Area_body_exited"]
 

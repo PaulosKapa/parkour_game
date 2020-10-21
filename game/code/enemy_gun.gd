@@ -14,6 +14,7 @@ func shoot(target):
 	if cant_shoot_var==0:
 		var bullet = Bullet.instance()
 		Parent.add_child(bullet)
+		$laser.play()
 	
 		var spat = get_node("/root/level/Spatial4/StaticBody/Spatial")
 		var spatial_pos=spat.global_transform.origin

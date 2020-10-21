@@ -22,6 +22,7 @@ func die(damage):
 		queue_free()
 
 func _ready():
+	$flying_sound.play()
 	space_state = get_world().direct_space_state
 	add_to_group("enemy")
 func _physics_process(delta):
@@ -30,6 +31,7 @@ func _physics_process(delta):
 	$enemy_flying/Cube.rotate_x(rad2deg(0.001))
 
 func _process(delta):
+	
 	if target:
 		$"..".look_at(target.global_transform.origin, Vector3.UP)
 		move_to_target(delta)
@@ -44,10 +46,10 @@ func move_to_target(_delta):
 		if(col):
 			var groups = col.collider.get_groups()
 			if(groups.has("Player")):
-				#col.collider.hurt()
-				#kil.health=kil.health-2
+				col.collider.hurt()
+				kil.health=kil.health-2
 				print("Player was hurt by touching an enemy!")
-			#queue_free()
+			queue_free()
 			
 func _on_Area_body_entered(body):
 		if body.is_in_group("Player"):
