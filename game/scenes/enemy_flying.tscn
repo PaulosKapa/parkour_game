@@ -1,10 +1,31 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://code/enemy_flying.gd" type="Script" id=1]
 [ext_resource path="res://models/enemy_flying.gltf" type="PackedScene" id=2]
 [ext_resource path="res://sound/enem_flying.ogg" type="AudioStream" id=3]
+[ext_resource path="res://textures/satrt_ui/dust.png" type="Texture" id=4]
 
-[sub_resource type="SpatialMaterial" id=1]
+[sub_resource type="SpatialMaterial" id=12]
+flags_transparent = true
+albedo_color = Color( 0.384314, 0.384314, 0.384314, 1 )
+albedo_texture = ExtResource( 4 )
+emission_enabled = true
+emission = Color( 0.211765, 0.211765, 0.211765, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 1
+emission_sphere_radius = 0.27
+spread = 0.0
+gravity = Vector3( 0, 1, 0 )
+scale = 0.4
+hue_variation = -1.0
+
+[sub_resource type="SphereMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 0, 0, 0, 1 )
 metallic = 1.0
 roughness = 0.0
@@ -14,15 +35,15 @@ emission_energy = 16.0
 emission_operator = 1
 emission_on_uv2 = false
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=5]
 albedo_color = Color( 0.580392, 0.337255, 0.337255, 1 )
 metallic = 1.0
 metallic_specular = 0.55
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=6]
 albedo_color = Color( 100, 100, 0, 1 )
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=7]
 albedo_color = Color( 0.466667, 0.443137, 0.443137, 1 )
 emission_enabled = true
 emission = Color( 0.152941, 0.145098, 0.145098, 1 )
@@ -30,7 +51,7 @@ emission_energy = 5.23
 emission_operator = 1
 emission_on_uv2 = false
 
-[sub_resource type="SpatialMaterial" id=5]
+[sub_resource type="SpatialMaterial" id=8]
 albedo_color = Color( 0.494118, 0.494118, 0.494118, 1 )
 metallic = 0.37
 metallic_specular = 1.0
@@ -41,10 +62,10 @@ emission_energy = 7.42
 emission_operator = 0
 emission_on_uv2 = false
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=9]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="SpatialMaterial" id=10]
 albedo_color = Color( 0.52549, 0, 0.0941176, 1 )
 emission_enabled = true
 emission = Color( 0.0666667, 0.0196078, 0.0196078, 1 )
@@ -52,7 +73,7 @@ emission_energy = 1.0
 emission_operator = 1
 emission_on_uv2 = false
 
-[sub_resource type="SphereShape" id=8]
+[sub_resource type="SphereShape" id=11]
 radius = 0.717173
 
 [node name="Spatial" type="Spatial"]
@@ -71,38 +92,46 @@ polygon = PoolVector2Array( -10, 10, 10, 10, 10, -10, -10, -10 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0160593 )
 script = ExtResource( 1 )
 
+[node name="damaged" type="Particles" parent="KinematicBody"]
+transform = Transform( -1.165, 0, 4.1056e-07, 0, 1.422, 0, -3.79605e-07, 0, -1.26, -0.0279779, 0.129545, 0.0160593 )
+material_override = SubResource( 12 )
+emitting = false
+amount = 37
+process_material = SubResource( 2 )
+draw_pass_1 = SubResource( 3 )
+
 [node name="enemy_flying" parent="KinematicBody" instance=ExtResource( 2 )]
 transform = Transform( 0.31355, 0, 0, 0, 0.313549, 0, 0, 0, 0.711996, 0, 0, 0 )
 
 [node name="Torus001" parent="KinematicBody/enemy_flying" index="0"]
 transform = Transform( -1, -3.25841e-07, 5.30863e-14, 0, -1.62921e-07, -1, 3.25841e-07, -1, 1.62921e-07, 0, 0, 0 )
-material/0 = SubResource( 1 )
+material/0 = SubResource( 4 )
 
 [node name="Icosphere001" parent="KinematicBody/enemy_flying" index="1"]
 transform = Transform( 1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0 )
-material/0 = SubResource( 2 )
+material/0 = SubResource( 5 )
 
 [node name="Cone001" parent="KinematicBody/enemy_flying" index="2"]
 transform = Transform( -1, -3.25841e-07, 5.30863e-14, 0, -1.62921e-07, -1, 3.25841e-07, -1, 1.62921e-07, 0, 0, 0 )
-material/0 = SubResource( 3 )
+material/0 = SubResource( 6 )
 
 [node name="Torus002" parent="KinematicBody/enemy_flying" index="3"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-material/0 = SubResource( 4 )
+material/0 = SubResource( 7 )
 
 [node name="Cylinder002_Cylinder024" parent="KinematicBody/enemy_flying" index="4"]
 transform = Transform( -1, -3.25841e-07, 5.30863e-14, 0, -1.62921e-07, -1, 3.25841e-07, -1, 1.62921e-07, 0, 0, 0 )
-material/0 = SubResource( 5 )
+material/0 = SubResource( 8 )
 
 [node name="Cylinder_Cylinder025" parent="KinematicBody/enemy_flying" index="5"]
-material/0 = SubResource( 6 )
+material/0 = SubResource( 9 )
 
 [node name="Cube" parent="KinematicBody/enemy_flying" index="6"]
-material/0 = SubResource( 7 )
+material/0 = SubResource( 10 )
 
 [node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 0.161885, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 8 )
+shape = SubResource( 11 )
 
 [node name="flying_sound" type="AudioStreamPlayer3D" parent="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.38926, 0, 0, 0.0160593 )

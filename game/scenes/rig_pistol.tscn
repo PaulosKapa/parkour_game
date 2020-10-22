@@ -1,8 +1,7 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://code/rigged_gun.gd" type="Script" id=1]
 [ext_resource path="res://models/pistol_1.gltf" type="PackedScene" id=2]
-[ext_resource path="res://sound/gun_cant_reload.ogg" type="AudioStream" id=3]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.654902, 0.0392157, 1, 1 )
@@ -297,10 +296,6 @@ stream = SubResource( 19 )
 
 [node name="reload2" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 20 )
-
-[node name="gun_not_reload" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-volume_db = -32.311
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]
 [connection signal="timeout" from="superpower" to="." method="_on_superpower_timeout"]

@@ -57,7 +57,7 @@ polygon = PoolVector2Array( 10, 10, 10, 10, 10, -10, -10, -10 )
 [node name="KinematicBody" parent="Spatial2" index="1"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
 
-[node name="enemy_flying" parent="Spatial2/KinematicBody" index="0"]
+[node name="enemy_flying" parent="Spatial2/KinematicBody" index="1"]
 transform = Transform( 0.313545, 0, 0, 0, 0.313545, 0, 2.13163e-14, 0, 0.712, 0.0138239, 0, -0.0177841 )
 
 [node name="RigidBody" parent="." instance=ExtResource( 2 )]

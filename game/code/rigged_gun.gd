@@ -20,7 +20,7 @@ func cant_shoot():
 	return cant_shoot_var
 
 func reload():
-	if Input.is_action_just_pressed("click") and cant_shoot_var == 0:
+	if cant_shoot_var == 0:
 		$reload.start()
 		$reload2.play()
 		$AnimationPlayer.play("pistol_reload")

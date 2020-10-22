@@ -17,9 +17,11 @@ func get_translation_delta():
 
 func die(damage):
 	health=health-damage
-	if health==0:
-		kil.kill()
-		queue_free()
+	match health:
+		1: $damaged.set_emitting(true)
+		0:
+			kil.kill()
+			queue_free()
 
 func _ready():
 	$flying_sound.play()
@@ -49,14 +51,11 @@ func move_to_target(_delta):
 				col.collider.hurt()
 				kil.health=kil.health-2
 				print("Player was hurt by touching an enemy!")
-			queue_free()
 			
 func _on_Area_body_entered(body):
 		if body.is_in_group("Player"):
 			target = body
-			print(1)
 
 func _on_Area_body_exited(body):
 		if body.is_in_group("Player"):
 			target = null
-			print(2)
