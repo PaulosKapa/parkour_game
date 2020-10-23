@@ -359,8 +359,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.1742, -5.73635, 0.0775204 )
 [node name="Spatial4" parent="." instance=ExtResource( 12 )]
 transform = Transform( 1, 8.74228e-08, 8.74227e-08, -8.74228e-08, 1, -3.25841e-07, -8.74228e-08, 3.25841e-07, 1, 32.4692, -4.47596, -0.0945276 )
 
-[node name="Spatial" parent="Spatial4/StaticBody" index="0"]
-transform = Transform( -4.37114e-09, 3.76985e-16, 0.1, -2.3259e-15, 0.1, -9.94313e-17, -0.1, -1.25323e-15, -4.37114e-09, 0.327041, 1.03261, -0.146217 )
+[node name="Spatial" parent="Spatial4/StaticBody/sentry/pivot_point_sentry" index="1"]
+transform = Transform( 0.758388, 0, 0, 0, 0.134181, 0, 0, 0, 0.17069, 0, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 77.4838, 10.6366, 0 )
@@ -398,5 +398,7 @@ transform = Transform( 0.820769, 0.00127268, -0.000336607, -0.00127265, 0.820769
 [editable path="RigidBody"]
 
 [editable path="Spatial4"]
+
+[editable path="Spatial4/StaticBody/sentry"]
 
 [editable path="Spatial"]
