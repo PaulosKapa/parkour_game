@@ -32,4 +32,5 @@ func _on_Area_body_entered(body):
 func _on_Area_body_exited(body):
 	if body.is_in_group("Player"):
 		target= null
-		laser.orthonormalize()
+		#laser.orthonormalize() undid the "scale to (0.006,0.006,0.006)" as well
+		laser.scale_object_local(Vector3(1, .002, 1)) #undoes the scale operation done when entered
