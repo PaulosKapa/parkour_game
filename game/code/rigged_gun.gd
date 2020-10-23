@@ -36,9 +36,7 @@ func _process(_delta):
 		shoot()
 		
 func shoot():
-	if bullets_left<=0:
-		reload()
-	elif cant_shoot_var==0:
+	if cant_shoot_var==0:
 		$Particles.set_emitting(true)
 		$fire.play(true)
 		#we need the angle at which the player's pistol is turned, relative to its own (0,0,1)
@@ -59,6 +57,10 @@ func shoot():
 		bullets_left=bullets_left-1
 		$Timer.start()
 		cant_shoot()
+	#auto-reload	
+	if bullets_left<=0:
+		reload()
+	
 
 func _on_Timer_timeout():
 	cant_shoot_var=0
