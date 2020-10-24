@@ -26,10 +26,14 @@ func _on_Area_body_entered(body):
 	# start laser show
 	if body.is_in_group("Player"):
 		target= body
+		laser.translate_object_local(Vector3(0,-200,0))
 		laser.scale_object_local(Vector3(1, 200, 1))
+		
 
 func _on_Area_body_exited(body):
 	if body.is_in_group("Player"):
 		target= null
 		#laser.orthonormalize() undid the "scale to (0.006,0.006,0.006)" as well
-		laser.scale_object_local(Vector3(1, .002, 1)) #undoes the scale operation done when entered
+		laser.scale_object_local(Vector3(1, .005, 1)) #undoes the scale operation done when entered
+		
+		laser.translate_object_local(Vector3(0,200,0))

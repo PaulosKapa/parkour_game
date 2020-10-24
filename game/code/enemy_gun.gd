@@ -29,6 +29,9 @@ func shoot(target):
 		bullet.global_rotate(Vector3(1, 0, 0), 300)
 		bullet.set_speed(bullet_speed_vector.normalized())
 		bullet.global_translate(bullet_translation_vector)
+		#more reliable "absolute positioning"
+		bullet.global_transform.origin = bullet_spawn_location
+		
 		$Timer.start()
 		
 		cant_shoot()
