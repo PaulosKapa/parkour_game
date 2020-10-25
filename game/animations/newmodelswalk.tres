@@ -1,9 +1,8 @@
 [gd_resource type="Animation" format=2]
 
 [resource]
-resource_name = "walk"
+resource_name = "modelswalk"
 length = 0.875
-loop = true
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Armature/Skeleton:lower_leg_l")
 tracks/0/interp = 1

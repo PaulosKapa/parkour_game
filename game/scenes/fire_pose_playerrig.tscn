@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://models/fire_pose_playerrig.glb" type="PackedScene" id=1]
 [ext_resource path="res://animations/modelswalk.tres" type="Animation" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://animations/aim.tres" type="Animation" id=8]
 [ext_resource path="res://animations/walk_gltf.tres" type="Animation" id=9]
 [ext_resource path="res://animations/modelsdefault.tres" type="Animation" id=10]
+[ext_resource path="res://animations/newmodelswalk.tres" type="Animation" id=11]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.12
@@ -28,14 +29,14 @@ radius = 0.08
 height = 0.6
 
 [node name="fire_pose_playerrig" instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 script = ExtResource( 5 )
 
 [node name="Skeleton" parent="Armature" index="0"]
 bones/6/bound_children = [ NodePath("BoneAttachment") ]
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Armature/Skeleton" index="7"]
-transform = Transform( -1, 1.57621e-07, -1.76146e-08, -1.57621e-07, -1, -2.79036e-07, -1.76146e-08, -2.79036e-07, 1, 1.67608e-07, 1.08397, 0.394339 )
+transform = Transform( -7.55287e-08, -0.951057, -0.309018, 1, -6.05968e-08, 7.61925e-08, -9.77527e-08, -0.309018, 0.951057, -0.668889, 2.29328, 0.177004 )
 bone_name = "lower_arm_l"
 
 [node name="w" parent="Armature/Skeleton/BoneAttachment" index="0" instance=ExtResource( 4 )]
@@ -45,7 +46,7 @@ transform = Transform( 6.92664e-08, 0.25, 3.77277e-08, 0.249859, -7.04928e-08, 0
 anims/ccw = ExtResource( 7 )
 anims/cw = ExtResource( 6 )
 anims/modelsaim = ExtResource( 3 )
-anims/modelswalk = ExtResource( 2 )
+anims/modelswalk = ExtResource( 11 )
 
 [node name="lhip" type="CollisionShape" parent="." index="2"]
 transform = Transform( 1, 0, 0, 0, 0.927184, -0.374607, 0, 0.374607, 0.927184, 0.22, 0.538555, -0.0915762 )
