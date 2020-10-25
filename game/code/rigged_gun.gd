@@ -19,7 +19,6 @@ func cant_shoot():
 	return cant_shoot_var
 
 func reload():
-	cant_shoot()
 	if cant_shoot_var == 1:
 		$reload.start()
 		$reload2.play()
@@ -36,9 +35,9 @@ func _process(_delta):
 		shoot()
 		
 func shoot():
-	if cant_shoot_var==0:
+	if cant_shoot_var==0 and bullets_left>0:
 		print(bullets_left)
-		$ammo.scale_object_local(Vector3(1,0.9,1))
+		$ammo.scale_object_local(Vector3(1,0.8,1))
 		$Particles.set_emitting(true)
 		$fire.play(true)
 		#we need the angle at which the player's pistol is turned, relative to its own (0,0,1)
@@ -61,7 +60,7 @@ func shoot():
 		$Timer.start()
 
 
-	if bullets_left<=0:
+	elif cant_shoot_var == 0 and bullets_left<=0:
 		cant_shoot()
 		reload()
 	
@@ -73,6 +72,7 @@ func _on_Timer_timeout():
 func _on_reload_timeout():
 	bullets_left=9
 	cant_shoot_var=0
+	$ammo.scale_object_local(Vector3(1,7.5,1))
 	$reload.stop()
 
 func _on_superpower_timeout():
