@@ -54,6 +54,7 @@ func _on_Area_body_exited(body):
 		#laser.orthonormalize() undid the "scale to (0.006,0.006,0.006)" as well
 		laser.scale_object_local(Vector3(1, 1.0/beam_length, 1)) #undoes the scale operation done when entered
 		
+<<<<<<< Updated upstream
 		laser.translate_object_local(Vector3(0,beam_length,0))
 
 func set_beam_length(new_length):
@@ -68,3 +69,7 @@ func set_beam_length(new_length):
 	laser.translate_object_local(Vector3(0,-beam_length,0))
 	laser.scale_object_local(Vector3(1, beam_length, 1))
 	
+=======
+		laser.translate_object_local(Vector3(0,200,0))
+
+>>>>>>> Stashed changes
