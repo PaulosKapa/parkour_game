@@ -36,7 +36,7 @@ script = ExtResource( 5 )
 bones/6/bound_children = [ NodePath("BoneAttachment") ]
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Armature/Skeleton" index="7"]
-transform = Transform( -7.55287e-08, -0.951057, -0.309018, 1, -6.05968e-08, 7.61925e-08, -9.77527e-08, -0.309018, 0.951057, -0.668889, 2.29328, 0.177004 )
+transform = Transform( -1.3293e-08, -0.951057, -0.309017, 1, -1.72811e-15, 9.10937e-08, -9.3199e-08, -0.309017, 0.951057, -0.668889, 2.29328, 0.177004 )
 bone_name = "lower_arm_l"
 
 [node name="w" parent="Armature/Skeleton/BoneAttachment" index="0" instance=ExtResource( 4 )]

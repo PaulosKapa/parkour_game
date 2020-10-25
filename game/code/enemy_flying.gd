@@ -48,14 +48,13 @@ func move_to_target(_delta):
 		if(col):
 			var groups = col.collider.get_groups()
 			if(groups.has("Player")):
-				col.collider.hurt()
-				kil.health=kil.health-2
-				print("Player was hurt by touching an enemy!")
-			
+				#col.collider.hurt()
+				#kil.health=kil.health-2
+				pass
 func _on_Area_body_entered(body):
-		if body.is_in_group("Player"):
-			target = body
+	if body.is_in_group("Player"):
+		target = body
 
 func _on_Area_body_exited(body):
-		if body.is_in_group("Player"):
-			target = null
+	if body.is_in_group("Player"):
+		target = null

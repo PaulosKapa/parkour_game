@@ -12,7 +12,6 @@ var bullets_left=9
 func super_power():
 	if kil.kill_var==1:
 		$superpower.start()
-		bullets_left=bullets_left+kil.kill_var*2
 		$Timer.wait_time=0.1
 
 func cant_shoot():
@@ -20,11 +19,12 @@ func cant_shoot():
 	return cant_shoot_var
 
 func reload():
-	if cant_shoot_var == 0:
+	cant_shoot()
+	if cant_shoot_var == 1:
 		$reload.start()
 		$reload2.play()
 		$AnimationPlayer.play("pistol_reload")
-		cant_shoot()
+
 func _process(_delta):
 	match cant_shoot_var:
 		1:
@@ -37,6 +37,8 @@ func _process(_delta):
 		
 func shoot():
 	if cant_shoot_var==0:
+		print(bullets_left)
+		$ammo.scale_object_local(Vector3(1,0.9,1))
 		$Particles.set_emitting(true)
 		$fire.play(true)
 		#we need the angle at which the player's pistol is turned, relative to its own (0,0,1)
@@ -55,10 +57,12 @@ func shoot():
 		bullet.set_speed(bullet_translation_vector)
 		bullet.global_transform.origin = global_transform.origin
 		bullets_left=bullets_left-1
-		$Timer.start()
 		cant_shoot()
-	#auto-reload	
+		$Timer.start()
+
+
 	if bullets_left<=0:
+		cant_shoot()
 		reload()
 	
 
