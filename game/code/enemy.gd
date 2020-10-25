@@ -53,7 +53,7 @@ func _on_Area_body_exited(body):
 		target= null
 		#laser.orthonormalize() undid the "scale to (0.006,0.006,0.006)" as well
 		laser.scale_object_local(Vector3(1, 1.0/beam_length, 1)) #undoes the scale operation done when entered
-		
+		#yeah it doesnt work. Also the<<<<<,====== and >>>>>>>> you have put make an error
 <<<<<<< Updated upstream
 		laser.translate_object_local(Vector3(0,beam_length,0))
 
