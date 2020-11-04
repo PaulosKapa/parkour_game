@@ -70,12 +70,12 @@ func _process(_delta):
 
 func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
-		vel.x=lerp(10,sp,0.125)
+		vel.x=2*lerp(10,sp,0.125)
 		facing=FACING_RIGHT
 		anim_player.play("modelswalk")
 	elif Input.is_action_pressed("ui_left"):
 		anim_player.play("modelswalk")
-		vel.x=lerp(-10,-sp,0.125)
+		vel.x=2*lerp(-10,-sp,0.125)
 		facing=FACING_LEFT
 		
 	elif Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_left"):
@@ -100,8 +100,8 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("dash") and cant_dash==0:
 		match facing:
-			FACING_RIGHT:vel.x=sp*2
-			FACING_LEFT:vel.x=-sp*2
+			FACING_RIGHT:vel.x=sp*4
+			FACING_LEFT:vel.x=-sp*4
 		cant_dash=1
 		$doublejump.start()
 	if get_translation_delta().y == 0:
