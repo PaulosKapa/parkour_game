@@ -8,6 +8,7 @@ transform = Transform( 0.758388, 0, 0, 0, 0.134181, 0, 0, 0, 0.17069, 0, 0, 0 )
 script = ExtResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
 
 [node name="laser" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 2 )

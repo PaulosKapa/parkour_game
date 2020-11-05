@@ -2,7 +2,7 @@ extends Spatial
 onready var Parent = get_parent().get_parent().get_parent()
 onready var Camera = get_node("/root/level/Player/InterpolatedCamera")
 onready var Bullet= preload("res://scenes/bullet.tscn")
-onready var laser_sound = get_node("/root/level/Spatial4/StaticBody/sentry/pivot_point_sentry/Spatial/laser")
+onready var laser_sound = get_node("/root/level/Spatial4/StaticBody/sentry/pivot_point_sentry/gun/laser")
 onready var mouse_position = Vector3(0,0,0)
 var bullet_spawn_location = Vector3(0,0,0)
 var cant_shoot_var=0
@@ -14,10 +14,10 @@ func cant_shoot():
 func shoot(target):
 	if cant_shoot_var==0:
 		var bullet = Bullet.instance()
-		Parent.add_child(bullet)
+		get_node("/root/level").add_child(bullet)
 		laser_sound.play()
 	
-		var spat = get_node("/root/level/Spatial4/StaticBody/Spatial")
+		var spat = get_node("/root/level/Spatial4/StaticBody/sentry/pivot_point_sentry/gun")
 		var spatial_pos=spat.global_transform.origin
 		bullet_spawn_location = Vector3(spatial_pos.x,spatial_pos.y, 0)
 	

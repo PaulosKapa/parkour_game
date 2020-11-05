@@ -170,5 +170,5 @@ material/0 = SubResource( 9 )
 mesh = SubResource( 10 )
 material/0 = null
 
-[node name="Spatial" parent="pivot_point_sentry" instance=ExtResource( 2 )]
-transform = Transform( 0.758388, 0, 0, 0, 0.134181, 0, 0, 0, 0.17069, -0.161015, 0, -0.390635 )
+[node name="gun" parent="pivot_point_sentry" instance=ExtResource( 2 )]
+transform = Transform( 0.758388, 0, 0, 0, 0.134181, 0, 0, 0, 0.17069, 0, 0, -0.392915 )
