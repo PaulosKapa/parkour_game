@@ -8,6 +8,7 @@ var space_state
 var target
 var health=3
 var beam_length = 200.0
+var inactive_transform
 func die(damage):
 	health=health-damage
 	if health==0:
@@ -18,6 +19,7 @@ func _ready():
 	space_state = get_world().direct_space_state
 	reticle_scale = laser.global_transform.basis.get_scale()*2.0
 	reticle_xlate = laser.global_transform.origin*3.0
+	inactive_transform = laser.transform
 		
 func _process(_delta):
 	
@@ -51,9 +53,9 @@ func _on_Area_body_entered(body):
 func _on_Area_body_exited(body):
 	if body.is_in_group("Player"):
 		target= null
-		#laser.orthonormalize() undid the "scale to (0.006,0.006,0.006)" as well
-		laser.scale_object_local(Vector3(1, 1.0/beam_length, 1)) #undoes the scale operation done when entered
-		#yeah it doesnt work.  laser.translate_object_local(Vector3(0,beam_length,0))
+		#simply return it to its inactive position, rotation, and scale
+		laser.transform = inactive_transform
+		
 
 func set_beam_length(new_length):
 	if new_length == beam_length:
