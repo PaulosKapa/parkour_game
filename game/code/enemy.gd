@@ -1,7 +1,9 @@
 extends StaticBody
 onready var sho = get_node("/root/level/Spatial4/StaticBody/sentry/pivot_point_sentry/gun/")
+onready var sentry = get_node("/root/level/Spatial4/StaticBody/sentry")
 onready var kil = get_node("/root/level/Player")
 onready var laser = get_node("/root/level/Spatial4/StaticBody/sentry/pivot_point_sentry/Plane001/rotation_point")
+var shoot_yes = 1
 var reticle_scale
 var reticle_xlate
 var space_state
@@ -11,9 +13,16 @@ var beam_length = 200.0
 var inactive_transform
 func die(damage):
 	health=health-damage
-	if health==0:
-		kil.kill()
-		queue_free()
+	match health:
+		0: 
+			$explosion.set_emitting(true)
+			$damage.hide()
+			sentry.hide()
+			$explosion2.play()
+			sho.cant_shoot_var=1
+			$CollisionShape2.queue_free()
+			$CollisionShape4.queue_free()
+		2: $damage.set_emitting(true)
 
 func _ready():
 	space_state = get_world().direct_space_state
@@ -69,3 +78,8 @@ func set_beam_length(new_length):
 	laser.translate_object_local(Vector3(0,-beam_length,0))
 	laser.scale_object_local(Vector3(1, beam_length, 1))
 	
+
+
+func _on_death_timeout():
+	kil.kill() 
+	queue_free()
