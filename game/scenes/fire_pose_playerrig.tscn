@@ -29,14 +29,14 @@ radius = 0.08
 height = 0.6
 
 [node name="fire_pose_playerrig" instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
 script = ExtResource( 5 )
 
 [node name="Skeleton" parent="Armature" index="0"]
 bones/6/bound_children = [ NodePath("BoneAttachment") ]
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Armature/Skeleton" index="7"]
-transform = Transform( -0.951057, -9.56095e-10, -0.309017, 3.75904e-15, -1, 1.37205e-07, -0.309017, 1.37053e-07, 0.951057, -1.69998e-07, 1.58997, 0.394339 )
+transform = Transform( -7.55287e-08, -0.951057, -0.309018, 1, -6.05968e-08, 7.61925e-08, -9.77527e-08, -0.309018, 0.951057, -0.668889, 2.29328, 0.177004 )
 bone_name = "lower_arm_l"
 
 [node name="w" parent="Armature/Skeleton/BoneAttachment" index="0" instance=ExtResource( 4 )]
