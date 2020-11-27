@@ -33,8 +33,8 @@ func _physics_process(_delta):
 			if(groups.has("turret")):
 				col.collider.die(1)
 				break
-			if(groups.has("case")):
-				queue_free = false
+			if(groups.has("rocket")):
+				col.collider.die(1)
 				break
 			if(groups.has("Player")):
 				if(slide_count == 1):
