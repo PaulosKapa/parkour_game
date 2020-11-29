@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://code/enemy_flying.gd" type="Script" id=1]
 [ext_resource path="res://models/enemy_flying.gltf" type="PackedScene" id=2]
 [ext_resource path="res://sound/drone_sound.ogg" type="AudioStream" id=3]
 [ext_resource path="res://textures/satrt_ui/dust.png" type="Texture" id=4]
+[ext_resource path="res://sound/explosion.ogg" type="AudioStream" id=5]
+[ext_resource path="res://textures/particles/explosions.png" type="Texture" id=6]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_transparent = true
@@ -73,8 +75,27 @@ emission_energy = 1.0
 emission_operator = 1
 emission_on_uv2 = false
 
-[sub_resource type="SphereShape" id=11]
-radius = 0.717173
+[sub_resource type="BoxShape" id=15]
+extents = Vector3( 0.724536, 1, 1.69062 )
+
+[sub_resource type="SpatialMaterial" id=12]
+params_diffuse_mode = 2
+params_specular_mode = 2
+params_blend_mode = 3
+params_depth_draw_mode = 2
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 1.61
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = ExtResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=13]
+emission_shape = 1
+emission_sphere_radius = 1.5
+gravity = Vector3( 0, 0.5, 0 )
+
+[sub_resource type="SphereMesh" id=14]
 
 [node name="Spatial" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.418539, 0, 0, 0 )
@@ -131,7 +152,7 @@ material/0 = SubResource( 10 )
 
 [node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 0.161885, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 11 )
+shape = SubResource( 15 )
 
 [node name="flying_sound" type="AudioStreamPlayer3D" parent="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.38926, 0, 0, 0.0160593 )
@@ -141,7 +162,34 @@ unit_size = 29.9
 max_db = -11.693
 pitch_scale = 0.7
 autoplay = true
+
+[node name="death" type="AudioStreamPlayer3D" parent="KinematicBody"]
+transform = Transform( 1, 8.29044e-16, 0, -8.29044e-16, 1, 0, 0, 0, 1, 0, 0, 0 )
+stream = ExtResource( 5 )
+unit_db = 24.168
+max_db = -7.825
+pitch_scale = 0.3
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="explosion" type="Particles" parent="KinematicBody"]
+transform = Transform( 1, 8.29044e-16, 1.47268e-30, -8.29044e-16, 1, 1.77636e-15, 9.40395e-38, -1.77636e-15, 1, -1.94217e-14, 1.77636e-15, 5.96046e-08 )
+material_override = SubResource( 12 )
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 0.8
+randomness = 1.0
+process_material = SubResource( 13 )
+draw_pass_1 = SubResource( 14 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="end" type="Timer" parent="KinematicBody"]
 [connection signal="body_entered" from="Area" to="KinematicBody" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="KinematicBody" method="_on_Area_body_exited"]
+[connection signal="timeout" from="KinematicBody/end" to="KinematicBody" method="_on_end_timeout"]
 
 [editable path="KinematicBody/enemy_flying"]

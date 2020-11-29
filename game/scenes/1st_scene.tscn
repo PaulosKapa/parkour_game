@@ -389,7 +389,7 @@ shape = SubResource( 12 )
 transform = Transform( 0.820769, 0.00127268, -0.000336607, -0.00127265, 0.820769, 6.25047e-05, 0.000336704, -6.19829e-05, 0.82077, -12.6173, -5.66218, 0 )
 
 [node name="Spatial3" parent="." instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 58.8192, 9.93838, 0 )
+transform = Transform( 0.00453776, 0.99999, 0, -0.99999, 0.00453776, 0, 0, 0, 1, 60.372, 16.3311, 0 )
 [connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area2" to="Area2" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area3" to="Area3" method="_on_Area_body_entered"]

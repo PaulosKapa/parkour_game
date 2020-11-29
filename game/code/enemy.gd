@@ -15,6 +15,7 @@ func die(damage):
 	health=health-damage
 	match health:
 		0: 
+			kil.kill() 
 			$explosion.set_emitting(true)
 			$damage.hide()
 			sentry.hide()
@@ -22,6 +23,7 @@ func die(damage):
 			sho.cant_shoot_var=1
 			$CollisionShape2.queue_free()
 			$CollisionShape4.queue_free()
+			$death.start()
 		2: $damage.set_emitting(true)
 
 func _ready():
@@ -33,7 +35,7 @@ func _ready():
 func _process(_delta):
 	
 			
-	if target:
+	if target and health>0:
 		$sentry/pivot_point_sentry.look_at(target.global_transform.origin, Vector3.UP)
 		$sentry/pivot_point_sentry.rotate_object_local(Vector3(0, 1, 0), PI)
 		$sentry/pivot_point_sentry.rotate_object_local(Vector3(0, 0, 1), PI/2)
@@ -81,5 +83,4 @@ func set_beam_length(new_length):
 
 
 func _on_death_timeout():
-	kil.kill() 
 	queue_free()

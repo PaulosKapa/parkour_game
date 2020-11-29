@@ -43,9 +43,9 @@ func _on_Area_body_exited(body):
 func shoot():
 	var rock = rocket.instance()
 	get_node("/root/level").add_child(rock)
-	var spat = $MeshInstance2
+	var spat = $shoot_point
 	var spatial_pos=spat.global_transform.origin
-	rock_spawn_location = Vector3(spatial_pos.x,spatial_pos.y, 0)
+	rock_spawn_location = Vector3(spatial_pos.x,spatial_pos.y, spatial_pos.z)
 	rock.global_transform.origin = rock_spawn_location
 	rock.global_rotate(Vector3(0, 1, 0), 300)
 	$shoot.start()
