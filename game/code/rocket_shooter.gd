@@ -41,6 +41,7 @@ func _on_Area_body_exited(body):
 		target = null
 
 func shoot():
+	$firing.set_emitting(true)
 	var rock = rocket.instance()
 	get_node("/root/level").add_child(rock)
 	var spat = $shoot_point

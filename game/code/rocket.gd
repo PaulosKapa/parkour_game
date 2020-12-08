@@ -8,6 +8,7 @@ var target
 var dir = 1
 var physics_delta = 0;
 var last_trans = translation
+var alive = 1
 
 func get_translation_delta():
 	var delta = last_trans - translation
@@ -15,14 +16,20 @@ func get_translation_delta():
 	return delta
 
 func die(damage):
-	queue_free()
+	alive = 0
+	$CollisionShape.queue_free()
+	$fire.queue_free()
+	$ROCKET.queue_free()
+	$explosion.set_emitting(true)
+	$death.start()
+
 func _ready():
 	space_state = get_world().direct_space_state
 	add_to_group("rocket")
 
 func _process(delta):
 	
-	if target:
+	if target and alive ==1:
 		$"..".look_at(target.global_transform.origin, Vector3.UP)
 		move_to_target(delta)
 func move_to_target(_delta):
@@ -36,6 +43,7 @@ func move_to_target(_delta):
 		if(col):
 			var groups = col.collider.get_groups()
 			if(groups.has("Player")):
+				die(1)
 				#col.collider.hurt()
 				#kil.health=kil.health-2
 				pass
@@ -45,4 +53,10 @@ func _on_Area_body_entered(body):
 
 func _on_Area_body_exited(body):
 	if body.is_in_group("Player"):
+		die(1)
 		target = null
+
+
+func _on_death_timeout():
+	$death.stop()
+	queue_free()
