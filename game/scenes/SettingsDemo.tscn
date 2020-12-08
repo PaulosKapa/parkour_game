@@ -7,4 +7,4 @@
 [node name="settingspanel" parent="." instance=ExtResource( 1 )]
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.990268, 0, 0.139173, 0, 1, 0, -0.139173, 0, 0.990268, 15.1567, 1, 18.8497 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.79463, 1, 18.8497 )
