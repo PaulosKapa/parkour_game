@@ -29,9 +29,9 @@ func _ready():
 	add_to_group("enemy")
 
 func _process(delta):
-	
 	if target and cant_shoot == 0:
 		shoot()
+
 func _on_Area_body_entered(body):
 	if body.is_in_group("Player"):
 		target = body
@@ -41,6 +41,7 @@ func _on_Area_body_exited(body):
 		target = null
 
 func shoot():
+	$firing.restart()
 	$firing.set_emitting(true)
 	var rock = rocket.instance()
 	get_node("/root/level").add_child(rock)
@@ -55,3 +56,4 @@ func shoot():
 func _on_shoot_timeout():
 	cant_shoot = 0
 	$shoot.stop()
+	$firing.set_emitting(false)

@@ -16,12 +16,14 @@ func get_translation_delta():
 	return delta
 
 func die(damage):
+	if alive == 1:
+		$CollisionShape.queue_free()
+		$fire.queue_free()
+		$ROCKET.queue_free()
+		$explosion.set_emitting(true)
+		$death.start()
+	
 	alive = 0
-	$CollisionShape.queue_free()
-	$fire.queue_free()
-	$ROCKET.queue_free()
-	$explosion.set_emitting(true)
-	$death.start()
 
 func _ready():
 	space_state = get_world().direct_space_state
