@@ -21,10 +21,10 @@ func die(damage):
 	match health:
 		1: pass
 		0:
+			cant_shoot=1
 			$death_particles.set_emitting(true)
 			$death.start()
 			$rocket_launcher.queue_free()
-			cant_shoot=1
 			$CollisionShape.queue_free()
 			$explode.play()
 

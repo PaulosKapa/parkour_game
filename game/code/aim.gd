@@ -54,3 +54,8 @@ func _physics_process(_delta):
 			$AnimationPlayer2.play("ccw")
 #			animation.play("rotate_ccw")
 			facing = FACING_RIGHT
+
+
+func _on_eyes_area_entered(area):
+	if area.is_in_group("machine"):
+		pass
