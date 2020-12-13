@@ -80,7 +80,5 @@ func set_beam_length(new_length):
 	laser.translate_object_local(Vector3(0,-beam_length,0))
 	laser.scale_object_local(Vector3(1, beam_length, 1))
 	
-
-
 func _on_death_timeout():
 	queue_free()

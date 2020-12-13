@@ -29,7 +29,7 @@ gravity = Vector3( 0, 0, 0 )
 radius = 0.5
 height = 1.0
 
-[sub_resource type="SpatialMaterial" id=11]
+[sub_resource type="SpatialMaterial" id=5]
 params_diffuse_mode = 2
 params_specular_mode = 2
 params_blend_mode = 3
@@ -41,12 +41,12 @@ emission_operator = 0
 emission_on_uv2 = false
 emission_texture = ExtResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=12]
+[sub_resource type="ParticlesMaterial" id=6]
 emission_shape = 1
-emission_sphere_radius = 3.84
+emission_sphere_radius = 2.0
 gravity = Vector3( 0, 0, 0 )
 
-[sub_resource type="SphereMesh" id=13]
+[sub_resource type="SphereMesh" id=7]
 radius = 0.5
 height = 1.0
 
@@ -98,15 +98,15 @@ max_distance = 4594.0
 [node name="death" type="Timer" parent="StaticBody"]
 
 [node name="death_particles" type="Particles" parent="StaticBody"]
-transform = Transform( 1, 8.29044e-16, 1.47268e-30, -8.29044e-16, 1, 1.77636e-15, 9.40395e-38, -1.77636e-15, 1, -1.94217e-14, 1.77636e-15, 5.96046e-08 )
-material_override = SubResource( 11 )
+transform = Transform( 1, 8.29044e-16, 1.47268e-30, -8.29044e-16, 1, 1.77636e-15, 9.40395e-38, -1.77636e-15, 1, -1.44034, 0, 5.96046e-08 )
+material_override = SubResource( 5 )
 emitting = false
-amount = 700
+amount = 250
 one_shot = true
 explosiveness = 0.8
 randomness = 1.0
-process_material = SubResource( 12 )
-draw_pass_1 = SubResource( 13 )
+process_material = SubResource( 6 )
+draw_pass_1 = SubResource( 7 )
 __meta__ = {
 "_editor_description_": ""
 }

@@ -75,7 +75,7 @@ emission_energy = 1.0
 emission_operator = 1
 emission_on_uv2 = false
 
-[sub_resource type="BoxShape" id=15]
+[sub_resource type="BoxShape" id=11]
 extents = Vector3( 0.724536, 1, 1.69062 )
 
 [sub_resource type="SpatialMaterial" id=12]
@@ -92,7 +92,7 @@ emission_texture = ExtResource( 6 )
 
 [sub_resource type="ParticlesMaterial" id=13]
 emission_shape = 1
-emission_sphere_radius = 1.5
+emission_sphere_radius = 0.5
 gravity = Vector3( 0, 0.5, 0 )
 
 [sub_resource type="SphereMesh" id=14]
@@ -152,7 +152,7 @@ material/0 = SubResource( 10 )
 
 [node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 0.161885, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 15 )
+shape = SubResource( 11 )
 
 [node name="flying_sound" type="AudioStreamPlayer3D" parent="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.38926, 0, 0, 0.0160593 )
@@ -166,9 +166,7 @@ autoplay = true
 [node name="death" type="AudioStreamPlayer3D" parent="KinematicBody"]
 transform = Transform( 1, 8.29044e-16, 0, -8.29044e-16, 1, 0, 0, 0, 1, 0, 0, 0 )
 stream = ExtResource( 5 )
-unit_db = 24.168
-max_db = -7.825
-pitch_scale = 0.3
+unit_db = 1.0
 __meta__ = {
 "_editor_description_": ""
 }
@@ -177,7 +175,7 @@ __meta__ = {
 transform = Transform( 1, 8.29044e-16, 1.47268e-30, -8.29044e-16, 1, 1.77636e-15, 9.40395e-38, -1.77636e-15, 1, -1.94217e-14, 1.77636e-15, 5.96046e-08 )
 material_override = SubResource( 12 )
 emitting = false
-amount = 50
+amount = 15
 one_shot = true
 explosiveness = 0.8
 randomness = 1.0

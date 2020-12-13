@@ -16,8 +16,6 @@ var cant_dash=0
 onready var gun = get_node("/root/level/Player/fire_pose_playerrig/Armature/Skeleton/BoneAttachment/w")
 onready var anim_player = get_node("/root/level/Player/fire_pose_playerrig/AnimationPlayer")
 var _collisions = []
-onready var knees = get_node("/root/level/Player/playernop/torso/rhip/rknee")
-onready var lknees = get_node("/root/level/Player/playernop/torso/lhip/lknee")
 
 func hurt():
 	#knees.get_surface_material(0).set_albedo(Color(1, 0, 0))

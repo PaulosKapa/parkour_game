@@ -1,5 +1,4 @@
 extends Spatial
-onready var animation = get_node("/root/level/Player/animation")
 enum {FACING_LEFT, FACING_RIGHT}
 var facing = FACING_LEFT
 

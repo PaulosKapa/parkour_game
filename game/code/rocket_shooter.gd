@@ -43,6 +43,7 @@ func _on_Area_body_entered(body):
 func _on_Area_body_exited(body):
 	if body.is_in_group("Player"):
 		target = null
+		cant_shoot = 1
 
 func shoot():
 	$firing.restart()
@@ -62,7 +63,6 @@ func _on_shoot_timeout():
 	cant_shoot = 0
 	$shoot.stop()
 	$firing.set_emitting(false)
-
 
 func _on_death_timeout():
 	kil.kill()
