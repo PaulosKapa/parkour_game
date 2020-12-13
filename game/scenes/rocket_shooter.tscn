@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://code/rocket_shooter.gd" type="Script" id=1]
 [ext_resource path="res://scenes/rocket_launcher_model.tscn" type="PackedScene" id=2]
 [ext_resource path="res://textures/particles/explosions.png" type="Texture" id=3]
+[ext_resource path="res://sound/explosion.ogg" type="AudioStream" id=4]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1.56587, 1, 1 )
@@ -25,6 +26,27 @@ emission_sphere_radius = 0.86
 gravity = Vector3( 0, 0, 0 )
 
 [sub_resource type="SphereMesh" id=4]
+radius = 0.5
+height = 1.0
+
+[sub_resource type="SpatialMaterial" id=11]
+params_diffuse_mode = 2
+params_specular_mode = 2
+params_blend_mode = 3
+params_depth_draw_mode = 2
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 1.61
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = ExtResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=12]
+emission_shape = 1
+emission_sphere_radius = 3.84
+gravity = Vector3( 0, 0, 0 )
+
+[sub_resource type="SphereMesh" id=13]
 radius = 0.5
 height = 1.0
 
@@ -60,12 +82,42 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="explode" type="AudioStreamPlayer3D" parent="StaticBody"]
+stream = ExtResource( 4 )
+unit_size = 3.1
+pitch_scale = 0.63
+
+[node name="shoot_sound" type="AudioStreamPlayer3D" parent="StaticBody"]
+stream = ExtResource( 4 )
+unit_db = 80.0
+unit_size = 100.0
+max_db = -6.014
+pitch_scale = 1.28
+max_distance = 4594.0
+
+[node name="death" type="Timer" parent="StaticBody"]
+
+[node name="death_particles" type="Particles" parent="StaticBody"]
+transform = Transform( 1, 8.29044e-16, 1.47268e-30, -8.29044e-16, 1, 1.77636e-15, 9.40395e-38, -1.77636e-15, 1, -1.94217e-14, 1.77636e-15, 5.96046e-08 )
+material_override = SubResource( 11 )
+emitting = false
+amount = 700
+one_shot = true
+explosiveness = 0.8
+randomness = 1.0
+process_material = SubResource( 12 )
+draw_pass_1 = SubResource( 13 )
+__meta__ = {
+"_editor_description_": ""
+}
+
 [node name="Area" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0152135, 0, 0 )
 
 [node name="CollisionPolygon" type="CollisionPolygon" parent="Area"]
 polygon = PoolVector2Array( 10, 5, 10, -5, 0, 0 )
 [connection signal="timeout" from="StaticBody/shoot" to="StaticBody" method="_on_shoot_timeout"]
+[connection signal="timeout" from="StaticBody/death" to="StaticBody" method="_on_death_timeout"]
 [connection signal="body_entered" from="Area" to="StaticBody" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="StaticBody" method="_on_Area_body_exited"]
 

@@ -1,33 +1,38 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://code/explosive.gd" type="Script" id=1]
-[ext_resource path="res://code/pressure_plate.gd" type="Script" id=2]
+[ext_resource path="res://sound/explosion.ogg" type="AudioStream" id=2]
+[ext_resource path="res://textures/particles/explosions.png" type="Texture" id=3]
 
 [sub_resource type="CylinderMesh" id=1]
 
 [sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 1, 0, 0, 1 )
 
-[sub_resource type="BoxShape" id=11]
+[sub_resource type="BoxShape" id=3]
 
-[sub_resource type="BoxShape" id=12]
+[sub_resource type="BoxShape" id=4]
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="SpatialMaterial" id=11]
+params_diffuse_mode = 2
+params_specular_mode = 2
+params_blend_mode = 3
+params_depth_draw_mode = 2
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 1.61
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = ExtResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=12]
 emission_shape = 1
-emission_sphere_radius = 3.0
+emission_sphere_radius = 3.84
 gravity = Vector3( 0, 0, 0 )
-angular_velocity = 0.509108
-color = Color( 0.701961, 0.168627, 0.168627, 1 )
 
-[sub_resource type="SpatialMaterial" id=6]
-albedo_color = Color( 1, 0, 0, 1 )
-
-[sub_resource type="QuadMesh" id=7]
-material = SubResource( 6 )
-
-[sub_resource type="CubeMesh" id=8]
-
-[sub_resource type="BoxShape" id=9]
+[sub_resource type="SphereMesh" id=13]
+radius = 0.5
+height = 1.0
 
 [sub_resource type="BoxShape" id=10]
 
@@ -43,45 +48,44 @@ mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-shape = SubResource( 11 )
+shape = SubResource( 3 )
 
 [node name="Area6" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.62939e-06, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area6"]
 transform = Transform( 4.04451, 0, 0, 0, 3.41364, 0, 0, 0, 4.29017, 0.0106301, 0, 0 )
-shape = SubResource( 12 )
+shape = SubResource( 4 )
 
 [node name="Particles" type="Particles" parent="Area6"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000638008, 0.482886, 0.00151682 )
+transform = Transform( 1, 8.29044e-16, 1.47268e-30, -8.29044e-16, 1, 1.77636e-15, 9.40395e-38, -1.77636e-15, 1, -1.94217e-14, 1.77636e-15, 5.96046e-08 )
+material_override = SubResource( 11 )
 emitting = false
-amount = 100
-lifetime = 0.01
-process_material = SubResource( 5 )
-draw_pass_1 = SubResource( 7 )
-
-[node name="Area" type="Area" parent="."]
-transform = Transform( 0.61443, 0, 0, 0, 0.141419, 0, 0, 0, 0.859276, 2.18309, -0.727135, 0.425961 )
-script = ExtResource( 2 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Area"]
-mesh = SubResource( 8 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Area"]
-shape = SubResource( 9 )
+amount = 700
+one_shot = true
+explosiveness = 0.8
+randomness = 1.0
+process_material = SubResource( 12 )
+draw_pass_1 = SubResource( 13 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
-
-[node name="Timer2" type="Timer" parent="."]
-wait_time = 0.3
 
 [node name="Area2" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="Area2"]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
 shape = SubResource( 10 )
-[connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]
+
+[node name="exploding" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 2 )
+unit_db = 5.443
+unit_size = 7.9
+max_db = 6.0
+pitch_scale = 0.63
+__meta__ = {
+"_editor_description_": ""
+}
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]

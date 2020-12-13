@@ -20,6 +20,7 @@ func die(damage):
 		$CollisionShape.queue_free()
 		$fire.queue_free()
 		$ROCKET.queue_free()
+		$explode.play()
 		$explosion.set_emitting(true)
 		$death.start()
 	

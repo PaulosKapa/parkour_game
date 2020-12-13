@@ -21,8 +21,12 @@ func die(damage):
 	match health:
 		1: pass
 		0:
-			kil.kill()
-			queue_free()
+			$death_particles.set_emitting(true)
+			$death.start()
+			$rocket_launcher.queue_free()
+			cant_shoot=1
+			$CollisionShape.queue_free()
+			$explode.play()
 
 func _ready():
 	space_state = get_world().direct_space_state
@@ -42,6 +46,7 @@ func _on_Area_body_exited(body):
 
 func shoot():
 	$firing.restart()
+	$shoot_sound.play()
 	$firing.set_emitting(true)
 	var rock = rocket.instance()
 	get_node("/root/level").add_child(rock)
@@ -57,3 +62,8 @@ func _on_shoot_timeout():
 	cant_shoot = 0
 	$shoot.stop()
 	$firing.set_emitting(false)
+
+
+func _on_death_timeout():
+	kil.kill()
+	queue_free()
