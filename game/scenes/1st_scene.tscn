@@ -188,6 +188,7 @@ transform = Transform( -2.86477, 0, 0, 0, 1, 0, 0, 0, 2.6302, 8.60909, -7.84739,
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0462415, -0.121226, 0.012259 )
 mesh = SubResource( 2 )
 material/0 = null
 
@@ -348,8 +349,6 @@ material/0 = null
 
 [node name="Area5" parent="." instance=ExtResource( 5 )]
 
-[node name="Area6" parent="." instance=ExtResource( 6 )]
-
 [node name="StaticBody15" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3798, -5.83876, -1.60563 )
 
@@ -410,6 +409,9 @@ material/0 = SubResource( 14 )
 [node name="CollisionShape" type="CollisionShape" parent="Area7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 71.0268, 11.0075, 0 )
 shape = SubResource( 15 )
+
+[node name="Area6" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1.70676, 0, 0, 0, 0.897931, 0, 0, 0, 1.70676, 8.71826, -6.88919, 0 )
 [connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area2" to="Area2" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area3" to="Area3" method="_on_Area_body_entered"]

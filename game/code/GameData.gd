@@ -180,7 +180,7 @@ func _on_SceneTree_node_added(new_node):
 	
 	if new_node.name.begins_with("Checkpoint") and new_node.name == player_status["last_checkpoint"]:
 		_player_location = new_node.global_transform.origin
-		new_node.queue_free()
+		#new_node.queue_free()
 		restore_player_status()
 		return
 	if new_node.is_in_group("Player"):

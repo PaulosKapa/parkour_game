@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://code/enemy_dash.gd" type="Script" id=1]
 [ext_resource path="res://code/die_enemy_3.gd" type="Script" id=2]
+[ext_resource path="res://models/enemy_3.gltf" type="PackedScene" id=3]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -19,13 +20,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.3, 0, 0, 0 ), Transform( 0.1, 0, 0, 0, 0.645514, 0, 0, 0, 0.3, 0, -0.5474, 0 ), Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.3, 0, 0, 0 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("StaticBody/enemy_3:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 360, 0 ) ]
+}
 
-[sub_resource type="CylinderMesh" id=3]
-
-[sub_resource type="SpatialMaterial" id=4]
-albedo_color = Color( 1, 0, 0, 1 )
-
-[sub_resource type="CylinderShape" id=5]
+[sub_resource type="CylinderShape" id=3]
 
 [node name="Spatial" type="Spatial"]
 
@@ -46,10 +54,9 @@ anims/enemy = SubResource( 2 )
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.3, 0, 0, 0 )
 script = ExtResource( 2 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Area/StaticBody"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 4 )
-
 [node name="CollisionShape" type="CollisionShape" parent="Area/StaticBody"]
-shape = SubResource( 5 )
+shape = SubResource( 3 )
+
+[node name="enemy_3" parent="Area/StaticBody" instance=ExtResource( 3 )]
+transform = Transform( 3.28184, 0, 0, 0, 1, 0, 0, 0, 3.22463, 0, -1.00344, 0 )
 [connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]

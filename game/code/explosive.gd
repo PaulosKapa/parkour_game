@@ -20,7 +20,7 @@ func explode():
 	$Area6/Particles.set_emitting(true)
 	throw_objects_in_radius()
 	$Timer.start()
-	$MeshInstance2.queue_free()
+	$explosive_barrel.queue_free()
 
 func _on_Timer_timeout():
 	queue_free()

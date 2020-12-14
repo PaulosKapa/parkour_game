@@ -9,4 +9,4 @@ func _on_Checkpoint_body_entered(body):
 	if _hit:
 		return
 	Global.save_game_info(name,body)
-	self.queue_free() #safe self-deletion
+	#self.queue_free() #safe self-deletion
