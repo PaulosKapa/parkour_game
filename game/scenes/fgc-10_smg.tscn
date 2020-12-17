@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/fgc-10.tscn" type="PackedScene" id=1]
+
+[node name="fgc-10" type="Spatial"]
+
+[node name="fgc-10" parent="." instance=ExtResource( 1 )]

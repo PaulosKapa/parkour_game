@@ -1,8 +1,8 @@
 extends StaticBody
-onready var sho = get_node("/root/level/Spatial4/StaticBody/sentry/pivot_point_sentry/gun/")
-onready var sentry = get_node("/root/level/Spatial4/StaticBody/sentry")
+onready var sho = $sentry/pivot_point_sentry/gun
+onready var sentry = "."
 onready var kil = get_node("/root/level/Player")
-onready var laser = get_node("/root/level/Spatial4/StaticBody/sentry/pivot_point_sentry/Plane001/rotation_point")
+onready var laser = $sentry/pivot_point_sentry/Plane001/rotation_point
 var shoot_yes = 1
 var reticle_scale
 var reticle_xlate

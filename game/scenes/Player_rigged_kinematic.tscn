@@ -24,6 +24,9 @@ transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, -0.5
 collision_layer = 4
 collision_mask = 4
 
+[node name="player_camera" type="Camera" parent="fire_pose_playerrig"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 3.531, 2.049, 0 )
+
 [node name="torso" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03, 0 )
 shape = SubResource( 1 )

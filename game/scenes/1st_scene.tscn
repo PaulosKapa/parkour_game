@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scenes/enemy_flying.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/exploding.tscn" type="PackedScene" id=2]
@@ -40,8 +40,6 @@ albedo_color = Color( 0.121569, 0.0470588, 1, 1 )
 [sub_resource type="BoxShape" id=10]
 
 [sub_resource type="CubeMesh" id=11]
-
-[sub_resource type="BoxShape" id=12]
 
 [sub_resource type="CubeMesh" id=13]
 
@@ -377,19 +375,6 @@ script = ExtResource( 15 )
 
 [node name="Spatial" type="Spatial" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173752, 8.08527, -1.71285 )
-
-[node name="InterpolatedCamera" type="Camera" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.958, 1.291, 6.323 )
-fov = 75.0
-
-[node name="StaticBody" type="StaticBody" parent="Player/InterpolatedCamera"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.84884 )
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape" type="CollisionShape" parent="Player/InterpolatedCamera/StaticBody"]
-transform = Transform( 9.99999, 0.0141372, 0, -0.0141372, 9.99999, 0, 0, 0, 1, 0, 0, -5.5 )
-shape = SubResource( 12 )
 
 [node name="Spatial" parent="." instance=ExtResource( 14 )]
 transform = Transform( 0.820769, 0.00127268, -0.000336607, -0.00127265, 0.820769, 6.25047e-05, 0.000336704, -6.19829e-05, 0.82077, -12.6173, -5.66218, 0 )
