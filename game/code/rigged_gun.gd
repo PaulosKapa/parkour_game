@@ -1,6 +1,6 @@
 extends Spatial
 onready var Parent = get_parent()
-onready var Camera = get_node("/root/level/Player/InterpolatedCamera")
+onready var Camera = get_node("/root/level/Player/fire_pose_playerrig/Camera")
 onready var Bullet= preload("res://scenes/bullet.tscn")
 onready var mouse_position = Vector3(0,0,0)
 onready var kil = get_node("/root/level/Player")

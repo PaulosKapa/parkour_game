@@ -41,12 +41,12 @@ albedo_color = Color( 0.121569, 0.0470588, 1, 1 )
 
 [sub_resource type="CubeMesh" id=11]
 
-[sub_resource type="CubeMesh" id=13]
+[sub_resource type="CubeMesh" id=12]
 
-[sub_resource type="SpatialMaterial" id=14]
+[sub_resource type="SpatialMaterial" id=13]
 albedo_color = Color( 0.0784314, 0, 1, 1 )
 
-[sub_resource type="BoxShape" id=15]
+[sub_resource type="BoxShape" id=14]
 
 [node name="level" type="Spatial"]
 
@@ -388,12 +388,12 @@ transform = Transform( 0.00453776, 0.99999, 0, -0.99999, 0.00453776, 0, 0, 0, 1,
 
 [node name="MeshInstance" type="MeshInstance" parent="Area7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 71, 11, 0 )
-mesh = SubResource( 13 )
-material/0 = SubResource( 14 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 71.0268, 11.0075, 0 )
-shape = SubResource( 15 )
+shape = SubResource( 14 )
 
 [node name="Area6" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1.70676, 0, 0, 0, 0.897931, 0, 0, 0, 1.70676, 8.71826, -6.88919, 0 )

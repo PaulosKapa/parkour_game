@@ -11,8 +11,8 @@ var facing = FACING_LEFT
 var ray_origin = Vector3()
 var ray_target = Vector3()
 
-onready var cam = get_node("/root/level/InterpolatedCamera")
-onready var backplane = get_node("/root/level/InterpolatedCamera/StaticBody")
+onready var cam = get_node("/root/level/Player/fire_pose_playerrig/Camera")
+onready var backplane = get_node("/root/level/Player/fire_pose_playerrig/Camera/StaticBody")
 
 
 onready var skel = $Armature/Skeleton
