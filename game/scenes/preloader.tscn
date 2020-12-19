@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Spatial
+var level = 0
+var first_stage = preload(\"res://scenes/1st_scene.tscn\")
+var character = preload(\"res://scenes/Player_rigged_kinematic.tscn\")
+func _ready():
+	get_tree().add(character)
+	match level:
+		0: get_tree().add(first_stage)
+"
+
+[node name="preloader" type="Spatial"]
+script = SubResource( 1 )

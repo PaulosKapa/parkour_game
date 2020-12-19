@@ -1,7 +1,7 @@
 extends Spatial
 enum {FACING_LEFT, FACING_RIGHT}
 var facing = FACING_LEFT
-
+export (NodePath) var my_camera
 var ray_origin = Vector3()
 var ray_target=Vector3()
 

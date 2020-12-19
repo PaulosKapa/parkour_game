@@ -16,7 +16,7 @@ func shoot(target):
 		get_node("/root/level").add_child(bullet)
 		$laser.play()
 	
-		var spat = get_node("/root/level/Spatial4/StaticBody/sentry/pivot_point_sentry/gun")
+		var spat = $"."
 		var spatial_pos=spat.global_transform.origin
 		bullet_spawn_location = Vector3(spatial_pos.x,spatial_pos.y, 0)
 	
