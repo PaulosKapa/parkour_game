@@ -1,5 +1,5 @@
 extends StaticBody
-onready var Camera = get_node("/root/level/Player/fire_pose_playerrig/Camera")
+onready var Camera = get_node("/root/level/Player/Camera")
 onready var Parent = get_parent()
 var rocket = preload("res://scenes/rocket.tscn")
 onready var kil = get_node("/root/level/Player")

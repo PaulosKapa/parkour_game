@@ -373,9 +373,6 @@ collision_layer = 1
 collision_mask = 1
 script = ExtResource( 15 )
 
-[node name="Spatial" type="Spatial" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173752, 8.08527, -1.71285 )
-
 [node name="Spatial" parent="." instance=ExtResource( 14 )]
 transform = Transform( 0.820769, 0.00127268, -0.000336607, -0.00127265, 0.820769, 6.25047e-05, 0.000336704, -6.19829e-05, 0.82077, -12.6173, -5.66218, 0 )
 
