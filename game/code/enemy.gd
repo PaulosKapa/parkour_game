@@ -18,7 +18,7 @@ func die(damage):
 			kil.kill() 
 			$explosion.set_emitting(true)
 			$damage.hide()
-			sentry.hide()
+			$sentry.hide()
 			$explosion2.play()
 			sho.cant_shoot_var=1
 			$CollisionShape2.queue_free()

@@ -10,6 +10,7 @@ var prefs_filename = "user://prefs.json"
 var rows = {}
 func update_setting(name,value):
 	settings[name] = value
+	apply_settings()
 	var prefs_file = File.new()
 	var result =  prefs_file.open(prefs_filename,File.WRITE)
 	#if result == ERR_FILE_NOT_FOUND:
@@ -30,16 +31,49 @@ func load_settings():
 	var prefs_file = File.new()
 	#if it doesn't yet exist, use the defaults shown above
 	if not prefs_file.file_exists(prefs_filename):
+		apply_settings()
 		return
 	
 	var result = prefs_file.open(prefs_filename,File.READ)
 	if result != OK :
 		print("ERROR:",result," ", prefs_filename)
 		#GameData.run_alert(result,prefs_filename)
+		apply_settings()
 		return
 	settings = parse_json(prefs_file.get_line())
 	prefs_file.close()
+	apply_settings()
 	
+func apply_settings():
+	var screen_dims = settings["Resolution"].split_floats("x",false)
+	OS.window_size=Vector2(screen_dims[0] ,screen_dims[1])
+	if settings["Fullscreen"]=="Off":
+		OS.window_fullscreen = false
+	else:
+		OS.window_fullscreen = true
+	#now the audio. I went with the premise that setting 3 should have half the wattage of setting 5
+	#as opposed to being halfway down the decibel scale (which would've been -30)
+	var bus_index = AudioServer.get_bus_index("Master")
+	match settings["Sound"]:
+		"5":
+			AudioServer.set_bus_mute(bus_index,false)
+			AudioServer.set_bus_volume_db(bus_index,0)
+		"4":
+			AudioServer.set_bus_mute(bus_index,false)
+			AudioServer.set_bus_volume_db(bus_index,-3)
+		"3":
+			AudioServer.set_bus_mute(bus_index,false)
+			AudioServer.set_bus_volume_db(bus_index,-6)
+		"2":
+			AudioServer.set_bus_mute(bus_index,false)
+			AudioServer.set_bus_volume_db(bus_index,-12)
+		"1":
+			AudioServer.set_bus_mute(bus_index,false)
+			AudioServer.set_bus_volume_db(bus_index,-18)
+		_:
+			AudioServer.set_bus_mute(bus_index,true)
+		
+			
 	
 func _ready():
 	load_settings()

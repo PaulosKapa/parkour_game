@@ -31,7 +31,7 @@ func set_player_status(checkpoint_name, player_node):
 
 #player_node: Spatial (or subclass thereof) with members defined in player.gd	
 func restore_player_status():
-	if not _player_node:
+	if not _player_node or _player_node == null:
 		return
 	if _player_location.z == 100:
 		return

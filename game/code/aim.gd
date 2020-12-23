@@ -7,7 +7,7 @@ var ray_target=Vector3()
 
 onready var armswing_length = $AnimationPlayer4.get_animation("modelsaim").length;
 
-onready var cam = $Camera
+onready var cam = $"../Camera"
 
 func _physics_process(_delta):
 	ray_origin = cam.project_ray_origin(get_viewport().get_mouse_position())
