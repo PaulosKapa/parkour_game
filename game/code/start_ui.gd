@@ -1,7 +1,7 @@
 extends Spatial
 
 func _ready():
-	pass
+	$neon_lights_start_ui/lights.start()
 
 func _on_door_clickable_area_input_event(camera, event, click_position, click_normal, shape_idx):
 	var mouse_click = event as InputEventMouseButton
@@ -16,7 +16,7 @@ func _on_window_clickable_area_input_event(camera, event, click_position, click_
 	if mouse_click and mouse_click.button_index == 1 and mouse_click.pressed:
 		# Call any saves or frees here if needed
 		# I haven't looked at all the code so not sure
-		get_tree().quit()
+		get_tree().change_scene("res://scenes/SettingsDemo.tscn")
 
 
 func _on_clickable_area_mouse_entered():
@@ -31,3 +31,19 @@ func _on_clickable_area1_mouse_entered():
 func _on_clickable_area1_mouse_exited():
 	$door_laser.get_surface_material(0).set_albedo(Color(0.78, 0.09, 0.09))
 	$door_laser.get_surface_material(0).set_emission(Color(1,0,0))
+
+
+func _on_clickable_area_bed_input_event(camera, event, click_position, click_normal, shape_idx):
+	var mouse_click = event as InputEventMouseButton
+	# Detecting LMB clicks only
+	if mouse_click and mouse_click.button_index == 1 and mouse_click.pressed:
+		# Call any saves or frees here if needed
+		# I haven't looked at all the code so not sure
+		get_tree().quit()
+
+
+
+func _on_clickable_area_bed_mouse_entered():
+	$bed.get_surface_material(0).set_albedo(Color(0.6, 0.6, 0.6))
+func _on_clickable_area_bed_mouse_exited():
+	$bed.get_surface_material(0).set_albedo(Color(0.24, 0.2, 0.19))

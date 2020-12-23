@@ -113,6 +113,10 @@ dash={
  ]
 }
 
+[physics]
+
+3d/physics_engine="Bullet"
+
 [rendering]
 
 quality/2d/use_nvidia_rect_flicker_workaround=true
