@@ -37,7 +37,9 @@ tracks/1/keys = {
 
 [node name="Spatial" type="Spatial"]
 
-[node name="Area" type="Area" parent="."]
+[node name="Area" type="Area" parent="." groups=[
+"enemy",
+]]
 transform = Transform( -6.13704, 0, 0, 0, -2.23294, 0, 0, 0, 2.21443, 0, 0, 0 )
 script = ExtResource( 1 )
 
