@@ -1,10 +1,9 @@
 extends Spatial
 onready var Parent = get_parent()
-onready var Camera = get_node("/root/level/Player/Camera")
+onready var Camera = get_node("/root/level/Player/Camera2")
 onready var Bullet= preload("res://scenes/bullet.tscn")
 onready var mouse_position = Vector3(0,0,0)
 onready var kil = get_node("/root/level/Player")
-onready var internal = get_node("/root/level/Player/fire_pose_playerrig")
 var bullet_spawn_location = Vector3(0,0,0)
 var cant_shoot_var = 0
 var bullets_left=9
@@ -47,7 +46,7 @@ func shoot():
 		#we want the gun's rotation about the z-axis
 		var bullet_translation_vector = Vector3(-cos(gun_global_rotation.z),sin(gun_global_rotation.z),0)
 		#nice for the left, so deal with the right
-		if internal.facing == internal.FACING_RIGHT:
+		if kil.facing == kil.FACING_RIGHT:
 			bullet_translation_vector.x = -bullet_translation_vector.x
 		#now that we have the bullet's direction, add the bullet to the Scene and get it moving
 		var bullet = Bullet.instance()
