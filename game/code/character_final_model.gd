@@ -9,7 +9,6 @@ var accel = 0
 var last_trans = translation
 var physics_delta = 0;
 var kill_var=0
-var dbjump=0
 var health=3
 enum {FACING_LEFT, FACING_RIGHT}
 var facing = FACING_LEFT
@@ -55,7 +54,7 @@ func _physics_process(delta):
 		frame = min(frame,1.0)*armswing_length
 		
 		#now, seek to that frame of the "aim" animation
-		$AnimationPlayer4.current_animation = "modelsaim"
+		$AnimationPlayer4.current_animation = "flexion"
 		$AnimationPlayer4.seek(frame,true)
 		$AnimationPlayer4.stop()
 		
@@ -85,11 +84,7 @@ func _physics_process(delta):
 		vel.y=0
 	elif Input.is_action_pressed("ui_up") and is_on_floor():
 		accel = leg_force
-		dbjump=1
 		$AnimationPlayer5.play("jump")
-	elif Input.is_action_just_pressed("ui_up") and dbjump==1:
-		accel=leg_force
-		dbjump=0
 	elif Input.is_action_pressed("ui_down") and is_on_floor():
 		accel = -leg_force
 	else:
