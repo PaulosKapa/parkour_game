@@ -391,12 +391,14 @@ shape = SubResource( 14 )
 transform = Transform( 1.70676, 0, 0, 0, 0.897931, 0, 0, 0, 1.70676, 8.71826, -6.88919, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 78, 9.15, 0 )
 
 [node name="Camera2" type="Camera" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.473, 3.941 )
 
 [node name="Area" type="Area" parent="Player/Camera2"]
 transform = Transform( 171.029, 0, 0, 0, 37.7002, 0, 0, 0, 1, 0, 0, -3.88208 )
+collision_layer = 3
 
 [node name="CollisionShape" type="CollisionShape" parent="Player/Camera2/Area"]
 shape = SubResource( 15 )
