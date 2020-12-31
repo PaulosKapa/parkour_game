@@ -14,7 +14,7 @@ enum {FACING_LEFT, FACING_RIGHT}
 var facing = FACING_LEFT
 var cant_dash=0
 onready var gun = $Armature/Skeleton/gun_holder/w
-onready var anim_player = $AnimationPlayer
+onready var anim_player = $AnimationPlayer1
 var _collisions = []
 export (NodePath) var camio
 var ray_origin = Vector3()
