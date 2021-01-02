@@ -12,7 +12,7 @@ extents = Vector3( 7.7118, 8.83407, 1 )
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -14.2518, 4.62409, 3.45533 )
+transform = Transform( 1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, -14.2518, 4.62409, 3.45533 )
 
 [node name="Camera2" type="Camera" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40489, 0.789162, 4.34687 )
