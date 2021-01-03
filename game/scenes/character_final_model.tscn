@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://models/Material_013.material" type="Material" id=1]
+[ext_resource path="res://textures/character/Material_013.material" type="Material" id=1]
 [ext_resource path="res://textures/character/head.material" type="Material" id=2]
 [ext_resource path="res://textures/character/body.material" type="Material" id=3]
 [ext_resource path="res://textures/character/joints.material" type="Material" id=4]
@@ -245,7 +245,7 @@ bones/12/name = "l_arm"
 bones/12/parent = 11
 bones/12/rest = Transform( 1, 0, 3.17865e-08, 0, 1, 0, -3.17865e-08, 0, 1, 2.99055e-08, 0.245375, 4.55191e-11 )
 bones/12/enabled = true
-bones/12/bound_children = [  ]
+bones/12/bound_children = [ NodePath("gun_holder") ]
 bones/13/name = "head"
 bones/13/parent = 0
 bones/13/rest = Transform( 1, 0, -2.38419e-07, 0, 1, 0, 2.38419e-07, 0, 1, 5.1164e-11, 0.554241, 6.13376e-12 )
