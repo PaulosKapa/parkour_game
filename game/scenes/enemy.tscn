@@ -94,7 +94,7 @@ albedo_color = Color( 0.105882, 0.0823529, 0.0823529, 1 )
 
 [node name="CollisionPolygon" type="CollisionPolygon" parent="Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04422, 0, -0.0570612 )
-polygon = PoolVector2Array( 11.92, -5.08235, 12, 5.2, 0.094, 0 )
+polygon = PoolVector2Array( 30, -5, 30, 5, 0, 0 )
 
 [node name="StaticBody" type="StaticBody" parent="." groups=[
 "turret",
@@ -182,8 +182,13 @@ material/0 = SubResource( 16 )
 
 [node name="gun" parent="StaticBody/sentry/pivot_point_sentry" index="1"]
 transform = Transform( 0.758388, 0, 5.32907e-15, 0, 0.134181, -4.80307e-22, -1.42109e-14, 2.92094e-22, 0.17069, 1.27591e-07, -2.18107e-14, 0.385991 )
+
+[node name="MeshInstance" parent="StaticBody/sentry/pivot_point_sentry/gun" index="2"]
+transform = Transform( 0.05, 1.01644e-20, -2.72525e-41, -1.69407e-21, 0.3, -8.04325e-22, 0, 2.41297e-22, 1, 0, 0, 0 )
 [connection signal="body_entered" from="Area" to="StaticBody" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="StaticBody" method="_on_Area_body_exited"]
 [connection signal="timeout" from="StaticBody/death" to="StaticBody" method="_on_death_timeout"]
 
 [editable path="StaticBody/sentry"]
+
+[editable path="StaticBody/sentry/pivot_point_sentry/gun"]

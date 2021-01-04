@@ -1,6 +1,6 @@
 extends KinematicBody
 onready var heal = get_node("/root/level/Player")
-var speed = 50
+var speed = 1
 var velocity = Vector3()
 #signal change_colour
 var damage
@@ -36,12 +36,12 @@ func _physics_process(_delta):
 			if(groups.has("rocket")):
 				col.collider.die(1)
 				break
-			#if(groups.has("Player")):
-				#if(slide_count == 1):
-				#	col.collider.hurt()
-					#Engine.time_scale = 1
-				#	heal.health=heal.health-1
-					#print("Player was hurt!")
+			if(groups.has("Player")):
+				if(slide_count == 1):
+					col.collider.hurt()
+					Engine.time_scale = 1
+					heal.health=heal.health-1
+					print("Player was hurt!")
 	
 	if(queue_free):
 			queue_free()
