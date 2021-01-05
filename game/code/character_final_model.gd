@@ -74,7 +74,7 @@ func _physics_process(delta):
 			$AnimationPlayer4.stop()
 			
 			
-			print("ANGLE:",abs(angle_deg - prior_angle_deg))
+			#print("ANGLE:",abs(angle_deg - prior_angle_deg))
 			if abs(angle_deg - prior_angle_deg) > 5:
 				if(abs(angle) > PI/2.0 && facing == FACING_RIGHT):
 					$AnimationPlayer3.play("cw001")
