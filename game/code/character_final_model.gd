@@ -25,12 +25,15 @@ onready var cam =get_node("/root/level/Player/Camera2")
 var control_wait =0
 var prior_mouse_pos = Vector2(0,0)
 
+var angle_deg
+var prior_angle_deg = 1000
+
 func _physics_process(delta):
 	
 	var mouse_pos =	get_viewport().get_mouse_position()
 	if mouse_pos.distance_squared_to(prior_mouse_pos) >= 25:
 		prior_mouse_pos = mouse_pos
-		control_wait = 2 #indicates we need to deal with the mouse
+		#control_wait = 2 #indicates we need to deal with the mouse
 	if control_wait == 0 || control_wait == 2:
 		ray_origin = cam.project_ray_origin(mouse_pos)
 		ray_target = cam.project_ray_normal(mouse_pos)*100000
@@ -62,37 +65,39 @@ func _physics_process(delta):
 			var frame = max(0,(PI/2-angle)/PI)
 			frame = min(frame,1.0)*armswing_length
 			
+			angle_deg = abs(angle)*180/PI
+			if(prior_angle_deg == 1000):
+				prior_angle_deg = angle_deg
 			#now, seek to that frame of the "aim" animation
 			$AnimationPlayer4.current_animation = "flexion"
 			$AnimationPlayer4.seek(frame,true)
 			$AnimationPlayer4.stop()
 			
-#			if control_wait <= 0.0:
-			if(abs(angle) > PI/2.0 && facing == FACING_RIGHT):
-				$AnimationPlayer3.play("cw001")
-	#			animation.play("rotate_cw")
-				facing = FACING_LEFT
-				control_wait = 0
-				
-			elif(abs(angle) > PI/2.0 && facing == FACING_LEFT):
-				$AnimationPlayer2.play("ccw002")
-	#			animation.play("rotate_ccw")
-				facing = FACING_RIGHT
-				control_wait = 0
+			
+			print("ANGLE:",abs(angle_deg - prior_angle_deg))
+			if abs(angle_deg - prior_angle_deg) > 5:
+				if(abs(angle) > PI/2.0 && facing == FACING_RIGHT):
+					$AnimationPlayer3.play("cw001")
+		#			animation.play("rotate_cw")
+					facing = FACING_LEFT
+					control_wait = 0
+				#if !($AnimationPlayer2.is_playing() or $AnimationPlayer3.is_playing()):	
+				elif(abs(angle) > PI/2.0 && facing == FACING_LEFT):
+					$AnimationPlayer2.play("ccw002")
+		#			animation.play("rotate_ccw")
+					facing = FACING_RIGHT
+					control_wait = 0
+			prior_angle_deg = angle_deg
 		control_wait = 0 #reset
 			
 	if Input.is_action_pressed("ui_right"):
-		if control_wait <= 1:
-			vel.x=2*lerp(10,sp,0.125)
-			facing=FACING_RIGHT
-			anim_player.play("walking")
-			control_wait = 1
+		vel.x=2*lerp(10,sp,0.125)
+		facing=FACING_RIGHT
+		anim_player.play("walking")
 	elif Input.is_action_pressed("ui_left"):
-		if control_wait <= 1:
-			anim_player.play("walking")
-			vel.x=2*lerp(-10,-sp,0.125)
-			facing=FACING_LEFT
-			control_wait = 1
+		anim_player.play("walking")
+		vel.x=2*lerp(-10,-sp,0.125)
+		facing=FACING_LEFT
 	
 		
 	elif Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_left"):
