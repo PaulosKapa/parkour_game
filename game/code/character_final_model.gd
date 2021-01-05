@@ -75,18 +75,17 @@ func _physics_process(delta):
 			
 			
 			#print("ANGLE:",abs(angle_deg - prior_angle_deg))
-			if abs(angle_deg - prior_angle_deg) > 5:
-				if(abs(angle) > PI/2.0 && facing == FACING_RIGHT):
-					$AnimationPlayer3.play("cw001")
-		#			animation.play("rotate_cw")
-					facing = FACING_LEFT
-					control_wait = 0
-				#if !($AnimationPlayer2.is_playing() or $AnimationPlayer3.is_playing()):	
-				elif(abs(angle) > PI/2.0 && facing == FACING_LEFT):
-					$AnimationPlayer2.play("ccw002")
-		#			animation.play("rotate_ccw")
-					facing = FACING_RIGHT
-					control_wait = 0
+			if(abs(angle) > PI/2.0 && facing == FACING_RIGHT):
+				$AnimationPlayer3.play("cw001")
+	#			animation.play("rotate_cw")
+				facing = FACING_LEFT
+				return
+			#if !($AnimationPlayer2.is_playing() or $AnimationPlayer3.is_playing()):	
+			elif(abs(angle) > PI/2.0 && facing == FACING_LEFT):
+				$AnimationPlayer2.play("ccw002")
+	#			animation.play("rotate_ccw")
+				facing = FACING_RIGHT
+				return
 			prior_angle_deg = angle_deg
 		control_wait = 0 #reset
 			
