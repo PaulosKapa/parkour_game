@@ -391,7 +391,9 @@ shape = SubResource( 14 )
 [node name="Area6" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1.70676, 0, 0, 0, 0.897931, 0, 0, 0, 1.70676, 8.71826, -6.88919, 0 )
 
-[node name="Player" parent="." instance=ExtResource( 13 )]
+[node name="Player" parent="." groups=[
+"Player",
+] instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 78, 9.15, 0 )
 
 [node name="Camera2" type="Camera" parent="Player"]

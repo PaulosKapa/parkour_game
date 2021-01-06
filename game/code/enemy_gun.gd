@@ -18,10 +18,10 @@ func shoot(target):
 	
 		var spat = $"."
 		var spatial_pos=spat.global_transform.origin
-		bullet_spawn_location = Vector3(spatial_pos.x,spatial_pos.y, 0)
+		bullet_spawn_location = Vector3(spatial_pos.x,spatial_pos.y, spatial_pos.z)
 	
 		var _apos = Camera.unproject_position(global_transform.origin)
-		var bullet_translation_vector = Vector3(global_transform.origin.x +2,global_transform.origin.y, global_transform.origin.z)
+		var bullet_translation_vector = Vector3(global_transform.origin.x,global_transform.origin.y, global_transform.origin.z-10)
 	
 		var bullet_speed_vector = target.global_transform.origin - global_transform.origin;
 	

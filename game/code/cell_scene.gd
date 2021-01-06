@@ -28,4 +28,3 @@ func _on_onoff_timeout():
 	$lights_roof/onoffdown/Cylinder001.get_surface_material(0).set_emission_energy(0)
 	$lights_roof/onoffdown/onoffdown.start()
 	$lights_roof/onoff/onoff.stop()
-	
