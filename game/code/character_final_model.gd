@@ -27,6 +27,8 @@ var prior_mouse_pos = Vector2(0,0)
 
 func _physics_process(delta):
 	
+	anim_player.stop(false)
+	
 	var mouse_pos =	get_viewport().get_mouse_position()
 	if mouse_pos.distance_squared_to(prior_mouse_pos) >= 25:
 		prior_mouse_pos = mouse_pos
@@ -82,6 +84,7 @@ func _physics_process(delta):
 				facing = FACING_RIGHT
 				control_wait = 0
 		control_wait = 0 #reset
+		
 			
 	if Input.is_action_pressed("ui_right"):
 		if control_wait <= 1:
