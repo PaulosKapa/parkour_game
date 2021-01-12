@@ -3,7 +3,7 @@ extends KinematicBody
 var vel= Vector3(0,0,0)
 var gravity=-900
 var jum= 500
-var sp = 10000
+var sp = 3000
 const leg_force= 550
 var accel = 0
 var last_trans = translation
