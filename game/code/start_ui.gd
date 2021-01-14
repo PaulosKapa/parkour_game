@@ -1,10 +1,11 @@
 extends Spatial
 #to figure out what stage to put on the cell
 var stage = 1
-
+var rot = 0
 func _ready():
 	$neon_lights_start_ui/lights.start()
 func _process(delta):
+	rotate1()
 	$power_off_logo.rotate_y(rad2deg(0.0001))
 
 func _on_door_clickable_area_input_event(camera, event, click_position, click_normal, shape_idx):
@@ -24,19 +25,23 @@ func _on_window_clickable_area_input_event(camera, event, click_position, click_
 
 
 func _on_clickable_area_mouse_entered():
+	rot = 1
 	$settings.show()
 	#$window.get_surface_material(0).set_emission(Color(1,1,1))
 func _on_clickable_area_mouse_exited():
+	rot = 0
 	$settings.hide()
 	#$window.get_surface_material(0).set_emission(Color(0.45,0.45,0.45))
 	
 func _on_clickable_area1_mouse_entered():
+	rot = 1
 	match stage:
 		1: $cell_scene.show()
 	#$door_laser.get_surface_material(0).set_albedo(Color(0,1,0))
 	#$door_laser.get_surface_material(0).set_emission(Color(0,1,0))
 
 func _on_clickable_area1_mouse_exited():
+	rot = 0
 	match stage:
 		1: $cell_scene.hide()
 	#$door_laser.get_surface_material(0).set_albedo(Color(0.78, 0.09, 0.09))
@@ -54,9 +59,15 @@ func _on_clickable_area_bed_input_event(camera, event, click_position, click_nor
 
 
 func _on_clickable_area_bed_mouse_entered():
+	rot = 1
 	#$bed.get_surface_material(0).set_albedo(Color(0.6, 0.6, 0.6))
 	$power_off_logo.show()
 	
 func _on_clickable_area_bed_mouse_exited():
+	rot = 0
 	$power_off_logo.hide()
 	#$bed.get_surface_material(0).set_albedo(Color(0.24, 0.2, 0.19))
+
+func rotate1():
+	if rot == 1:
+		$Node2D/Viewport/Spatial/cursor/Cube2.rotate_y(rad2deg(0.001))

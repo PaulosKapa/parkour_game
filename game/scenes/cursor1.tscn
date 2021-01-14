@@ -1,11 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
-[sub_resource type="SphereMesh" id=1]
+[ext_resource path="res://models/cursor.fbx" type="PackedScene" id=1]
+[ext_resource path="res://textures/materials/objects/cursor/CURSOR.material" type="Material" id=2]
 
-[sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 100, 100, 0, 1 )
-
-[sub_resource type="Environment" id=3]
+[sub_resource type="Environment" id=1]
 background_energy = 0.0
 ambient_light_color = Color( 1, 1, 1, 1 )
 
@@ -15,9 +13,13 @@ ambient_light_color = Color( 1, 1, 1, 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.758 )
 near = 0.01
 
-[node name="Spatial" type="MeshInstance" parent="."]
-mesh = SubResource( 1 )
-material/0 = SubResource( 2 )
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 3 )
+environment = SubResource( 1 )
+
+[node name="cursor" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.875616, -0.483007, 0, 0.483007, 0.875616, 0, 0, 0, 1, -0.732, -3.202, -6.011 )
+
+[node name="Cube2" parent="cursor" index="0"]
+material/0 = ExtResource( 2 )
+
+[editable path="cursor"]
