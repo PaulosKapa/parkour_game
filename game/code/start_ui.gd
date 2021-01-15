@@ -1,5 +1,7 @@
 extends Spatial
 #to figure out what stage to put on the cell
+var settings = ("res://scenes/SettingsDemo.tscn")
+onready var this_scene = get_node("/root/cell")
 var stage = 1
 var rot = 0
 func _ready():
@@ -21,12 +23,15 @@ func _on_window_clickable_area_input_event(camera, event, click_position, click_
 	if mouse_click and mouse_click.button_index == 1 and mouse_click.pressed:
 		# Call any saves or frees here if needed
 		# I haven't looked at all the code so not sure
-		get_tree().change_scene("res://scenes/SettingsDemo.tscn")
-
+		#get_tree().root.add_child(settings.instance())
+		#get_tree().root.remove_child(this_scene)
+		#this_scene.queue_free()
+		get_tree().change_scene(settings)
 
 func _on_clickable_area_mouse_entered():
 	rot = 1
 	$settings.show()
+	$sound.play()
 	#$window.get_surface_material(0).set_emission(Color(1,1,1))
 func _on_clickable_area_mouse_exited():
 	rot = 0
@@ -35,6 +40,8 @@ func _on_clickable_area_mouse_exited():
 	
 func _on_clickable_area1_mouse_entered():
 	rot = 1
+	$sound.play()
+	$door_laser.hide()
 	match stage:
 		1: $cell_scene.show()
 	#$door_laser.get_surface_material(0).set_albedo(Color(0,1,0))
@@ -42,6 +49,7 @@ func _on_clickable_area1_mouse_entered():
 
 func _on_clickable_area1_mouse_exited():
 	rot = 0
+	$door_laser.show()
 	match stage:
 		1: $cell_scene.hide()
 	#$door_laser.get_surface_material(0).set_albedo(Color(0.78, 0.09, 0.09))
@@ -60,6 +68,7 @@ func _on_clickable_area_bed_input_event(camera, event, click_position, click_nor
 
 func _on_clickable_area_bed_mouse_entered():
 	rot = 1
+	$sound.play()
 	#$bed.get_surface_material(0).set_albedo(Color(0.6, 0.6, 0.6))
 	$power_off_logo.show()
 	

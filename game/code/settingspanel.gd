@@ -154,3 +154,5 @@ func _ready():
 #	already_clicked = true
 #	$Clicktime.start(.20)
 #
+func _on_ClickCubeArea_mouse_entered():
+	$tsk.play()
