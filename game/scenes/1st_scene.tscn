@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scenes/enemy_flying.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/exploding.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/character_final_model.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/health_kit.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/cursor_game_viewport.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/rocket_shooter.tscn" type="PackedScene" id=16]
 
 [sub_resource type="BoxShape" id=1]
@@ -405,6 +406,11 @@ collision_layer = 3
 
 [node name="CollisionShape" type="CollisionShape" parent="Player/Camera2/Area"]
 shape = SubResource( 15 )
+
+[node name="cursor_game" parent="." instance=ExtResource( 15 )]
+
+[node name="cursor_game" parent="cursor_game/Viewport" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 68.6924, 0 )
 [connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area2" to="Area2" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area3" to="Area3" method="_on_Area_body_entered"]
@@ -421,3 +427,5 @@ shape = SubResource( 15 )
 [editable path="Spatial4/StaticBody/sentry"]
 
 [editable path="Spatial"]
+
+[editable path="cursor_game"]
