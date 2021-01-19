@@ -1,6 +1,6 @@
 extends KinematicBody
 onready var heal = get_node("/root/level/Player")
-var speed = 1
+var speed = 30
 var velocity = Vector3()
 #signal change_colour
 var damage

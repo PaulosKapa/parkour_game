@@ -158,8 +158,8 @@ func _process(_delta):
 			0:
 				GameData.restore("user://saves")
 				var _ret = get_tree().reload_current_scene()
-	#			knees.get_surface_material(0).set_albedo(Color(0, 1, 0))
-	#			lknees.get_surface_material(0).set_albedo(Color(0, 1, 0))
+				$Armature/Skeleton/Cylinder002.get_surface_material(3).set_albedo(Color(0,30,0))
+				
 	var slide_count = get_slide_count()
 	for i in slide_count:
 		var col = get_slide_collision(i)

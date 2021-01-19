@@ -1,5 +1,6 @@
 extends Spatial
 onready var Parent = get_parent()
+onready var cursor = get_node("/root/level/cursor_game/Viewport/cursor_game/AnimationPlayer")
 onready var Camera = get_node("/root/level/Player/Camera2")
 onready var Bullet= preload("res://scenes/bullet.tscn")
 onready var mouse_position = Vector3(0,0,0)
@@ -35,6 +36,7 @@ func _process(_delta):
 		
 func shoot():
 	if cant_shoot_var==0 and bullets_left>0:
+		cursor.play("cursor")
 		print(bullets_left)
 		$ammo.scale_object_local(Vector3(1,0.8,1))
 		$Particles.set_emitting(true)

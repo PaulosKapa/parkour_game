@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/cell_scene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/character_final_model.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/mouse_hide.tscn" type="PackedScene" id=3]
 [ext_resource path="res://environments/cell_scene_final.tres" type="Environment" id=4]
+[ext_resource path="res://scenes/cursor_game_viewport.tscn" type="PackedScene" id=5]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 7.7118, 8.83407, 1 )
@@ -43,3 +44,10 @@ environment = ExtResource( 4 )
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="cursor_game" parent="." instance=ExtResource( 5 )]
+
+[node name="cursor_game" parent="cursor_game/Viewport" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 303.297, 44.168, 0 )
+
+[editable path="cursor_game"]

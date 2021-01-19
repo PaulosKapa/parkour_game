@@ -410,7 +410,7 @@ shape = SubResource( 15 )
 [node name="cursor_game" parent="." instance=ExtResource( 15 )]
 
 [node name="cursor_game" parent="cursor_game/Viewport" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 68.6924, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.4926, 0 )
 [connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area2" to="Area2" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area3" to="Area3" method="_on_Area_body_entered"]
@@ -427,5 +427,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 68.6924, 0 )
 [editable path="Spatial4/StaticBody/sentry"]
 
 [editable path="Spatial"]
+
+[editable path="Player"]
 
 [editable path="cursor_game"]

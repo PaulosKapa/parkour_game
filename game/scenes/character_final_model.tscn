@@ -245,7 +245,7 @@ bones/12/name = "l_arm"
 bones/12/parent = 11
 bones/12/rest = Transform( 1, 0, 3.17865e-08, 0, 1, 0, -3.17865e-08, 0, 1, 2.99055e-08, 0.245375, 4.55191e-11 )
 bones/12/enabled = true
-bones/12/bound_children = [ NodePath("gun_holder") ]
+bones/12/bound_children = [  ]
 bones/13/name = "head"
 bones/13/parent = 0
 bones/13/rest = Transform( 1, 0, -2.38419e-07, 0, 1, 0, 2.38419e-07, 0, 1, 5.1164e-11, 0.554241, 6.13376e-12 )
@@ -265,7 +265,7 @@ material/6 = ExtResource( 8 )
 material/7 = ExtResource( 5 )
 
 [node name="gun_holder" type="BoneAttachment" parent="Armature/Skeleton"]
-transform = Transform( 0.00075951, -8.74228e-08, 1, 7.87927e-15, 1, 8.74228e-08, -1, -6.63906e-11, 0.00075951, 0.00257269, 0.909484, -0.278018 )
+transform = Transform( 0.000759633, 0, -1, 0, -1, 0, -1, 0, -0.000759633, 0.00257271, 0.418734, -0.278018 )
 bone_name = "l_arm"
 
 [node name="w" parent="Armature/Skeleton/gun_holder" instance=ExtResource( 11 )]
