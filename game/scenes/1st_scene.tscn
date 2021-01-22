@@ -397,6 +397,12 @@ transform = Transform( 1.70676, 0, 0, 0, 0.897931, 0, 0, 0, 1.70676, 8.71826, -6
 ] instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 78, 9.15, 0 )
 
+[node name="Skeleton" parent="Player/Armature" index="0"]
+bones/12/bound_children = [ NodePath("gun_holder") ]
+
+[node name="gun_holder" parent="Player/Armature/Skeleton" index="1"]
+transform = Transform( 0.000759633, 0, -1, 0, -1, 0, -1, 0, -0.000759633, 0.00257271, 0.418734, -0.278018 )
+
 [node name="Camera2" type="Camera" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.473, 3.941 )
 
