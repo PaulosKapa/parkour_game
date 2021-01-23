@@ -1,6 +1,7 @@
 extends Spatial
 #to figure out what stage to put on the cell
-var settings = ("res://scenes/SettingsDemo.tscn")
+onready var first_scene = preload("res://scenes/1st_scene.tscn")
+var settings = preload("res://scenes/SettingsDemo.tscn")
 onready var this_scene = get_node("/root/cell")
 var stage = 1
 var rot = 0
@@ -15,7 +16,7 @@ func _on_door_clickable_area_input_event(camera, event, click_position, click_no
 	# Detecting LMB clicks only
 	if mouse_click and mouse_click.button_index == 1 and mouse_click.pressed:
 		# Not sure what the map selection scene is, some names seem quite questionable
-		get_tree().change_scene("res://scenes/1st_scene.tscn")
+		Global.goto_scene(first_scene)
 
 func _on_window_clickable_area_input_event(camera, event, click_position, click_normal, shape_idx):
 	var mouse_click = event as InputEventMouseButton
@@ -26,7 +27,7 @@ func _on_window_clickable_area_input_event(camera, event, click_position, click_
 		#get_tree().root.add_child(settings.instance())
 		#get_tree().root.remove_child(this_scene)
 		#this_scene.queue_free()
-		get_tree().change_scene(settings)
+		Global.goto_scene(settings)
 
 func _on_clickable_area_mouse_entered():
 	rot = 1

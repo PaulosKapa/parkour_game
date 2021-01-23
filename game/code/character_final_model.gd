@@ -42,11 +42,11 @@ func _physics_process(delta):
 		
 		if ray:
 			var ray_collision_point = ray.position
-			var object_position = global_transform.origin
+			var object_position = $RotationAnchor.global_transform.origin
 			ray_collision_point = ray_collision_point - object_position
 			
-			var angle = -Vector2(ray_collision_point.x, ray_collision_point.y).angle_to(Vector2(-1, 0))
 			
+			var angle = -Vector2(ray_collision_point.x, ray_collision_point.y).angle_to(Vector2(-1, 0))
 			if facing == FACING_RIGHT:
 				if(angle <= 0):
 					angle = -(PI+angle)
@@ -63,6 +63,7 @@ func _physics_process(delta):
 			#hence this formula	
 			var frame = max(0,(PI/2-angle)/PI)
 			frame = min(frame,1.0)*armswing_length
+			print(frame)
 			
 			#now, seek to that frame of the "aim" animation
 			$AnimationPlayer4.current_animation = "flexion"

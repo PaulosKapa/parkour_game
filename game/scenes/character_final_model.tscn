@@ -265,7 +265,7 @@ material/6 = ExtResource( 8 )
 material/7 = ExtResource( 5 )
 
 [node name="gun_holder" type="BoneAttachment" parent="Armature/Skeleton"]
-transform = Transform( 0.000759633, 0, -1, 0, -1, 0, -1, 0, -0.000759633, 0.00257271, 0.418734, -0.278018 )
+transform = Transform( 0.000759445, 0.726163, -0.687523, 2.32395e-08, -0.687523, -0.726163, -1, 0.000551465, -0.000522153, 0.180755, 0.495408, -0.277883 )
 bone_name = "l_arm"
 
 [node name="w" parent="Armature/Skeleton/gun_holder" instance=ExtResource( 11 )]
@@ -315,5 +315,8 @@ anims/flexion = ExtResource( 14 )
 
 [node name="AnimationPlayer5" type="AnimationPlayer" parent="."]
 anims/jump = ExtResource( 13 )
+
+[node name="RotationAnchor" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29062, 0 )
 [connection signal="timeout" from="colour_change" to="." method="_on_colour_change_timeout"]
 [connection signal="area_entered" from="eyes" to="." method="_on_eyes_area_entered"]

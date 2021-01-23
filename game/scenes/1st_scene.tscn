@@ -407,7 +407,7 @@ transform = Transform( 0.000759633, 0, -1, 0, -1, 0, -1, 0, -0.000759633, 0.0025
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.473, 3.941 )
 
 [node name="Area" type="Area" parent="Player/Camera2"]
-transform = Transform( 171.029, 0, 0, 0, 37.7002, 0, 0, 0, 1, 0, 0, -3.88208 )
+transform = Transform( 171.029, 0, 0, 0, 37.7002, 0, 0, 0, 1, 0, 0, -4.23404 )
 collision_layer = 3
 
 [node name="CollisionShape" type="CollisionShape" parent="Player/Camera2/Area"]

@@ -1,6 +1,6 @@
 extends Spatial
 onready var settings = get_node(".")
-var first = ("res://scenes/start_ui.tscn")
+onready var first = load("res://scenes/start_ui.tscn")
 
 func _on_Area_input_event(camera, event, click_position, click_normal, shape_idx):
 	var mouse_click = event as InputEventMouseButton
@@ -9,7 +9,7 @@ func _on_Area_input_event(camera, event, click_position, click_normal, shape_idx
 		#get_tree().root.add_child(first.instance())
 		#get_tree().root.remove_child(settings)
 		#settings.queue_free()
-		get_tree().change_scene(first)
+		Global.goto_scene(first)
 
 
 func _on_Area_mouse_entered():
