@@ -46,7 +46,7 @@ func deactivate():
 	
 func activate(is_not_init):
 	lit = true
-	print("NEIN:",name,is_not_init)
+	
 	if(is_not_init):
 		$click.play()
 	get_parent().set_value(selectedValue)
