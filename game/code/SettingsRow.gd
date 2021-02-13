@@ -6,7 +6,7 @@ export var settingName:String
 export var spheres: Array
 var sphere_objects = []
 var already_clicked = false
-var deployed = false
+var deployed = true
 var settingValue:String
 
 # Called when the node enters the scene tree for the first time.
@@ -28,16 +28,18 @@ func _on_CubeArea_input_event(_camera, event, _click_position, _click_normal, _s
 		return
 	if already_clicked:
 		return
-	deployed = !deployed
-	if deployed :
-		for sphere in sphere_objects:
-			sphere.show()
-	else:
-		for sphere in sphere_objects:
-			sphere.hide()
-	already_clicked = true
+	return
+#	deployed = !deployed
+#	if deployed :
+#		for sphere in sphere_objects:
+#			sphere.show()
+#	else:
+#		for sphere in sphere_objects:
+#			sphere.hide()
+#	already_clicked = true
+#
+#	$Clicktime.start(.20)
 	
-	$Clicktime.start(.20)
 
 
 func _on_Clicktime_timeout():
