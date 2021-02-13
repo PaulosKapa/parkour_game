@@ -276,3 +276,5 @@ stream = ExtResource( 25 )
 [connection signal="mouse_entered" from="SoundCube/ClickCubeArea_audio" to="." method="_on_ClickCubeArea_audio_mouse_entered"]
 [connection signal="mouse_entered" from="FullscreenCube/ClickCubeArea_ful" to="RezCube" method="_on_ClickCubeArea_ful_mouse_entered"]
 [connection signal="mouse_entered" from="FullscreenCube/ClickCubeArea_ful" to="." method="_on_ClickCubeArea_ful_mouse_entered"]
+[connection signal="input_event" from="FullscreenCube/OffSphere/ToggleArea" to="FullscreenCube/OffSphere" method="_on_ToggleArea_input_event"]
+[connection signal="input_event" from="FullscreenCube/OnSphere/ToggleArea" to="FullscreenCube/OnSphere" method="_on_ToggleArea_input_event"]

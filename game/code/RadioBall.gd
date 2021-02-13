@@ -24,9 +24,12 @@ func deactivate():
 	lit = false
 	meshlet.material_override = null
 	
-func activate():
+func activate(is_not_init):
 	lit = true
-	$click.play()
+	
+	print("AHA:",name,is_not_init)
+	if(is_not_init):
+		$click.play()
 	get_parent().set_value(selectedValue)
 	meshlet.material_override = on_material
 	
@@ -39,7 +42,7 @@ func _on_ToggleArea_input_event(_camera, event, _click_position, _click_normal, 
 	for sphere in get_parent().sphere_objects:
 		if sphere != self:
 			sphere.deactivate()
-	self.activate()
+	self.activate(true)
 
 func _on_Clicktime_timeout():
 	already_clicked = false

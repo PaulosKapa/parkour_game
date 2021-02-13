@@ -8,8 +8,15 @@ onready var vol3 = get_node("/root/Spatial/settingspanel/SoundCube/VolBall003")
 onready var vol4 = get_node("/root/Spatial/settingspanel/SoundCube/VolBall004")
 onready var vol5 = get_node("/root/Spatial/settingspanel/SoundCube/VolBall005")
 onready var vol6 = get_node("/root/Spatial/settingspanel/SoundCube/VolBall006")
-onready var full_on = get_node("/root/Spatial/settingspanel/OnSphere")
-onready var full_off = get_node("/root/Spatial/settingspanel/OffSphere")
+
+#the correct ones have colliders
+#onready var full_on = get_node("/root/Spatial/settingspanel/OnSphere")
+#onready var full_off = get_node("/root/Spatial/settingspanel/OffSphere")
+
+onready var full_on = get_node("/root/Spatial/settingspanel/FullscreenCube/OnSphere")
+onready var full_off = get_node("/root/Spatial/settingspanel/FullscreenCube/OffSphere")
+
+
 var shown_res = 0
 var shown_audio = 0
 var shown_full = 0
@@ -68,7 +75,7 @@ func init_value(old_value):
 		return	
 	for sphere in sphere_objects:
 		if sphere.selectedValue == settingValue:
-			sphere.activate()
+			sphere.activate(false)
 		else:
 			sphere.deactivate()
 
@@ -106,8 +113,10 @@ func _on_ClickCubeArea_audio_mouse_entered():
 func _on_ClickCubeArea_ful_mouse_entered():
 	match shown_full:
 		0: 
-			#full_off.show()
+			full_off.show()
 			full_on.show()
+			shown_full = 1
 		1:
-		#	full_off.hide()
+			full_off.hide()
 			full_on.hide()
+			shown_full = 0

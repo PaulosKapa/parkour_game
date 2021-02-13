@@ -38,14 +38,16 @@ func _on_ToggleArea_input_event(_camera, event, _click_position, _click_normal, 
 	for sphere in get_parent().sphere_objects:
 		if sphere != self:
 			sphere.deactivate()
-	self.activate()
+	self.activate(true)
 	
 func deactivate():
 	lit = false
 	material_override = null
 	
-func activate():
+func activate(is_not_init):
 	lit = true
-	$click.play()
+	print("NEIN:",name,is_not_init)
+	if(is_not_init):
+		$click.play()
 	get_parent().set_value(selectedValue)
 	material_override = onMatl
