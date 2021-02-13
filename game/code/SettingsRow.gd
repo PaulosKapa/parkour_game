@@ -26,8 +26,8 @@ func _ready():
 func _on_CubeArea_input_event(_camera, event, _click_position, _click_normal, _shape_idx):
 	if event.get_class() != "InputEventMouseButton":
 		return
-	if already_clicked:
-		return
+#	if already_clicked:
+#		return
 	return
 #	deployed = !deployed
 #	if deployed :
@@ -38,7 +38,7 @@ func _on_CubeArea_input_event(_camera, event, _click_position, _click_normal, _s
 #			sphere.hide()
 #	already_clicked = true
 #
-#	$Clicktime.start(.20)
+#	$Clicktime.start(.20) 
 	
 
 
