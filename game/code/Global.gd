@@ -13,12 +13,13 @@ func goto_scene(scene):
 	call_deferred("_deferred_goto_scene", scene)
 
 func _deferred_goto_scene(scene):
-	current_scene.free()
+	if(is_instance_valid(current_scene)):
+		current_scene.free()
 	current_scene = scene.instance()
 	print("USER dir:",OS.get_user_data_dir())
 	var _error_status = Directory.new().remove("user://saves/progress.save")
 	_error_status = Directory.new().remove("user://saves")
-	
+
 	get_tree().get_root().add_child(current_scene)
 	get_tree().set_current_scene(current_scene)
 
