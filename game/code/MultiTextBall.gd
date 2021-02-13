@@ -36,6 +36,7 @@ func _on_ResBallArea_input_event(_camera, event, _click_position, _click_normal,
 		return
 	if already_clicked:
 		return
+	$click.play()
 	whichResSetting = (whichResSetting + 1) % resLabels.size()
 	$Sphere.material_override = resLabels[whichResSetting]
 	get_parent().set_value(resValues[whichResSetting])

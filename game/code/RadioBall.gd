@@ -26,6 +26,7 @@ func deactivate():
 	
 func activate():
 	lit = true
+	$click.play()
 	get_parent().set_value(selectedValue)
 	meshlet.material_override = on_material
 	

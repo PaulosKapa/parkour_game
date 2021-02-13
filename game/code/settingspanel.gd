@@ -156,3 +156,9 @@ func _ready():
 #
 func _on_ClickCubeArea_mouse_entered():
 	$tsk.play()
+
+func _on_ClickCubeArea_audio_mouse_entered():
+	$tsk.play()
+
+func _on_ClickCubeArea_ful_mouse_entered():
+	$tsk.play()
