@@ -40,52 +40,52 @@ func _physics_process(delta):
 		var space_state = get_world().direct_space_state
 		var ray = space_state.intersect_ray(ray_origin,ray_target,[self],2,true,true)
 		
-		if ray:
-			var ray_collision_point = ray.position
-			var object_position = $RotationAnchor.global_transform.origin
-			ray_collision_point = ray_collision_point - object_position
-			
-			
-			var angle = -Vector2(ray_collision_point.x, ray_collision_point.y).angle_to(Vector2(-1, 0))
-			if facing == FACING_RIGHT:
-				if(angle <= 0):
-					angle = -(PI+angle)
-				else:
-					angle = PI-angle
-				pass
-		
-				
-			if($AnimationPlayer4.is_playing()):
-				return
-				
-			#for the "aim" animation, -PI/2 is "top" - corresponds to length in secs
-			#PI/2 is "bottom" - corresponds to 0 seconds
-			#hence this formula	
-			var frame = max(0,(PI/2-angle)/PI)
-			frame = min(frame,1.0)*armswing_length
-			print(frame)
-			
-			#now, seek to that frame of the "aim" animation
-			$AnimationPlayer4.current_animation = "flexion"
-			$AnimationPlayer4.seek(frame,true)
-			$AnimationPlayer4.stop()
-			
-#			if control_wait <= 0.0:
-			if(abs(angle) > PI/2.0 && facing == FACING_RIGHT):
-				print_debug("CW")
-				$AnimationPlayer3.play("cw001")
-	#			animation.play("rotate_cw")
-				facing = FACING_LEFT
-				control_wait = 0
-				
-			elif(abs(angle) > PI/2.0 && facing == FACING_LEFT):
-				print_debug("CCW")
-				$AnimationPlayer2.play("ccw002")
-	#			animation.play("rotate_ccw")
-				facing = FACING_RIGHT
-				control_wait = 0
-		control_wait = 0 #reset
-		
+#		if ray:
+#			var ray_collision_point = ray.position
+#			var object_position = $RotationAnchor.global_transform.origin
+#			ray_collision_point = ray_collision_point - object_position
+#
+#
+#			var angle = -Vector2(ray_collision_point.x, ray_collision_point.y).angle_to(Vector2(-1, 0))
+#			if facing == FACING_RIGHT:
+#				if(angle <= 0):
+#					angle = -(PI+angle)
+#				else:
+#					angle = PI-angle
+#				pass
+#
+#
+#			if($AnimationPlayer4.is_playing()):
+#				return
+#
+#			#for the "aim" animation, -PI/2 is "top" - corresponds to length in secs
+#			#PI/2 is "bottom" - corresponds to 0 seconds
+#			#hence this formula	
+#			var frame = max(0,(PI/2-angle)/PI)
+#			frame = min(frame,1.0)*armswing_length
+#			print(frame)
+#
+#			#now, seek to that frame of the "aim" animation
+#			$AnimationPlayer4.current_animation = "flexion"
+#			$AnimationPlayer4.seek(frame,true)
+#			$AnimationPlayer4.stop()
+#
+##			if control_wait <= 0.0:
+#			if(abs(angle) > PI/2.0 && facing == FACING_RIGHT):
+#				print_debug("CW")
+#				$AnimationPlayer3.play("cw001")
+#	#			animation.play("rotate_cw")
+#				facing = FACING_LEFT
+#				control_wait = 0
+#
+#			elif(abs(angle) > PI/2.0 && facing == FACING_LEFT):
+#				print_debug("CCW")
+#				$AnimationPlayer2.play("ccw002")
+#	#			animation.play("rotate_ccw")
+#				facing = FACING_RIGHT
+#				control_wait = 0
+#		control_wait = 0 #reset
+#
 			
 	if Input.is_action_pressed("ui_right"):
 		if control_wait <= 1:
