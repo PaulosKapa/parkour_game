@@ -29,7 +29,7 @@ func _physics_process(delta):
 	
 	anim_player.stop(false)
 	
-	var mouse_pos =	get_viewport().get_mouse_position()
+	var mouse_pos = get_viewport().get_mouse_position()
 	if mouse_pos.distance_squared_to(prior_mouse_pos) >= 25:
 		prior_mouse_pos = mouse_pos
 		control_wait = 2 #indicates we need to deal with the mouse

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://models/final.model/arm.material" type="Material" id=1]
 [ext_resource path="res://models/final.model/pectoralis.material" type="Material" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://models/final.model/akantha.material" type="Material" id=10]
 [ext_resource path="res://models/final.model/spikes.material" type="Material" id=11]
 [ext_resource path="res://models/final.model/glass.material" type="Material" id=12]
+[ext_resource path="res://scenes/new_character.gd" type="Script" id=13]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube"
@@ -739,6 +740,7 @@ tracks/18/enabled = true
 tracks/18/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1.66667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
 [node name="new" type="Spatial"]
+script = ExtResource( 13 )
 
 [node name="Armature" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.92251, 0 )
@@ -873,3 +875,6 @@ anims/ArmatureAction = SubResource( 4 )
 anims/aiminig = SubResource( 5 )
 anims/normal001 = SubResource( 6 )
 anims/walking = SubResource( 7 )
+
+[node name="RotationPoint" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0478263, 10.9288, 0 )
