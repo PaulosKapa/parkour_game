@@ -1,6 +1,6 @@
 extends Spatial
 #to figure out what stage to put on the cell
-onready var first_scene = preload("res://scenes/1st_scene.tscn")
+onready var first_scene = preload("res://scenes/1st_cutscene.tscn")
 var settings = preload("res://scenes/SettingsDemo.tscn")
 onready var this_scene = get_node("/root/cell")
 var stage = 1

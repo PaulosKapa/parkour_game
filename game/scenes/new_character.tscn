@@ -12,7 +12,8 @@
 [ext_resource path="res://models/final.model/akantha.material" type="Material" id=10]
 [ext_resource path="res://models/final.model/spikes.material" type="Material" id=11]
 [ext_resource path="res://models/final.model/glass.material" type="Material" id=12]
-[ext_resource path="res://scenes/new_character.gd" type="Script" id=13]
+[ext_resource path="res://code/new_character.gd" type="Script" id=13]
+
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube"
