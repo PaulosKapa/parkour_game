@@ -13,13 +13,13 @@ var health=3
 enum {FACING_LEFT, FACING_RIGHT}
 var facing = FACING_LEFT
 var cant_dash=0
-onready var gun = $Armature/Skeleton/gun_holder/w
-onready var anim_player = $AnimationPlayer1
+onready var gun = $new1/Armature/Skeleton/gun_holder/w
+onready var anim_player = $new1/AnimationPlayer5
+onready var pistol_holder = $new1/AnimationPlayer3
 var _collisions = []
 export (NodePath) var camio
 var ray_origin = Vector3()
 var ray_target=Vector3()
-onready var armswing_length = $AnimationPlayer4.get_animation("flexion").length;
 onready var cam =get_node("/root/level/Player/Camera2")
 
 var control_wait =0
@@ -28,65 +28,6 @@ var prior_mouse_pos = Vector2(0,0)
 func _physics_process(delta):
 	
 	anim_player.stop(false)
-	
-	var mouse_pos = get_viewport().get_mouse_position()
-	if mouse_pos.distance_squared_to(prior_mouse_pos) >= 25:
-		prior_mouse_pos = mouse_pos
-		control_wait = 2 #indicates we need to deal with the mouse
-	if control_wait == 0 || control_wait == 2:
-		ray_origin = cam.project_ray_origin(mouse_pos)
-		ray_target = cam.project_ray_normal(mouse_pos)*100000
-		
-		var space_state = get_world().direct_space_state
-		var ray = space_state.intersect_ray(ray_origin,ray_target,[self],2,true,true)
-		
-#		if ray:
-#			var ray_collision_point = ray.position
-#			var object_position = $RotationAnchor.global_transform.origin
-#			ray_collision_point = ray_collision_point - object_position
-#
-#
-#			var angle = -Vector2(ray_collision_point.x, ray_collision_point.y).angle_to(Vector2(-1, 0))
-#			if facing == FACING_RIGHT:
-#				if(angle <= 0):
-#					angle = -(PI+angle)
-#				else:
-#					angle = PI-angle
-#				pass
-#
-#
-#			if($AnimationPlayer4.is_playing()):
-#				return
-#
-#			#for the "aim" animation, -PI/2 is "top" - corresponds to length in secs
-#			#PI/2 is "bottom" - corresponds to 0 seconds
-#			#hence this formula	
-#			var frame = max(0,(PI/2-angle)/PI)
-#			frame = min(frame,1.0)*armswing_length
-#			print(frame)
-#
-#			#now, seek to that frame of the "aim" animation
-#			$AnimationPlayer4.current_animation = "flexion"
-#			$AnimationPlayer4.seek(frame,true)
-#			$AnimationPlayer4.stop()
-#
-##			if control_wait <= 0.0:
-#			if(abs(angle) > PI/2.0 && facing == FACING_RIGHT):
-#				print_debug("CW")
-#				$AnimationPlayer3.play("cw001")
-#	#			animation.play("rotate_cw")
-#				facing = FACING_LEFT
-#				control_wait = 0
-#
-#			elif(abs(angle) > PI/2.0 && facing == FACING_LEFT):
-#				print_debug("CCW")
-#				$AnimationPlayer2.play("ccw002")
-#	#			animation.play("rotate_ccw")
-#				facing = FACING_RIGHT
-#				control_wait = 0
-#		control_wait = 0 #reset
-#
-			
 	if Input.is_action_pressed("ui_right"):
 		if control_wait <= 1:
 			vel.x=2*lerp(10,sp,0.125)
@@ -108,7 +49,7 @@ func _physics_process(delta):
 		vel.y=0
 	elif Input.is_action_pressed("ui_up") and is_on_floor():
 		accel = leg_force
-		$AnimationPlayer5.play("jump")
+		$new1/AnimationPlayer1.play("jump")
 	elif Input.is_action_pressed("ui_down") and is_on_floor():
 		accel = -leg_force
 	else:
@@ -136,7 +77,7 @@ func kill():
 func _ready():
 	set_axis_lock(PhysicsServer.BODY_AXIS_LINEAR_Z,true)
 	set_axis_lock(PhysicsServer.BODY_AXIS_ANGULAR_X,true)
-	
+	pistol_holder.play("pistol_holster")
 
 	add_to_group("Player")
 	

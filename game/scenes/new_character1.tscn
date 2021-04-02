@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://code/character_final_model.gd" type="Script" id=1]
+[ext_resource path="res://scenes/health_balls.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/prototype.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/rig_pistol.tscn" type="PackedScene" id=4]
+
+[sub_resource type="BoxShape" id=9]
+
+[node name="new1" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1.21075, 0, 0, 0, 6.88183, 0, 0, 0, 2.91495, 0, 6.88218, 0 )
+shape = SubResource( 9 )
+
+[node name="health_rotate" type="Spatial" parent="."]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 12.493, 0 )
+
+[node name="Spatial" parent="health_rotate" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49273, 0, 0 )
+
+[node name="Spatial2" parent="health_rotate" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.71717 )
+
+[node name="Spatial3" parent="health_rotate" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.44804 )
+
+[node name="new1" parent="." instance=ExtResource( 3 )]
+
+[node name="BoneAttachment" type="BoneAttachment" parent="new1/Armature/Skeleton" index="2"]
+transform = Transform( -0.8417, 0.042099, -0.538302, 0.0499553, 0.998751, -1.66091e-06, 0.537631, -0.0268912, -0.842755, 4.1169, 3.73377, -0.0938933 )
+bone_name = "r_palm"
+
+[node name="w" parent="new1/Armature/Skeleton/BoneAttachment" instance=ExtResource( 4 )]
+transform = Transform( -0.446251, 0.00268824, 0.225508, -0.00268878, 0.499865, -0.0112793, -0.225507, -0.0112792, -0.446115, -0.512541, 0.391541, -0.260596 )
+
+[editable path="new1"]

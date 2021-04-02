@@ -14,7 +14,6 @@
 [ext_resource path="res://models/final.model/glass.material" type="Material" id=12]
 [ext_resource path="res://code/new_character.gd" type="Script" id=13]
 
-
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube"
 surfaces/0 = {
