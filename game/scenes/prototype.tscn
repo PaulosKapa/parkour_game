@@ -69,7 +69,7 @@ bind/18/name = "l_foot"
 bind/18/bone = -1
 bind/18/pose = Transform( -0.0063655, 0.998103, -0.0612342, 0.999979, 0.00637728, -1.69102e-06, 0.000390516, -0.0612328, -0.998123, -0.402028, 0.0751216, -1.07281 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "aiminig"
 length = 0.708333
 tracks/0/type = "transform"
@@ -339,7 +339,7 @@ target_node = NodePath("../../Spatial/Position3D")
 anims/AIM = ExtResource( 2 )
 anims/ArmatureAction = ExtResource( 1 )
 anims/ArmatureAction001 = ExtResource( 3 )
-anims/aiminig = SubResource( 5 )
+anims/aiminig = SubResource( 2 )
 anims/normal001 = ExtResource( 4 )
 anims/walking = ExtResource( 5 )
 

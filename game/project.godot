@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="parkour"
-run/main_scene="res://scenes/init.tscn"
+run/main_scene="res://scenes/intro.tscn"
 config/icon="res://icon.png"
 
 [autoload]
