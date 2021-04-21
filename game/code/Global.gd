@@ -17,8 +17,14 @@ func _deferred_goto_scene(scene):
 		#It seems that, to avoid commingling of Scenes, you have to explicitly remove the current one from the SceneTree
 		get_tree().get_root().remove_child(current_scene)
 		current_scene.free()
+	else:
+		#deal with a current scene we didn't know was there
+		var suspect = get_tree().current_scene
+		if(suspect != null):
+			get_tree().get_root().remove_child(suspect)
+			suspect.free()
 	current_scene = scene.instance()
-	print("USER dir:",OS.get_user_data_dir())
+	#print("USER dir:",OS.get_user_data_dir())
 	var _error_status = Directory.new().remove("user://saves/progress.save")
 	_error_status = Directory.new().remove("user://saves")
 	
