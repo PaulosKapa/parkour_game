@@ -1,6 +1,6 @@
 extends Node2D
 
-
+onready var next_scene = preload("res://scenes/start_ui.tscn")
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -12,4 +12,4 @@ extends Node2D
 #		get_tree().change_scene("res://scenes/start_ui.tscn")
 
 func _on_VideoPlayer_finished():
-	get_tree().change_scene("res://scenes/start_ui.tscn")
+	Global.goto_scene(next_scene)
