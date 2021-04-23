@@ -6,6 +6,7 @@ var player_status = {}
 var props = {}
 var remaining_enemies = {}
 var _player_location = Vector3(100,100,100) # z == 100 used to detect this being not-yet set
+var _checkpoint_location = Vector3(100,100,100)
 var _player_node 
 var prop_groups = ["explosive","key","door"]
 var restore_armed = false
@@ -45,6 +46,8 @@ func _position_player():
 	if _player_location.z == 100:
 		return
 	_player_node.global_transform.origin = _player_location
+	if _checkpoint_location.z != 100:
+		_player_node.global_transform.origin = _checkpoint_location
 
 #errno:int - see https://docs.godotengine.org/en/stable/classes/class_@globalscope.html#enum-globalscope-error 
 #intended_path:String 
@@ -71,8 +74,9 @@ func create_directory(path):
 #directory:String - folder into which the game save files are going
 func save(directory):
 	var scenetree = Global.get_tree()
-	if stages.find_last(scenetree.current_scene.name) == -1:
-		stages.append(scenetree.current_scene.name)
+	#store the scene filename so it can be reloaded
+	if stages.find_last(scenetree.current_scene.filename) == -1:
+		stages.append(scenetree.current_scene.filename)
 	if (player_status.empty()):
 		print("ERROR:called GameData.save() before calling GameData.set_player_status()")
 		return
@@ -143,14 +147,17 @@ func _prop_data(prop):
 func completed_stage(_stage_name):
 	pass
 
+#return the filename of the scene of the last Checkpoint
+#or start_ui if no such can be found (FLJ, 4/23/2021) 
 func restore(directory):
+	var scene_to_run = "res://scenes/start_ui.tscn"
 	var save_file = File.new()
 	if not save_file.file_exists(directory+"/progress.save"):
-		return
+		return scene_to_run
 	var result = save_file.open(directory+"/progress.save",File.READ)
 	if result != OK:
 		run_alert(result,directory+"/progress.save")
-		return
+		return scene_to_run
 	stages = parse_json(save_file.get_line())
 	inventory = parse_json(save_file.get_line())
 	player_status = parse_json(save_file.get_line())
@@ -162,14 +169,16 @@ func restore(directory):
 	#we'll need a second level to test this part
 	#as well as a list of all the level filenames or indices
 	#this is from the fact that current_scene.name is "level", not "1st_stage"
-#	if stages[-1] != Global.current_scene.name:
-#		scenetree.change_scene("res://scenes/"+stages[-1])
+	#if stages[-1] != Global.current_scene.filename:
+	scene_to_run = (stages[-1])
 	if(not restore_armed):
 		scenetree.connect("node_added",self,"_on_SceneTree_node_added")
 		restore_armed = true
+	return scene_to_run
 	
 
 func _on_SceneTree_node_added(new_node):
+	print("node:",new_node.name)
 	#we can't be sure whether the Checkpoints will be added before the Player 
 	#or the other way around
 	#this "primes" it when one gets added, and the arrival of the other springs _position_player()
@@ -179,11 +188,12 @@ func _on_SceneTree_node_added(new_node):
 	#Object.get_class() does not return program-defined class names, but that of the "intrinsic" superclass
 	
 	if new_node.name.begins_with("Checkpoint") and new_node.name == player_status["last_checkpoint"]:
+		_checkpoint_location = new_node.global_transform.origin
 		_player_location = new_node.global_transform.origin
 		#new_node.queue_free()
 		restore_player_status()
 		return
-	if new_node.is_in_group("Player"):
+	if new_node.name ==("Player"):
 		_player_node = new_node
 		restore_player_status()
 		return
