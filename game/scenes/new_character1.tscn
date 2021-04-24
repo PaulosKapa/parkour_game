@@ -1,20 +1,22 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://code/character_final_model.gd" type="Script" id=1]
 [ext_resource path="res://scenes/health_balls.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/prototype1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/rig_pistol.tscn" type="PackedScene" id=4]
 
 [sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.85046, 6.96094, 2.92211 )
 
 [node name="new1" type="KinematicBody"]
 script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1.21075, 0, 0, 0, 6.88183, 0, 0, 0, 2.91495, 0, 6.88218, 0 )
+transform = Transform( 0.750932, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 3.47757, 0 )
 shape = SubResource( 1 )
 
 [node name="health_rotate" type="Spatial" parent="."]
-transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 12.493, 0 )
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 6.19077, 0 )
 
 [node name="Spatial" parent="health_rotate" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49273, 0, 0 )
@@ -26,6 +28,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.71717 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.44804 )
 
 [node name="new1" parent="." instance=ExtResource( 3 )]
+
+[node name="gun_holder" type="BoneAttachment" parent="new1/Armature/Skeleton" index="2"]
+transform = Transform( -0.680442, 0.0285683, -0.732244, 0.0419483, 0.99912, -2.11544e-07, 0.731602, -0.030716, -0.681044, 3.34729, 3.26492, 0.0394531 )
+bone_name = "r_palm"
+
+[node name="w" parent="new1/Armature/Skeleton/gun_holder" instance=ExtResource( 4 )]
+transform = Transform( -0.341, 8.3819e-09, 0.365677, -1.75987e-09, 0.5, 1.86265e-09, -0.365677, 7.45058e-09, -0.341, -0.310095, 0.505579, -0.358863 )
 
 [node name="RotationPoint" parent="new1" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.3682, 0 )

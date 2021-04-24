@@ -220,7 +220,7 @@ stereo = true
 albedo_color = Color( 2.31, 0.19, 0, 1 )
 
 [node name="w" type="Spatial"]
-transform = Transform( 7.13452e-16, 4.37114e-09, -0.1, 0.1, -1.62921e-08, 1.30256e-18, -1.62921e-08, -0.1, -4.37114e-09, 3.70443e-05, 0.431959, -0.0487598 )
+transform = Transform( -0.340999, -4.33151e-10, 0.365677, -1.75987e-09, 0.5, -1.04885e-09, -0.365677, -2.0024e-09, -0.341, -0.310095, 0.505579, -0.358863 )
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": ""
