@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://code/character_final_model.gd" type="Script" id=1]
 [ext_resource path="res://scenes/health_balls.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/prototype1.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/rig_pistol.tscn" type="PackedScene" id=4]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -28,14 +27,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.44804 )
 
 [node name="new1" parent="." instance=ExtResource( 3 )]
 
-[node name="Skeleton" parent="new1/Armature" index="0"]
-bones/11/bound_children = [ NodePath("gun_holder") ]
-
-[node name="gun_holder" type="BoneAttachment" parent="new1/Armature/Skeleton" index="2"]
-transform = Transform( -5.0117e-13, 1, 1.7053e-12, 1, 3.16462e-15, 1.79805e-07, 1.44641e-06, 3.69482e-13, -1, -0.00540209, -0.668685, 2.46228 )
-bone_name = "r_palm"
-
-[node name="w" parent="new1/Armature/Skeleton/gun_holder" instance=ExtResource( 4 )]
-transform = Transform( -0.446251, 0.00268824, 0.225508, -0.00268878, 0.499865, -0.0112793, -0.225507, -0.0112792, -0.446115, -0.512541, 0.391541, -0.260596 )
+[node name="RotationPoint" parent="new1" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.3682, 0 )
 
 [editable path="new1"]

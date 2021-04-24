@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/pistol1_reload.mp3-bc4e1938c4a8cb658d3d7481caecc638.mp3str"
+
+[deps]
+
+source_file="res://sound/pistol1_reload.mp3"
+dest_files=[ "res://.import/pistol1_reload.mp3-bc4e1938c4a8cb658d3d7481caecc638.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

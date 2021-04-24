@@ -48,3 +48,4 @@ stream = ExtResource( 6 )
 autoplay = true
 
 [editable path="cursor_game"]
+[editable path="cursor_game/Viewport/cursor_game"]

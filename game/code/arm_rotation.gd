@@ -8,6 +8,7 @@ var ray_target=Vector3()
 
 onready var cam = get_node("/root/level/Player/Camera2")
 
+
 func _ready():
 	skel = get_node("Armature/Skeleton")
 	set_process(true)
@@ -22,12 +23,11 @@ func set_bone_rotation(bone, angle):
 	# var x_angle = Vector2(angle.y, angle.z).angle_to(Vector2(0.0, 1.0))
 	# var y_angle = Vector2(angle.x, angle.z).angle_to(Vector2(0.0, 1.0))
 	
-	# Get the specified bone and its rest position 
+	# Get the specified bone
 	var b = skel.find_bone(bone)
-	var rest = skel.get_bone_rest(b)
 	
-	# Rotate the rest position by an absolute value
-	var newpose = rest.rotated(Vector3(0.0, 0.0, 1.0), z_angle)
+	# Rotate the bone position by a relative value
+	var newpose = Transform.IDENTITY.rotated(Basis().z, z_angle - PI/2)
 	# Again, if we need to rotate along some other axis, use these.
 	# var newpose = newpose.rotated(Vector3(1.0, 0.0, 0.0), x_angle)
 	# var newpose = newpose.rotated(Vector3(0.0, 1.0, 0.0), y_angle)

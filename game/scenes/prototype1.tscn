@@ -785,6 +785,7 @@ target_node = NodePath("../../Spatial/Position3D")
 [node name="Spatial" type="Spatial" parent="Armature"]
 
 [node name="Position3D" type="Position3D" parent="Armature/Spatial"]
+transform = Transform( 0.99993, -0.00107616, -0.0117526, 0.000797153, 0.999718, -0.023719, 0.0117747, 0.0237079, 0.99965, 0, 3.49629, 0.0193233 )
 
 [node name="oc" type="AnimationPlayer" parent="."]
 anims/ArmatureAction = SubResource( 3 )
@@ -795,6 +796,7 @@ anims/pistol_holster = SubResource( 7 )
 anims/walking = SubResource( 8 )
 
 [node name="RotationPoint" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.40139, 10.8787, 2.59587 )
 
 [node name="AnimationPlayer1" type="AnimationPlayer" parent="."]
 anims/jump = ExtResource( 14 )
