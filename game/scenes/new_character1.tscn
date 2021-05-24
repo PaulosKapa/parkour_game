@@ -1,9 +1,21 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://code/character_final_model.gd" type="Script" id=1]
 [ext_resource path="res://scenes/health_balls.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/prototype1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/rig_pistol.tscn" type="PackedScene" id=4]
+[ext_resource path="res://textures/new_character/arm.material" type="Material" id=5]
+[ext_resource path="res://textures/new_character/pectoralis.material" type="Material" id=6]
+[ext_resource path="res://textures/new_character/Material.material" type="Material" id=7]
+[ext_resource path="res://textures/new_character/kneecaps.material" type="Material" id=8]
+[ext_resource path="res://textures/new_character/shoulder.material" type="Material" id=9]
+[ext_resource path="res://textures/new_character/leg.material" type="Material" id=10]
+[ext_resource path="res://textures/new_character/hip.material" type="Material" id=11]
+[ext_resource path="res://textures/new_character/shoe.material" type="Material" id=12]
+[ext_resource path="res://textures/new_character/abdominal.material" type="Material" id=13]
+[ext_resource path="res://textures/new_character/akantha.material" type="Material" id=14]
+[ext_resource path="res://textures/new_character/glass.material" type="Material" id=15]
+[ext_resource path="res://textures/new_character/spikes.material" type="Material" id=16]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.85046, 6.96094, 2.92211 )
@@ -18,19 +30,33 @@ shape = SubResource( 1 )
 [node name="health_rotate" type="Spatial" parent="."]
 transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 6.19077, 0 )
 
-[node name="Spatial" parent="health_rotate" instance=ExtResource( 2 )]
+[node name="health1" parent="health_rotate" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49273, 0, 0 )
 
-[node name="Spatial2" parent="health_rotate" instance=ExtResource( 2 )]
+[node name="health2" parent="health_rotate" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.71717 )
 
-[node name="Spatial3" parent="health_rotate" instance=ExtResource( 2 )]
+[node name="health3" parent="health_rotate" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.44804 )
 
 [node name="new1" parent="." instance=ExtResource( 3 )]
 
+[node name="Cube" parent="new1/Armature/Skeleton" index="0"]
+material/0 = ExtResource( 7 )
+material/1 = ExtResource( 5 )
+material/2 = ExtResource( 9 )
+material/3 = ExtResource( 11 )
+material/4 = ExtResource( 8 )
+material/5 = ExtResource( 10 )
+material/6 = ExtResource( 6 )
+material/7 = ExtResource( 12 )
+material/8 = ExtResource( 13 )
+material/9 = ExtResource( 14 )
+material/10 = ExtResource( 16 )
+material/11 = ExtResource( 15 )
+
 [node name="gun_holder" type="BoneAttachment" parent="new1/Armature/Skeleton" index="2"]
-transform = Transform( -0.680442, 0.0285683, -0.732244, 0.0419483, 0.99912, -2.11544e-07, 0.731602, -0.030716, -0.681044, 3.34729, 3.26492, 0.0394531 )
+transform = Transform( -4.37221e-13, 1, 1.94689e-12, 1, 1.11026e-14, 1.79805e-07, 8.05656e-07, 0, -1, -0.00540209, -0.668684, 2.46228 )
 bone_name = "r_palm"
 
 [node name="w" parent="new1/Armature/Skeleton/gun_holder" instance=ExtResource( 4 )]
@@ -38,5 +64,7 @@ transform = Transform( -0.341, 8.3819e-09, 0.365677, -1.75987e-09, 0.5, 1.86265e
 
 [node name="RotationPoint" parent="new1" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.3682, 0 )
+
+[node name="colour_change" type="Timer" parent="."]
 
 [editable path="new1"]

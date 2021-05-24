@@ -65,7 +65,7 @@ func _physics_process(delta):
 
 
 func hurt():
-	$new1/Armature/Skeleton/Cube.get_surface_material(3).set_albedo(Color(30,0,0))
+	$new1/Armature/Skeleton/Cube.get_surface_material(2).set_albedo(Color(30,0,0))
 	$colour_change.start()
 
 
@@ -116,7 +116,7 @@ func _process(_delta):
 func _on_colour_change_timeout():
 	#lknees.get_surface_material(0).set_albedo(Color(0, 1, 0))
 	#knees.get_surface_material(0).set_albedo(Color(0, 1, 0))
-	$new1/Armature/Skeleton/Cube.get_surface_material(3).set_albedo(Color(0,30,0))
+	$new1/Armature/Skeleton/Cube.get_surface_material(2).set_albedo(Color(0,30,0))
 	$colour_change.stop()
 
 func _on_Area_health_regen():

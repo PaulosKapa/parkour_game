@@ -405,6 +405,9 @@ transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 78.8066, 9.05008, 0.0328
 [node name="Player" parent="." instance=ExtResource( 13 )]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -35.4955, 0, 0 )
 
+[node name="Skeleton" parent="Player/new1/Armature" index="0"]
+bones/11/bound_children = [ NodePath("gun_holder") ]
+
 [node name="Spatial" type="Spatial" parent="Player"]
 transform = Transform( 3.33333, 0, 0, 0, 3.33333, 0, 0, 0, 3.33333, 0, 8.098, 0.85248 )
 
@@ -416,6 +419,7 @@ shape = SubResource( 15 )
 
 [node name="Camera2" type="Camera" parent="Player"]
 transform = Transform( 3.33333, 0, 0, 0, 3.33333, 0, 0, 0, 3.33333, 0, 8.098, 18.864 )
+
 [connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area2" to="Area2" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area3" to="Area3" method="_on_Area_body_entered"]
@@ -424,15 +428,14 @@ transform = Transform( 3.33333, 0, 0, 0, 3.33333, 0, 0, 0, 3.33333, 0, 8.098, 18
 [connection signal="unlock" from="key" to="Area5" method="_on_key_unlock"]
 
 [editable path="Spatial2"]
-
+[editable path="Spatial2/KinematicBody/enemy_flying"]
 [editable path="RigidBody"]
-
+[editable path="RigidBody/explosive_barrel"]
 [editable path="Spatial4"]
-
 [editable path="Spatial4/StaticBody/sentry"]
-
+[editable path="Spatial4/StaticBody/sentry/pivot_point_sentry/gun"]
 [editable path="Spatial"]
-
 [editable path="cursor_game"]
-
+[editable path="cursor_game/Viewport/cursor_game"]
 [editable path="Player"]
+[editable path="Player/new1"]
