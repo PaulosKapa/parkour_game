@@ -308,6 +308,7 @@ stream = SubResource( 20 )
 transform = Transform( -1.59939e-07, -1, 0, 0.25, -6.39758e-07, 0, 0, 0, 0.25, -0.318891, 1.23691, 0 )
 mesh = SubResource( 21 )
 material/0 = SubResource( 22 )
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]
 [connection signal="timeout" from="superpower" to="." method="_on_superpower_timeout"]

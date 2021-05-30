@@ -16,21 +16,24 @@ func _ready():
 # bone: string, name of the bone we want to perform an operation on
 # angle: Vector3, the vector along which we want the bone to align itself
 func set_bone_rotation(bone, angle):
+	# forward vector for the model, so this code works regardless of camera orientation
+	var basis = get_global_transform().basis
+	var forward = basis.x
 	# For now, we only need to calculate z_angle, as the arms only rotate along that particular axis
-	var z_angle = Vector2(angle.x, angle.y).angle_to(Vector2(0.0, 1.0))
+	var z_angle = Vector2(angle.x, angle.y).angle_to(Vector2(forward.x, forward.y))
 	# If the need arises, these lines should calculate the angles along the other axes.
 	# I have not tested these, modify if need be.
-	# var x_angle = Vector2(angle.y, angle.z).angle_to(Vector2(0.0, 1.0))
-	# var y_angle = Vector2(angle.x, angle.z).angle_to(Vector2(0.0, 1.0))
+	# var x_angle = Vector2(angle.y, angle.z).angle_to(Vector2(forward.y, forward.z))
+	# var y_angle = Vector2(angle.x, angle.z).angle_to(Vector2(forward.x, forward.z))
 	
 	# Get the specified bone
 	var b = skel.find_bone(bone)
 	
 	# Rotate the bone position by a relative value
-	var newpose = Transform.IDENTITY.rotated(Basis().z, z_angle - PI/2)
+	var newpose = Transform.IDENTITY.rotated(basis.z.normalized(), z_angle)
 	# Again, if we need to rotate along some other axis, use these.
-	# var newpose = newpose.rotated(Vector3(1.0, 0.0, 0.0), x_angle)
-	# var newpose = newpose.rotated(Vector3(0.0, 1.0, 0.0), y_angle)
+	# var newpose = newpose.rotated(basis.x.normalized(), x_angle)
+	# var newpose = newpose.rotated(basis.y.normalized(), y_angle)
 	
 	# Set the bone's new position
 	skel.set_bone_pose(b, newpose)

@@ -13,7 +13,7 @@ extents = Vector3( 7.7118, 8.83407, 1 )
 [node name="level" type="Spatial"]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.282086, 0, 0, 0, 0.282086, 0, 0, 0, 0.26876, -24.8023, 4.63133, 3.58619 )
+transform = Transform( 0.282086, 0, 9.3983e-08, 0, 0.282086, 0, -9.8643e-08, 0, 0.26876, -24.8023, 4.63133, 3.58619 )
 
 [node name="Camera2" type="Camera" parent="Player"]
 transform = Transform( 3.54502, 0, 0, 0, 3.54502, 0, 0, 0, 3.72079, 2.1031, 9.8859, 28.1099 )
@@ -34,7 +34,7 @@ __meta__ = {
 }
 
 [node name="cell_scene" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+transform = Transform( -5.12612e-07, 0, 1, 0, 1, 0, -1, 0, -5.12612e-07, 0, 0, -4.29153e-06 )
 
 [node name="mouse_hide" parent="." instance=ExtResource( 3 )]
 

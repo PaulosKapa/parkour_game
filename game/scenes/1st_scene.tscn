@@ -405,8 +405,8 @@ transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 78.8066, 9.05008, 0.0328
 [node name="Player" parent="." instance=ExtResource( 13 )]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -35.4955, 0, 0 )
 
-[node name="Skeleton" parent="Player/new1/Armature" index="0"]
-bones/11/bound_children = [ NodePath("gun_holder") ]
+[node name="gun_holder" parent="Player/new1/Armature/Skeleton" index="2"]
+transform = Transform( -4.37221e-13, 1, 1.94689e-12, 1, 1.11026e-14, 1.79805e-07, 8.05656e-07, 0, -1, -0.00540209, -0.668684, 2.46228 )
 
 [node name="Spatial" type="Spatial" parent="Player"]
 transform = Transform( 3.33333, 0, 0, 0, 3.33333, 0, 0, 0, 3.33333, 0, 8.098, 0.85248 )
