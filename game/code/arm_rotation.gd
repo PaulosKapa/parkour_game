@@ -65,6 +65,22 @@ func _physics_process(_delta):
 		# Since we want our arms to also point towards the cursor, we can pass arm_angle as is
 		# to set_bone_rotation
 		arm_angle = ray_collision_point - object_position
-	
-	set_bone_rotation("l_shoulder", arm_angle)
-	set_bone_rotation("r_shoulder", arm_angle)
+		
+		#if the mouse is past full vertical, change the direction the player faces (FLJ, 15 Jun 2021)
+		var turned = false
+		if(get_parent().facing == get_parent().FACING_LEFT):
+			if(arm_angle.x <0):
+				get_parent().facing = get_parent().FACING_RIGHT
+				#rotating self because rotating the parent messes with the camera 
+				rotation.y = PI
+				turned = true
+		else:
+			if(arm_angle.x > 0):
+				get_parent().facing = get_parent().FACING_LEFT
+				rotation.y = 0
+				turned = true
+		
+		if(not turned):
+			set_bone_rotation("l_shoulder", arm_angle)
+			set_bone_rotation("r_shoulder", arm_angle)
+
