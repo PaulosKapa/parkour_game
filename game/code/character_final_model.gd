@@ -31,14 +31,12 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
 		if control_wait <= 1:
 			vel.x=2*lerp(10,sp,0.125)
-			#facing=FACING_RIGHT
 			anim_player.play("walking")
 			control_wait = 1
 	elif Input.is_action_pressed("ui_left"):
 		if control_wait <= 1:
 			anim_player.play("walking")
 			vel.x=2*lerp(-10,-sp,0.125)
-			#facing=FACING_LEFT
 			control_wait = 1
 	
 		
@@ -100,7 +98,7 @@ func _process(_delta):
 			0:
 				GameData.restore("user://saves")
 				var _ret = get_tree().reload_current_scene()
-				$new1/Armature/Skeleton/Cube.get_surface_material(3).set_albedo(Color(0,30,0))
+				$new1/Armature/Skeleton/Cube.get_surface_material(2).set_albedo(Color(0,30,0))
 				
 	var slide_count = get_slide_count()
 	for i in slide_count:
@@ -114,8 +112,6 @@ func _process(_delta):
 
 
 func _on_colour_change_timeout():
-	#lknees.get_surface_material(0).set_albedo(Color(0, 1, 0))
-	#knees.get_surface_material(0).set_albedo(Color(0, 1, 0))
 	$new1/Armature/Skeleton/Cube.get_surface_material(2).set_albedo(Color(0,30,0))
 	$colour_change.stop()
 

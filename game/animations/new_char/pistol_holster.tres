@@ -3,6 +3,7 @@
 [resource]
 resource_name = "pistol_holster"
 length = 1.08333
+step = 0.0
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Armature/Skeleton:l_arm")
 tracks/0/interp = 1

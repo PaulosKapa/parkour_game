@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/cell_scene.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/new_character1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/new_character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/mouse_hide.tscn" type="PackedScene" id=3]
 [ext_resource path="res://environments/cell_scene_final.tres" type="Environment" id=4]
 [ext_resource path="res://scenes/cursor_game_viewport.tscn" type="PackedScene" id=5]
@@ -12,11 +12,25 @@ extents = Vector3( 7.7118, 8.83407, 1 )
 
 [node name="level" type="Spatial"]
 
+[node name="cell_scene" parent="." instance=ExtResource( 1 )]
+transform = Transform( -5.12612e-07, 0, 1, 0, 1, 0, -1, 0, -5.12612e-07, 0, 0, -4.29153e-06 )
+
+[node name="mouse_hide" parent="." instance=ExtResource( 3 )]
+
+[node name="cursor_game" parent="." instance=ExtResource( 5 )]
+
+[node name="cursor_game" parent="cursor_game/Viewport" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 303.297, 44.168, 0 )
+
+[node name="song_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.282086, 0, 9.3983e-08, 0, 0.282086, 0, -9.8643e-08, 0, 0.26876, -24.8023, 4.63133, 3.58619 )
+transform = Transform( 0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, -24.594, 4.778, 3.628 )
 
 [node name="Camera2" type="Camera" parent="Player"]
-transform = Transform( 3.54502, 0, 0, 0, 3.54502, 0, 0, 0, 3.72079, 2.1031, 9.8859, 28.1099 )
+transform = Transform( 2.22222, 0, 7.77092e-07, 0, 2.22222, 0, -7.77092e-07, 0, 2.22222, 0.855461, 5.87112, 16.6956 )
 environment = ExtResource( 4 )
 __meta__ = {
 "_editor_description_": ""
@@ -32,20 +46,6 @@ shape = SubResource( 1 )
 __meta__ = {
 "_editor_description_": ""
 }
-
-[node name="cell_scene" parent="." instance=ExtResource( 1 )]
-transform = Transform( -5.12612e-07, 0, 1, 0, 1, 0, -1, 0, -5.12612e-07, 0, 0, -4.29153e-06 )
-
-[node name="mouse_hide" parent="." instance=ExtResource( 3 )]
-
-[node name="cursor_game" parent="." instance=ExtResource( 5 )]
-
-[node name="cursor_game" parent="cursor_game/Viewport" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 303.297, 44.168, 0 )
-
-[node name="song_1" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-autoplay = true
 
 [editable path="cursor_game"]
 [editable path="cursor_game/Viewport/cursor_game"]

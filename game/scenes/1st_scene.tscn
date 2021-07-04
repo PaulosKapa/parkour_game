@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scenes/enemy_flying.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/exploding.tscn" type="PackedScene" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://scenes/mouse_hide.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/checkpoint.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/new_character1.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/health_kit.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/cursor_game_viewport.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/rocket_shooter.tscn" type="PackedScene" id=16]
@@ -402,11 +401,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.4926, 0 )
 [node name="new" parent="." instance=ExtResource( 17 )]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 78.8066, 9.05008, 0.0328345 )
 
-[node name="Player" parent="." instance=ExtResource( 13 )]
+[node name="Player" parent="." instance=ExtResource( 17 )]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -35.4955, 0, 0 )
 
-[node name="gun_holder" parent="Player/new1/Armature/Skeleton" index="2"]
-transform = Transform( -4.37221e-13, 1, 1.94689e-12, 1, 1.11026e-14, 1.79805e-07, 8.05656e-07, 0, -1, -0.00540209, -0.668684, 2.46228 )
+[node name="CollisionShape" parent="Player" index="0"]
+shape = null
+
+[node name="Skeleton" parent="Player/new1/Armature" index="0"]
+bones/11/bound_children = [  ]
 
 [node name="Spatial" type="Spatial" parent="Player"]
 transform = Transform( 3.33333, 0, 0, 0, 3.33333, 0, 0, 0, 3.33333, 0, 8.098, 0.85248 )
