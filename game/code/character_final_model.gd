@@ -1,5 +1,5 @@
 extends KinematicBody
-
+#i ve added some testing features, for a 3d perspective.
 var vel= Vector3(0,0,0)
 var gravity=-900
 var jum= 500
@@ -30,35 +30,58 @@ func _physics_process(delta):
 	anim_player.stop(false)
 	if Input.is_action_pressed("ui_right"):
 		if control_wait <= 1:
-			vel.x=2*lerp(10,sp,0.125)
+			vel.z=2*lerp(10,sp,0.125)
 			anim_player.play("walking")
 			control_wait = 1
 	elif Input.is_action_pressed("ui_left"):
 		if control_wait <= 1:
 			anim_player.play("walking")
+			vel.z=2*lerp(-10,-sp,0.125)
+			control_wait = 1
+	elif Input.is_action_pressed("ui_rvs"):
+		if control_wait <= 1:
+			anim_player.play("walking")
 			vel.x=2*lerp(-10,-sp,0.125)
+			control_wait = 1
+			
+	elif Input.is_action_pressed("ui_fwd"):
+		if control_wait <= 1:
+			anim_player.play("walking")
+			vel.x=2*lerp(10,sp,0.125)
 			control_wait = 1
 	
 		
 	elif Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_left"):
-		vel.y=0
-	else: vel.x=0
-	if Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_down") and is_on_floor():
-		vel.y=0
-	elif Input.is_action_pressed("ui_up") and is_on_floor():
+		#vel.y=0
+		vel.z=0
+	elif Input.is_action_pressed("ui_fwd") and Input.is_action_pressed("ui_rvs"):
+		#vel.y=0
+		vel.x=0
+	elif Input.is_action_just_released("ui_fwd") or Input.is_action_just_released("ui_rvs"):
+		#vel.y=0
+		vel.x=0
+	elif Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
+		#vel.y=0
+		vel.z=0
+	#if Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_down"):
+		#vel.y=0
+	if Input.is_action_pressed("ui_up") and is_on_floor():
 		accel = leg_force
 		$new1/AnimationPlayer1.play("jump")
-	elif Input.is_action_pressed("ui_down") and is_on_floor():
-		accel = -leg_force
-	else:
-		vel.y = lerp(vel.z,0,0.1)
+	#elif Input.is_action_pressed("ui_down") and is_on_floor():
+	#	accel = -leg_force
+	#if Input.is_action_pressed("ui_fwd") or Input.is_action_pressed("ui_rvs"):
+		#vel.y = lerp(0,1,0.1)
+		
+	#elif Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left"):
+		#vel.z = lerp(0,1,0.1)
 
-	if get_translation_delta().y == 0:
-		accel = 0
+	#if get_translation_delta().y == 0 or get_translation_delta().z==0:
+		#accel = 0
 	accel += gravity*delta
 	vel.y += accel
 	physics_delta = delta
-	
+
 	var _ret = move_and_slide(vel*physics_delta, Vector3(0, 1, 0), false, 4, 0.785398, true)
 
 
