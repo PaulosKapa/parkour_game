@@ -21,7 +21,6 @@ export (NodePath) var camio
 var ray_origin = Vector3()
 var ray_target=Vector3()
 onready var cam =get_node("/root/level/Player/Camera2")
-
 var control_wait =0
 var prior_mouse_pos = Vector2(0,0)
 

@@ -270,6 +270,7 @@ environment = ExtResource( 11 )
 
 [node name="tsk" type="AudioStreamPlayer" parent="." index="12"]
 stream = ExtResource( 25 )
+
 [connection signal="mouse_entered" from="RezCube/ClickCubeArea" to="RezCube" method="_on_ClickCubeArea_mouse_entered"]
 [connection signal="mouse_entered" from="RezCube/ClickCubeArea" to="." method="_on_ClickCubeArea_mouse_entered"]
 [connection signal="mouse_entered" from="SoundCube/ClickCubeArea_audio" to="RezCube" method="_on_ClickCubeArea_audio_mouse_entered"]

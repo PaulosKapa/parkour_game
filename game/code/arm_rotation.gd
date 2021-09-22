@@ -23,17 +23,17 @@ func set_bone_rotation(bone, angle):
 	var z_angle = Vector2(angle.x, angle.y).angle_to(Vector2(forward.x, forward.y))
 	# If the need arises, these lines should calculate the angles along the other axes.
 	# I have not tested these, modify if need be.
-	# var x_angle = Vector2(angle.y, angle.z).angle_to(Vector2(forward.y, forward.z))
-	# var y_angle = Vector2(angle.x, angle.z).angle_to(Vector2(forward.x, forward.z))
+	var x_angle = Vector2(angle.y, angle.z).angle_to(Vector2(forward.y, forward.z))
+	var y_angle = Vector2(angle.x, angle.z).angle_to(Vector2(forward.x, forward.z))
 	
 	# Get the specified bone
 	var b = skel.find_bone(bone)
 	
 	# Rotate the bone position by a relative value
-	var newpose = Transform.IDENTITY.rotated(basis.z.normalized(), z_angle)
 	# Again, if we need to rotate along some other axis, use these.
-	# var newpose = newpose.rotated(basis.x.normalized(), x_angle)
-	# var newpose = newpose.rotated(basis.y.normalized(), y_angle)
+	var newpose = Transform.IDENTITY.rotated(basis.x.normalized(), x_angle)
+	newpose = newpose.rotated(basis.z.normalized(), z_angle)
+	#newpose = newpose.rotated(basis.y.normalized(), y_angle)
 	
 	# Set the bone's new position
 	skel.set_bone_pose(b, newpose)
