@@ -1,7 +1,7 @@
 extends Spatial
 onready var Parent = get_parent()
 onready var cursor = get_node("/root/level/cursor_game/Viewport/cursor_game/AnimationPlayer")
-onready var Camera = get_node("/root/level/Player/Camera2")
+onready var Camera = get_node("/root/level/Player/Head/Camera2")
 onready var Bullet= preload("res://scenes/bullet.tscn")
 onready var mouse_position = Vector3(0,0,0)
 onready var kil = get_node("/root/level/Player")
@@ -46,7 +46,7 @@ func shoot():
 		$AnimationPlayer.play("πιστολ_1_σηοοτ")
 		var gun_global_rotation = global_transform.basis.get_rotation_quat().get_euler()
 		#we want the gun's rotation about the z-axis
-		var bullet_translation_vector = Vector3(cos(gun_global_rotation.z),sin(gun_global_rotation.z),0)
+		var bullet_translation_vector = Vector3(cos(gun_global_rotation),sin(gun_global_rotation),0)
 		#nice for the left, so deal with the right
 		if kil.facing == kil.FACING_RIGHT:
 			bullet_translation_vector.x = -bullet_translation_vector.x

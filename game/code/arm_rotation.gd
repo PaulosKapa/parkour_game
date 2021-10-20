@@ -6,7 +6,7 @@ var arm_angle = Vector3()
 var ray_origin = Vector3()
 var ray_target=Vector3()
 
-onready var cam = get_node("/root/level/Player/Camera2")
+onready var cam = get_node("/root/level/Player/Head/Camera2")
 
 
 func _ready():

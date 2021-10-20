@@ -1,14 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scenes/new_character.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/cursor_game_viewport.tscn" type="PackedScene" id=2]
-[ext_resource path="res://code/cam_node.gd" type="Script" id=3]
+[ext_resource path="res://scenes/3d_character_model.tscn" type="PackedScene" id=1]
 
 [sub_resource type="CubeMesh" id=1]
 
 [sub_resource type="BoxShape" id=2]
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="CapsuleMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 1, 0, 0, 1 )
 
 [node name="level" type="Spatial"]
 
@@ -22,27 +23,10 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="floor"]
 shape = SubResource( 2 )
 
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.0753791, 0.997155, 0, -0.997155, 0.0753791, 0, 3.76183, -16.3643 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.309115, 0, 0, 0, 0.309115, 0, 0, 0, 0.487572, 0, 0.421829, 0 )
-
-[node name="Camera2" type="Camera" parent="Player"]
-transform = Transform( 2.44577e-08, 0, -3.23504, 0, 3.23504, 0, 2.05098, 0, 1.55059e-08, -10.1691, 5.61407, -0.695826 )
-
-[node name="cam_node" type="Spatial" parent="Player/Camera2"]
-transform = Transform( 1, 0, 2.66454e-15, 0, 1, 0, 0, 0, 1, 0, 0, 9.53674e-07 )
-script = ExtResource( 3 )
-
-[node name="Area" type="Area" parent="Player/Camera2"]
-transform = Transform( 7.26746, 0, -5.81166e-10, 0, 4.2788, 0, -1.228e-07, 0, 0.332859, 0.860724, 3.41045, -18.362 )
-collision_layer = 2
-
-[node name="CollisionShape" type="CollisionShape" parent="Player/Camera2/Area"]
-shape = SubResource( 3 )
-
-[node name="cursor_game" parent="." instance=ExtResource( 2 )]
-
-[node name="cursor_game" parent="cursor_game/Viewport" index="0"]
-transform = Transform( 0.260856, 0, 0, 0, 0.260856, 0, 0, 0, 1, 0, 53.1829, 0 )
-
-[editable path="cursor_game"]
-[editable path="cursor_game/Viewport/cursor_game"]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.38039, 0 )

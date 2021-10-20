@@ -30,7 +30,7 @@ transform = Transform( 0.750932, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 3.47757, 0 )
 shape = SubResource( 1 )
 
 [node name="health_rotate" type="Spatial" parent="."]
-transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 6.19077, 0 )
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 7.42613, 0 )
 
 [node name="health1" parent="health_rotate" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49273, 0, 0 )

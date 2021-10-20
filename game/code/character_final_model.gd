@@ -1,11 +1,8 @@
 extends KinematicBody
 #i ve added some testing features, for a 3d perspective.
 var vel= Vector3(0,0,0)
-var gravity=-900
 var jum= 500
-var sp = 3000
 const leg_force= 550
-var accel = 0
 var last_trans = translation
 var physics_delta = 0;
 var kill_var=0
@@ -20,68 +17,83 @@ var _collisions = []
 export (NodePath) var camio
 var ray_origin = Vector3()
 var ray_target=Vector3()
-onready var cam =get_node("/root/level/Player/Camera2")
+onready var cam =get_node("/root/level/Player/Head/Camera2")
 var control_wait =0
-var prior_mouse_pos = Vector2(0,0)
+var speed = 7
+const ACCEL_DEFAULT = 7
+const ACCEL_AIR = 1
+onready var accel = ACCEL_DEFAULT
+var gravity = 9.8
+var jump = 5
+
+var cam_accel = 40
+var mouse_sense = 0.1
+var snap
+
+var direction = Vector3()
+var velocity = Vector3()
+var gravity_vec = Vector3()
+var movement = Vector3()
+
+onready var head = $Head
+onready var camera = $Head/Camera
+
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	pistol_holder.play("pistol_holster")
+	add_to_group("Player")
+	
+
+func _input(event):
+	if event is InputEventMouseMotion:
+		
+		head.rotate_x(deg2rad(-event.relative.y * mouse_sense))
+		head.rotation.x = clamp(head.rotation.x, deg2rad(-89), deg2rad(89))
+
 
 func _physics_process(delta):
+	direction = Vector3.ZERO
+	var h_rot = global_transform.basis.get_euler().y
+	var f_input = Input.get_action_strength("ui_rvs") - Input.get_action_strength("ui_fwd")
+	var h_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	direction = Vector3(h_input, 0, f_input).rotated(Vector3.UP, h_rot).normalized()
 	
+	if is_on_floor():
+		snap = -get_floor_normal()
+		accel = ACCEL_DEFAULT
+		gravity_vec = Vector3.ZERO
+	else:
+		snap = Vector3.DOWN
+		accel = ACCEL_AIR
+		gravity_vec += Vector3.DOWN * gravity * delta
+		
+	if Input.is_action_just_pressed("ui_up") and is_on_floor():
+		snap = Vector3.ZERO
+		gravity_vec = Vector3.UP * jump
+	
+	velocity = velocity.linear_interpolate(direction * speed, accel * delta)
+	movement = velocity + gravity_vec
+	
+	move_and_slide_with_snap(movement, snap, Vector3.UP)
 	anim_player.stop(false)
 	if Input.is_action_pressed("ui_right"):
 		if control_wait <= 1:
-			vel.z=2*lerp(10,sp,0.125)
 			anim_player.play("walking")
 			control_wait = 1
 	elif Input.is_action_pressed("ui_left"):
 		if control_wait <= 1:
 			anim_player.play("walking")
-			vel.z=2*lerp(-10,-sp,0.125)
 			control_wait = 1
 	elif Input.is_action_pressed("ui_rvs"):
 		if control_wait <= 1:
 			anim_player.play("walking")
-			vel.x=2*lerp(-10,-sp,0.125)
 			control_wait = 1
 			
 	elif Input.is_action_pressed("ui_fwd"):
 		if control_wait <= 1:
 			anim_player.play("walking")
-			vel.x=2*lerp(10,sp,0.125)
 			control_wait = 1
 	
-		
-	elif Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_left"):
-		#vel.y=0
-		vel.z=0
-	elif Input.is_action_pressed("ui_fwd") and Input.is_action_pressed("ui_rvs"):
-		#vel.y=0
-		vel.x=0
-	elif Input.is_action_just_released("ui_fwd") or Input.is_action_just_released("ui_rvs"):
-		#vel.y=0
-		vel.x=0
-	elif Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
-		#vel.y=0
-		vel.z=0
-	#if Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_down"):
-		#vel.y=0
-	if Input.is_action_pressed("ui_up") and is_on_floor():
-		accel = leg_force
-		$new1/AnimationPlayer1.play("jump")
-	#elif Input.is_action_pressed("ui_down") and is_on_floor():
-	#	accel = -leg_force
-	#if Input.is_action_pressed("ui_fwd") or Input.is_action_pressed("ui_rvs"):
-		#vel.y = lerp(0,1,0.1)
-		
-	#elif Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left"):
-		#vel.z = lerp(0,1,0.1)
-
-	#if get_translation_delta().y == 0 or get_translation_delta().z==0:
-		#accel = 0
-	accel += gravity*delta
-	vel.y += accel
-	physics_delta = delta
-
-	var _ret = move_and_slide(vel*physics_delta, Vector3(0, 1, 0), false, 4, 0.785398, true)
 
 
 func hurt():
@@ -94,17 +106,7 @@ func kill():
 	gun.super_power()
 	return kill_var
 	
-func _ready():
-	set_axis_lock(PhysicsServer.BODY_AXIS_LINEAR_Z,true)
-	set_axis_lock(PhysicsServer.BODY_AXIS_ANGULAR_X,true)
-	pistol_holder.play("pistol_holster")
 
-	add_to_group("Player")
-	
-func get_translation_delta():
-	var delta = last_trans - translation
-	last_trans = translation
-	return delta
 
 func _process(_delta):
 	$health_rotate.rotate_y(deg2rad(10))
