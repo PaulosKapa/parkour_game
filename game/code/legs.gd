@@ -1,6 +1,6 @@
 extends Spatial
 onready var anim_player = $AnimationPlayer1
-onready var anim_player2 = $AnimationPlayer2
+onready var anim_player2 = $AnimationPlayer3
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_up"):

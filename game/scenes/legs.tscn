@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://models/legs/leg.material" type="Material" id=1]
 [ext_resource path="res://models/legs/kneecaps.material" type="Material" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://animations/legs/jump.tres" type="Animation" id=6]
 [ext_resource path="res://animations/legs/walking.tres" type="Animation" id=7]
 [ext_resource path="res://animations/legs/normal.tres" type="Animation" id=8]
-[ext_resource path="res://animations/new_char/walking.tres" type="Animation" id=9]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube"
@@ -131,9 +130,6 @@ material/3 = null
 
 [node name="AnimationPlayer1" type="AnimationPlayer" parent="."]
 anims/walking = ExtResource( 7 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationPlayer1"]
-anims/walking = ExtResource( 9 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 anims/normal = ExtResource( 8 )
